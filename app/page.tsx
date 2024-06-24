@@ -3,7 +3,7 @@ const Page = () => {
         <>
             <section id="welcome">
                 <div className="tagmate">
-                    <img src="/tagmate-min.svg" width="128px" />
+                    <img src="/icons/tagmate-min.svg" width="128px" />
                         <div className="primary">Привет!</div>
                         <div className="secondary">
                             TagMate - ваш проводник в мире<br/>знакомств на улице, где каждый
