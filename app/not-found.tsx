@@ -1,6 +1,18 @@
-const Error= () => {
+const Error = () => {
     return (
-        <div>404</div>
+        <div
+            style={
+                {
+                    display: "flex",
+                    fontSize: "150px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "90vh"
+                }
+            }
+        >
+            404
+        </div>
     );
 }
 
