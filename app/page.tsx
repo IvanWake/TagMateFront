@@ -8,7 +8,7 @@ const Page = () => {
             <HeaderProfile />
             <main>
                 <div className="profile-info">
-                    <div className="profile-name">Сергей Андрианов</div>
+                    <div className="profile-name">Виталий Кличко</div>
                     <div className="profile-online">Был в сети час назад</div>
                 </div>
                 <div className="stats-wrapper">

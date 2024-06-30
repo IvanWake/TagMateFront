@@ -38,7 +38,6 @@ header .header-content {
     border-radius: 0.5rem;
 }
 
-
 /* Main */
 
 .title {
@@ -156,10 +155,9 @@ main {
 .stats-wrapper {
     display: flex;
     align-items: center;
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid #dcdcdc;
-    margin-bottom: 1rem;
 }
 
 .stats-element {
@@ -238,12 +236,12 @@ main {
 }
 
 /* Status */
-.stats-wrapper {
-    display: flex;
-    align-items: center;
-    margin: 0 0.5rem 0.5rem;
+.status-wrapper {
+    background: #e9edff;
     border-radius: 0.5rem;
-    border: 1px solid #dcdcdc;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    text-align: center;
 }
 
 .status-wrapper span {
