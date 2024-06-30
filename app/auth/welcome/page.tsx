@@ -1,3 +1,4 @@
+import "./globals.css";
 const Page = () => {
     return (
         <>
@@ -11,8 +12,8 @@ const Page = () => {
                         </div>
                 </div>
                 <div className="buttons">
-                    <div className="button button-login">Войти</div>
-                    <div className="button button-register">Зарегистрироваться</div>
+                    <button className="button button-login">Войти</button>
+                    <button className="button button-register">Зарегистрироваться</button>
                 </div>
             </section>
             <footer>

@@ -51,6 +51,12 @@ section>.tagmate {
     gap: 1rem;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .button {
     text-decoration: none;
     text-align: center;
