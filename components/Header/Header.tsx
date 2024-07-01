@@ -1,13 +1,17 @@
 import "./Header.css";
 
-const Header = () => {
+
+type Props = {
+    tag: string
+}
+const Header = ({ tag }: Props) => {
 
     return (
         <header>
             <div className="header-content">
                 <div>
                     <img src="icons/tagmate-min.svg" width="32px"/>
-                    <div className="tag">#AGJ5</div>
+                    <div className="tag">#{tag}</div>
                 </div>
                 <div>
                     <div className="button" id="search">

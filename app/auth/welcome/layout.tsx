@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ['cyrillic'] });
 
 export const metadata: Metadata = {
-  title: "TagMate | Главная",
+  title: "TagMate | Добро пожаловать",
   description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
 };
 
