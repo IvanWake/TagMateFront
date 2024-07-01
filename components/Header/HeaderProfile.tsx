@@ -2,7 +2,7 @@
 
 
 import { useEffect } from "react";
-import { displayHeaderProfileHandler } from "@/service/service";
+import { displayHeaderProfileHandler } from "@/service/layout";
 
 
 const HeaderProfile = () => {
