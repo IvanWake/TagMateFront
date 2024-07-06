@@ -66,11 +66,16 @@ section>.tagmate {
     appearance: none;
     -webkit-appearance: none;
     flex: 1;
+    transition: all .2s linear;
 }
 
 .button-login {
     background-color: #0066de;
     color: #ffffff;
+}
+
+.button:active {
+    transform: scale(90%);
 }
 
 .buttons span {

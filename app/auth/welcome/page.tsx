@@ -1,4 +1,5 @@
-import "./globals.css";
+import Link from "next/link";
+
 const Page = () => {
     return (
         <>
@@ -12,8 +13,12 @@ const Page = () => {
                         </div>
                 </div>
                 <div className="buttons">
-                    <button className="button button-login">Войти</button>
-                    <button className="button button-register">Зарегистрироваться</button>
+                    <Link href="/auth/login">
+                        <div className="button button-login">Войти</div>
+                    </Link>
+                    <Link href="/auth/signup">
+                        <div className="button button-register">Зарегистрироваться</div>
+                    </Link>
                 </div>
             </section>
             <footer>
