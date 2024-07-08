@@ -1,6 +1,10 @@
 'use client';
 
-const FirstStep = () => {
+type Props = {
+    nextStep: () => {}
+}
+
+const FirstStep = ({ nextStep }: Props) => {
     return (
         <section className="1">
             <div className="header">
@@ -35,7 +39,7 @@ const FirstStep = () => {
                     <option value="KOS">Кострома</option>
                 </select>
             </label>
-            <div id="step-1" className="step-disabled">Далее</div>
+            <div id="step-1" className="step-disabled" onClick={nextStep}>Далее</div>
         </section>
     );
 }

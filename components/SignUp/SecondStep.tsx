@@ -1,6 +1,10 @@
 'use client';
 
-const SecondStep = () => {
+type Props = {
+    nextStep: () => {}
+}
+
+const SecondStep = ({ nextStep }: Props) => {
     return (
         <section className="2">
             <div className="header">
@@ -191,7 +195,7 @@ const SecondStep = () => {
                 <input type="file" name="profile-image" id="profile-image" accept="image/*"
                        accept="image/png, image/jpeg" />
             </label>
-            <div id="step-2" className="step-disabled">Далее</div>
+            <div id="step-2" className="step-disabled" onClick={nextStep}>Далее</div>
         </section>
     );
 }
