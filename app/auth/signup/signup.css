@@ -11,6 +11,7 @@ body,
 form {
     display: flex;
     justify-content: center;
+    align-items: flex-start !important;
     overflow: auto;
     margin: 0;
     color: #000000;

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Unbounded';
-    src: url('/fonts/unbounded.ttf');
+    src: url('/unbounded.ttf');
 }
 
 * {
@@ -51,22 +51,16 @@ section>.tagmate {
     gap: 1rem;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
 .button {
     text-decoration: none;
     text-align: center;
     padding: 1rem;
     border-radius: 1rem;
     border: 2px solid #0066de;
+    background-color: transparent;
     appearance: none;
     -webkit-appearance: none;
     flex: 1;
-    transition: all .2s linear;
 }
 
 .button-login {
@@ -75,12 +69,8 @@ section>.tagmate {
 }
 
 .button-register {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
-}
-
-.button:active {
-    transform: scale(90%);
+    background-color: #FFFFFF;
+    color: #000000;
 }
 
 .buttons span {
