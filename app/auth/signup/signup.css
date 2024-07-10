@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'Unbounded';
+    src: url('/fonts/unbounded.ttf');
+}
+
+* {
+    font-family: 'Unbounded';
+}
+
+body,
+form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
+    overflow: auto;
+    margin: 0;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+section {
+    width: 336px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+h1,
+.count {
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 27px;
+}
+
+.count {
+    font-size: 16px;
+    line-height: 19px;
+    color: #0002;
+}
+
+p {
+    font-size: 15px;
+    line-height: 20px;
+    color: #0009;
+}
+
+p span {
+    font-weight: 500;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+label div {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+select {
+    appearance: none;
+    display: inline-block;
+    min-height: 32px;
+    padding: 8px 12px;
+    width: 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    caret-color: #3755fa;
+    outline: none;
+    background: transparent;
+    height: 40px;
+    font-size: 16px;
+    line-height: 19px;
+    border: 1px solid #00000014;
+    background-color: #00000007;
+    color: #000000;
+    transition: all 0.2s ease-out 0s;
+}
+
+input:hover,
+select:hover {
+    border: 1px solid #00000090;
+}
+
+input:focus,
+select:focus {
+    border: 1px solid #00000060;
+}
+
+select {
+    width: 100%;
+}
+
+.step,
+.step-disabled,
+button {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 1em 0px;
+    width: 336px;
+    height: 40px;
+    border-radius: 6px;
+    transition: all 0.2s ease-out 0s;
+    color: #ffffff;
+    font-size: 15px;
+    border: 0;
+    background-color: #3755fa;
+}
+
+.step-disabled,
+button:disabled {
+    background-color: #3755fa1f !important;
+}
+
+.step:hover,
+button:hover {
+    background-color: #506aff;
+}
+
+.step:active,
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.checkbox-wrapper {
+    display: block;
+    overflow-x: scroll;
+}
+
+.checkbox-wrapper .row {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox-btn {
+    display: inline-block;
+    margin: 5px 0;
+    user-select: none;
+    position: relative;
+}
+
+.checkbox-btn input[type=checkbox] {
+    display: none;
+}
+
+.checkbox-btn span {
+    appearance: none;
+    white-space: nowrap;
+    display: inline-block;
+    min-height: 32px;
+    width: 100%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    caret-color: #3755fa;
+    outline: none;
+    background: transparent;
+    height: 40px;
+    font-size: 16px;
+    line-height: 19px;
+    border: 1px solid #00000014;
+    background-color: #00000007;
+    color: #000000;
+    transition: all 0.2s ease-out 0s;
+}
+
+/* Checked */
+.checkbox-btn input[type=checkbox]:checked+span {
+    border: 2px solid #00000060;
+}
+
+/* Focus */
+.focused span {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+/* Hover */
+.checkbox-btn:hover {
+    color: #666;
+}
+
+/* Active */
+.checkbox-btn input[type=checkbox]:active:not(:disabled)+span {
+    transform: scale(0.98);
+}
