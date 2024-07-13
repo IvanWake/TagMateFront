@@ -1,7 +1,7 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {useRouter, useParams} from 'next/navigation';
+import { useEffect } from 'react';
+import { useParams, notFound } from 'next/navigation';
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import Stats from "@/components/Stats/Stats";
@@ -19,8 +19,17 @@ const Page = () => {
             method: "GET"
         })
             .then(res => res.json())
-            .then(res => console.log(res.userData))
-            .catch(err => console.log(err))
+            .then((res) => {
+                if (!res.ok) {
+                    notFound();
+                }
+
+                console.log(res)
+            })
+            // .catch((err) => {
+            //
+            //     console.log(err)
+            // })
     }
 
     useEffect(() => {
@@ -29,7 +38,7 @@ const Page = () => {
 
     return (
         <>
-            <Header tag={1234}/>
+            <Header tag={params.tag}/>
             <HeaderProfile/>
             <main>
                 <HeaderProfileInfo/>

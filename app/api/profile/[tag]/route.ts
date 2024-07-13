@@ -12,7 +12,6 @@ export async function GET(req: Request, { params }){
     });
 
     if (!res.ok) {
-        console.log("Error in server side");
         return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
     }
 
