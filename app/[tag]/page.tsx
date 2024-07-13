@@ -1,6 +1,7 @@
 'use client';
 
-import { useParams, notFound } from "next/navigation";
+import {useEffect, useState} from 'react';
+import {useRouter, useParams} from 'next/navigation';
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import Stats from "@/components/Stats/Stats";
@@ -10,23 +11,35 @@ import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
 
-
 const Page = () => {
     const params = useParams();
 
+    const fetchProfileData = async () => {
+        fetch(`http://localhost:3000/api/profile/${params.tag}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(res => console.log(res.userData))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        fetchProfileData();
+    }, []);
+
     return (
-            <>
-                <Header tag={params.tag.toString()}/>
-                <HeaderProfile />
-                <main>
-                    <HeaderProfileInfo />
-                    <Stats />
-                    <UserBio />
-                    <Interests />
-                    <FamilyStatus />
-                    <Gallery />
-                </main>
-            </>
+        <>
+            <Header tag={1234}/>
+            <HeaderProfile/>
+            <main>
+                <HeaderProfileInfo/>
+                <Stats/>
+                <UserBio/>
+                <Interests/>
+                <FamilyStatus/>
+                <Gallery/>
+            </main>
+        </>
     );
 }
 
