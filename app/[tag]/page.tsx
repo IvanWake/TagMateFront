@@ -11,30 +11,27 @@ import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
 
-const Page = () => {
-    const params = useParams();
+const fetchProfileData = async (tag) => {
+    let data = [];
+    const res = await fetch(`http://localhost:3000/api/profile/${tag}`, {
+        method: "GET"
+    });
 
-    const fetchProfileData = async () => {
-        fetch(`http://localhost:3000/api/profile/${params.tag}`, {
-            method: "GET"
-        })
-            .then(res => res.json())
-            .then((res) => {
-                if (!res.ok) {
-                    notFound();
-                }
-
-                console.log(res)
-            })
-            // .catch((err) => {
-            //
-            //     console.log(err)
-            // })
+    if (!res.ok) {
+        return undefined;
     }
+    const currentData = await res.json();
+    data.push(currentData);
+}
 
-    useEffect(() => {
-        fetchProfileData();
-    }, []);
+const Page = ({ params }) => {
+
+    const data = fetchProfileData(params.tag);
+    if (!data) {
+        notFound();
+    } else {
+        console.log(data)
+    }
 
     return (
         <>
