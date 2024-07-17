@@ -10,6 +10,7 @@ import Interests from "@/components/Interests/Interests";
 import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
+import Loading from "@/components/Layout/Loading";
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -26,7 +27,7 @@ const Page = ({ params }) => {
                 }
                 const data = await res.json();
                 setUserProfileData(data.userData);
-                console.log(data.userData);
+                console.log(data);
             } catch (err) {
                 router.push("/404");
             }
@@ -35,7 +36,7 @@ const Page = ({ params }) => {
     }, [tag]);
 
     if (!userProfileData) {
-        return <div>Компонент загрузки надо сюда</div>;
+        return <Loading />
     }
 
     return (
