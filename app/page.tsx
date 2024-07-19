@@ -11,9 +11,9 @@ const Page = () => {
     return (
         <>
             <Header tag={"AGJ5"}/>
-            <HeaderProfile/>
+            <HeaderProfile userName={"Ivan Wake"} wasOnline={""}/>
             <main>
-                <HeaderProfileInfo/>
+                <HeaderProfileInfo userName={"Ivan Wake"} wasOnline={""}/>
                 <Stats/>
                 <UserBio/>
                 <Interests/>
