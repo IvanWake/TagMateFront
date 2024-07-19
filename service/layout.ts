@@ -18,3 +18,7 @@ export const displayHeaderProfileHandler = () => {
             profileHeader.classList.add('hide');
         }
 }
+
+export const copyTextToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+}

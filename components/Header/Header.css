@@ -6,6 +6,10 @@
     justify-content: center;
 }
 
+.tag-div:hover {
+    cursor: pointer;
+}
+
 .button>img {
     transition: all .3s ease;
 }

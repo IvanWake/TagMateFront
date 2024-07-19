@@ -39,9 +39,20 @@ const Page = ({ params }) => {
             <Header tag={params.tag.toUpperCase()}/>
             <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
             <main>
-                <HeaderProfileInfo name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-                <Stats/>
-                <UserBio/>
+                <HeaderProfileInfo
+                    name={userProfileData.name}
+                    lastName={userProfileData.lastName}
+                    wasOnline={""}
+                />
+                <Stats
+                    mates={userProfileData.mates}
+                    friendlinessFactor={userProfileData.friendlinessFactor}
+                />
+                <UserBio
+                    gender={userProfileData.gender}
+                    city={userProfileData.city}
+                    birthDay={userProfileData.birthDay}
+                />
                 <Interests/>
                 <FamilyStatus/>
                 <Gallery/>
