@@ -2,6 +2,7 @@
 
 import { useEffect, useState} from 'react';
 import { useRouter } from 'next/navigation';
+import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import Stats from "@/components/Stats/Stats";
@@ -17,23 +18,17 @@ const Page = ({ params }) => {
     const router = useRouter();
     const { tag } = params;
 
-    useEffect(() => {
-        const fetchUserProfileData = async () => {
-            try {
-                const res = await fetch(`/api/profile/${tag}`);
-                if (!res.ok) {
-                    router.push("/404");
-                    return;
-                }
-                const data = await res.json();
-                setUserProfileData(data.userData);
-                console.log(data);
-            } catch (err) {
-                router.push("/404");
-            }
+    useEffect(() => { fetchUserProfileDataHandler() }, [tag]);
+
+    const fetchUserProfileDataHandler = async () => {
+        const result = await fetchUserProfileData(tag);
+
+        if (result.error) {
+            router.push("/404");
+        } else {
+            setUserProfileData(result.data);
         }
-        fetchUserProfileData();
-    }, [tag]);
+    }
 
     if (!userProfileData) {
         return <Loading />
@@ -42,9 +37,9 @@ const Page = ({ params }) => {
     return (
         <>
             <Header tag={params.tag.toUpperCase()}/>
-            <HeaderProfile userName={userProfileData.username} wasOnline={""}/>
+            <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
             <main>
-                <HeaderProfileInfo userName={userProfileData.username} wasOnline={""}/>
+                <HeaderProfileInfo name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
                 <Stats/>
                 <UserBio/>
                 <Interests/>

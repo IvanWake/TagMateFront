@@ -1,14 +1,15 @@
 'use client';
 
 type Props = {
-    userName: string,
+    name: string,
+    lastName: string,
     wasOnline?: Date
 }
 
-const HeaderProfileInfo = ({ userName, wasOnline }: Props) => {
+const HeaderProfileInfo = ({ name, lastName, wasOnline }: Props) => {
     return (
         <div className="profile-info">
-            <div className="profile-name">{userName}</div>
+            <div className="profile-name">{name + " " + lastName}</div>
             <div className="profile-online">{"Был в сети" + wasOnline}</div>
         </div>
     );

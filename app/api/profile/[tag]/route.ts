@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request, { params }){
     const { tag } = params;
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhlNzg4ZjRlMDU0MjRkZjNlNjU0ODkiLCJpYXQiOjE3MjA2MTM4MzQsImV4cCI6MTcyMzIwNTgzNH0.gdbpr5ikZM3LJGBsOZqYnj1ZmZu-NMScEZJhzqpvPBU";
+    const authToken = req.headers.get('Authorization')?.split(' ')[1];
 
     const res = await fetch(`http://localhost:5000/api/profile/${tag}`, {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${authToken}`
         }
     });
 
