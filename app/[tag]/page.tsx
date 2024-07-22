@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState} from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import {redirect, useRouter} from 'next/navigation';
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
+import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import Stats from "@/components/Stats/Stats";
@@ -13,26 +14,30 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
 import Loading from "@/components/Layout/Loading";
 
-const Page = ({ params }) => {
+const Page = ({params}) => {
     const [userProfileData, setUserProfileData] = useState(null);
+    const {tag} = params;
     const router = useRouter();
-    const { tag } = params;
 
-    useEffect(() => { fetchUserProfileDataHandler() }, [tag]);
+    useEffect(() => {
+        const fetchUserProfileDataHandler = async (tag: string) => {
+            const result = await fetchUserProfileData();
+            const resultByTag = await fetchUserProfileDataByTag(tag);
 
-    const fetchUserProfileDataHandler = async () => {
-        const result = await fetchUserProfileData(tag);
-
-        if (result.error) {
-            router.push("/404");
-        } else {
-            setUserProfileData(result.data);
+            if (resultByTag.error) {
+                router.push("/404");
+            } else {
+                if (result.data.serviceId === resultByTag.data.serviceId) {
+                    redirect("/");
+                } else {
+                    setUserProfileData(resultByTag.data);
+                }
+            }
         }
-    }
+        fetchUserProfileDataHandler(tag);
+    }, [tag]);
 
-    if (!userProfileData) {
-        return <Loading />
-    }
+    if (!userProfileData) return <Loading/>
 
     return (
         <>

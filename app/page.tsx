@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useRouter} from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
@@ -17,22 +17,25 @@ const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
     const router = useRouter();
 
-    useEffect(() => { fetchUserProfileDataHandler() }, []);
-    const fetchUserProfileDataHandler = async () => {
-        const result = await fetchUserProfileData("41KB");
+    useEffect(() => {
+        const fetchUserProfileDataHandler = async () => {
+            const result = await fetchUserProfileData();
 
-        if (result.error) {
-            router.push("/404");
-        } else {
-            setUserProfileData(result.data);
+            if (result.error) {
+                router.push("/auth/welcome");
+            } else {
+                setUserProfileData(result.data);
+            }
         }
-    }
+        fetchUserProfileDataHandler();
+    }, []);
+
 
     if (!userProfileData) return <Loading />
 
     return (
         <>
-            <Header tag={"22222"}/>
+            <Header tag={userProfileData.serviceId} />
             <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
             <main>
                 <HeaderProfileInfo

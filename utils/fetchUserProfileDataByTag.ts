@@ -1,10 +1,10 @@
 import { getAuthToken } from "@/utils/getAuthToken";
 
-export const fetchUserProfileData = async () => {
+export const fetchUserProfileDataByTag = async (tag: string) => {
     const authToken = getAuthToken("authToken");
 
     try {
-        const res = await fetch(`/api/profile`, {
+        const res = await fetch(`/api/profile/${tag}`, {
             headers: { "Authorization": `Bearer ${authToken}` }
         });
 
