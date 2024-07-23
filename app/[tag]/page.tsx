@@ -28,7 +28,7 @@ const Page = ({params}) => {
                 router.push("/404");
             } else {
                 if (result.data.serviceId === resultByTag.data.serviceId) {
-                    redirect("/");
+                    router.push("/");
                 } else {
                     setUserProfileData(resultByTag.data);
                 }
