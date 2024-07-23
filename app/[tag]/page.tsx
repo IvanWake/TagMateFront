@@ -24,15 +24,20 @@ const Page = ({params}) => {
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
 
-            if (resultByTag.error) {
+            if (resultByTag.status == 404) {
                 router.push("/404");
             } else {
-                if (result.data.serviceId === resultByTag.data.serviceId) {
-                    router.push("/");
+                if (resultByTag.status == 401) {
+                    router.push("/auth/welcome");
                 } else {
-                    setUserProfileData(resultByTag.data);
+                    if (result.data.serviceId === resultByTag.data.serviceId) {
+                        router.push("/");
+                    } else {
+                        setUserProfileData(resultByTag.data);
+                    }
                 }
             }
+
         }
         fetchUserProfileDataHandler(tag);
     }, [tag]);

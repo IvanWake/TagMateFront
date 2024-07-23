@@ -9,7 +9,7 @@ export const fetchUserProfileDataByTag = async (tag: string) => {
         });
 
         if (!res.ok) {
-            return { error: "Profile not found" };
+            return { status: res.status }
         }
 
         const data = await res.json();

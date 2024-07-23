@@ -9,7 +9,7 @@ export const fetchUserProfileData = async () => {
         });
 
         if (!res.ok) {
-            return { error: "Profile not found" };
+            return { status: res.status };
         }
 
         const data = await res.json();
