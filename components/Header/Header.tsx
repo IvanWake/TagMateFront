@@ -1,3 +1,6 @@
+'use client';
+
+import { copyTextToClipboard } from "@/service/layout";
 import "./Header.css";
 
 
@@ -9,8 +12,8 @@ const Header = ({ tag }: Props) => {
     return (
         <header>
             <div className="header-content">
-                <div>
-                    <img src="icons/tagmate-min.svg" width="32px"/>
+                <div className="tag-div" onClick={() => { copyTextToClipboard(tag) }}>
+                    <img src="icons/tagmate-min.svg" width="32px" />
                     <div className="tag">#{tag}</div>
                 </div>
                 <div>

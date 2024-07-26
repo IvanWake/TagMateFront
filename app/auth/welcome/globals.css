@@ -7,7 +7,7 @@
     font-family: 'Unbounded';
 }
 
-body {
+.page-welcome {
     display: flex;
     justify-content: center;
     align-items: center;
