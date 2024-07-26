@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {redirect, useRouter} from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
 import Header from "@/components/Header/Header";
@@ -14,9 +14,9 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
 import Loading from "@/components/Layout/Loading";
 
-const Page = ({params}) => {
+const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
-    const {tag} = params;
+    const { tag } = params;
     const router = useRouter();
 
     useEffect(() => {
@@ -24,10 +24,10 @@ const Page = ({params}) => {
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
 
-            if (resultByTag.status == 404) {
+            if (resultByTag.status === 404) {
                 router.push("/404");
             } else {
-                if (resultByTag.status == 401) {
+                if (resultByTag.status === 401) {
                     router.push("/auth/welcome");
                 } else {
                     if (result.data.serviceId === resultByTag.data.serviceId) {
@@ -37,7 +37,6 @@ const Page = ({params}) => {
                     }
                 }
             }
-
         }
         fetchUserProfileDataHandler(tag);
     }, [tag]);

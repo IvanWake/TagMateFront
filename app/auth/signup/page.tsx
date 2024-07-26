@@ -4,6 +4,7 @@ import { useState } from "react";
 import FirstStep from "@/components/SignUp/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep";
+import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
@@ -16,9 +17,10 @@ const SignUp = () => {
     }
 
     return (
-        <>
+
+        <NonAuthRoute>
             { steps[currentStep] }
-        </>
+        </NonAuthRoute>
     );
 }
 

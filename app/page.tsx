@@ -21,15 +21,11 @@ const Page = () => {
         const fetchUserProfileDataHandler = async () => {
             const result = await fetchUserProfileData();
 
-            if (result.status == 404) {
-                router.push("/404");
-            } else {
-                if (result.status == 401) {
+                if (result.status != 200) {
                     router.push("/auth/welcome");
                 } else {
                     setUserProfileData(result.data);
                 }
-            }
         }
         fetchUserProfileDataHandler();
     }, []);

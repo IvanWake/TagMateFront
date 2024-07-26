@@ -13,7 +13,7 @@ export const fetchUserProfileData = async () => {
         }
 
         const data = await res.json();
-        return { data: data.userData };
+        return { data: data.userData, status: res.status };
     } catch (err) {
         return { error: err };
     }
