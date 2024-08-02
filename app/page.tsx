@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";

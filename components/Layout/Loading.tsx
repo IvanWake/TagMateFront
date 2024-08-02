@@ -1,8 +1,9 @@
-import "./Loading.css";
+import styles from "./Loading.module.css";
+
 const Loading = () => {
     return (
-        <div className="page">
-            <div className="spin"></div>
+        <div className={styles.page}>
+            <div className={styles.spin}></div>
         </div>
     );
 }

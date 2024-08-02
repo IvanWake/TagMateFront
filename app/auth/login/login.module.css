@@ -3,18 +3,16 @@
     src: url('/fonts/unbounded.ttf');
 }
 
-* {
-    font-family: 'Unbounded';
-}
-
-body {
+.body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Unbounded';
 }
 
-section {
+.section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -22,7 +20,7 @@ section {
     min-width: 300px;
 }
 
-section>.tagmate {
+.section>.tagmate {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,8 +81,8 @@ section>.tagmate {
     cursor: pointer;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -94,18 +92,18 @@ input::-webkit-inner-spin-button {
     font-size: 0.9em;
 }
 
-.forgot-pw span {
+.forgot-pw .span {
     color: #0066de;
     text-decoration: underline;
 }
 
-footer {
+.footer {
     position: absolute;
     text-align: center;
     bottom: 0;
 }
 
-footer .copyright {
+.footer .copyright {
     font-size: 0.8em;
     margin: 1rem 0;
 }

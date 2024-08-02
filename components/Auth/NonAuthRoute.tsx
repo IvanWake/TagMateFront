@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, ReactNode, useState} from "react";
+import { useEffect, ReactNode, useState } from "react";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Layout/Loading";
@@ -20,7 +20,7 @@ const NonAuthRoute = (props: Props) => {
             const res = await fetchUserProfileData();
 
             if (res.status == 200) {
-                router.push("/")
+                router.push("/");
             }
             setIsUserLoading(false);
         }

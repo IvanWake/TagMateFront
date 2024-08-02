@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
-
-
+import styles from "./login.module.css";
 
 export const metadata: Metadata = {
   title: "TagMate | Авторизация",
@@ -15,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body className={styles.body}>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import styles from "./Header.module.css";
+
 type Props = {
     name: string,
     lastName: string,
@@ -9,8 +11,8 @@ type Props = {
 const HeaderProfileInfo = ({ name, lastName, wasOnline }: Props) => {
     return (
         <div className="profile-info">
-            <div className="profile-name">{name + " " + lastName}</div>
-            <div className="profile-online">{"Был в сети" + wasOnline}</div>
+            <div className={styles["profile-name"]}>{name + " " + lastName}</div>
+            <div className={styles["profile-online"]}>{"Был в сети" + wasOnline}</div>
         </div>
     );
 }

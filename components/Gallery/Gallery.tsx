@@ -1,7 +1,7 @@
 'use client';
 
 import GalleryImage from "@/components/Gallery/GalleryImage";
-import {initialEnv} from "@next/env";
+import styles from "./Gallery.module.css";
 
 const Gallery = () => {
 
@@ -16,7 +16,7 @@ const Gallery = () => {
     return (
         <>
             <p className="title">Галерея</p>
-            <div className="image-gallery">
+            <div className={styles["image-gallery"]}>
                 {
                     gallery.map((image, index) => (
                         <div key={"imgId " + index}>

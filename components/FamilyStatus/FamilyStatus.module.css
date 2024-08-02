@@ -1,0 +1,11 @@
+.status-wrapper {
+    background: #e9edff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    text-align: center;
+}
+
+.status-wrapper span {
+    color: #4366ff;
+}

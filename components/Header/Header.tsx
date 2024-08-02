@@ -1,7 +1,7 @@
 'use client';
 
 import { copyTextToClipboard } from "@/service/layout";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 
 type Props = {
@@ -10,17 +10,17 @@ type Props = {
 const Header = ({ tag }: Props) => {
 
     return (
-        <header>
-            <div className="header-content">
-                <div className="tag-div" onClick={() => { copyTextToClipboard(tag) }}>
+        <header className={styles.header}>
+            <div className={styles["header-content"]}>
+                <div className={styles["tag-div"]} onClick={() => { copyTextToClipboard(tag) }}>
                     <img src="icons/tagmate-min.svg" width="32px" />
-                    <div className="tag">#{tag}</div>
+                    <div className={styles.tag}>#{tag}</div>
                 </div>
                 <div>
-                    <div className="button" id="search">
+                    <div className={styles.button} id="search">
                         <img src="/icons/search.svg" alt="search" width="24px"/>
                     </div>
-                    <div className="button" id="profile">
+                    <div className={styles.button} id="profile">
                         <img src="/icons/profile.svg" alt="profile" width="24px"/>
                     </div>
                 </div>

@@ -47,7 +47,7 @@ const Page = ({ params }) => {
         <>
             <Header tag={params.tag.toUpperCase()}/>
             <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-            <main>
+            <main className="">
                 <HeaderProfileInfo
                     name={userProfileData.name}
                     lastName={userProfileData.lastName}

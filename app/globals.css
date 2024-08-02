@@ -8,71 +8,10 @@ a {
     text-decoration: none;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 105;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    border-bottom: 1px solid #dcdcdc;
-    background-color: #FFFFFF;
-    height: 48px;
-}
-
-header .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-    margin: .5rem;
-}
-
-.header-content>div {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
-
-.tag {
-    background-color: #e9edff;
-    padding: 0.25rem;
-    border-radius: 0.5rem;
-}
-
-/* Main */
-
 .title {
     margin: 1rem 0.5rem 0.25rem;
     font-size: 0.95em;
     font-weight: 600;
-}
-
-.profile-image {
-    position: sticky;
-    top: 48.8px;
-    width: 100%;
-    min-width: 300px;
-    min-height: 300px;
-    aspect-ratio: 1 / 1;
-}
-
-.profile-image img {
-    width: 100%;
-    min-width: 300px;
-    min-height: 300px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    overflow: hidden;
-}
-
-main {
-    position: relative;
-    z-index: 100;
-    background: #FFFFFF;
-    padding-top: 1rem;
 }
 
 .profile-header {
@@ -103,33 +42,6 @@ main {
     opacity: 1;
 }
 
-.profile-header-image {
-    width: 32px;
-    height: 32px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.profile-header-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #000000;
-}
-
-.profile-header-info .profile-name {
-    font-size: 0.8em;
-    font-weight: 500;
-}
-
-.profile-header-info .profile-online {
-    font-size: 0.75em;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
 .profile-info {
     position: absolute;
     left: 0;
@@ -153,6 +65,15 @@ main {
     font-size: 0.85em;
     font-weight: 300;
     opacity: 0.9;
+}
+
+/* Main */
+
+main {
+    position: relative;
+    z-index: 100;
+    background: #FFFFFF;
+    padding-top: 1rem;
 }
 
 .stats-wrapper {
@@ -207,69 +128,8 @@ main {
 }
 
 /* Interests */
-.interests-list {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding: 0 0.5rem;
-    gap: .5rem;
-}
 
-.interests-list::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.interests-list .interest-row {
-    display: flex;
-    gap: .5rem;
-    flex: 1;
-    width: 100%;
-}
-
-.interest-row .interest-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    border: 1px solid #dcdcdc;
-    color: #000000;
-}
-
-/* Status */
-.status-wrapper {
-    background: #e9edff;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    text-align: center;
-}
-
-.status-wrapper span {
-    color: #4366ff;
-}
 
 /* Images */
-.image-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-}
 
-.image-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .5s ease;
-}
 
-.image-item:hover img {
-    transform: scale(1.1);
-}
-
-.image-item {
-    aspect-ratio: 1/1;
-    overflow: hidden;
-}
