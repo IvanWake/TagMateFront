@@ -12,6 +12,7 @@ import Interests from "@/components/Interests/Interests";
 import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import Loading from "@/components/Layout/Loading";
+import { setAuthToken } from "@/utils/authToken/setAuthToken";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);

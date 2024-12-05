@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request ){
     const authToken = req.headers.get('Authorization')?.split(' ')[1];
 
-    const res = await fetch(`${process.env.NEXT_BACKEND_HOST}/api/profile`, {
+    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/profile`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${authToken}`

@@ -1,4 +1,4 @@
-import { getAuthToken } from "@/utils/getAuthToken";
+import { getAuthToken } from "@/utils/authToken/getAuthToken";
 
 export const fetchUserProfileDataByTag = async (tag: string) => {
     const authToken = getAuthToken("authToken");
