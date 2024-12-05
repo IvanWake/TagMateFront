@@ -1,5 +1,8 @@
 'use client';
 
+
+import {formatBirthDay} from "@/utils/dataFormatters";
+
 type Props = {
     gender: string,
     birthDay: string,
@@ -16,8 +19,8 @@ const UserBio = ({ gender, birthDay, city }: Props) => {
                 <div className="desc-info">{males[gender]}</div>
             </div>
             <div className="desc-element">
-                <div className="desc-name">Возраст</div>
-                <div className="desc-info">{birthDay}</div>
+                <div className="desc-name">Дата рождения</div>
+                <div className="desc-info">{formatBirthDay(birthDay)}</div>
             </div>
             <div className="desc-element">
                 <div className="desc-name">Город</div>
