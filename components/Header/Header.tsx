@@ -3,10 +3,8 @@
 import { copyTextToClipboard } from "@/service/layout";
 import styles from "./Header.module.css";
 
+type Props = { tag: string }
 
-type Props = {
-    tag: string
-}
 const Header = ({ tag }: Props) => {
 
     return (

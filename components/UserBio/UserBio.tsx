@@ -10,7 +10,7 @@ type Props = {
 }
 
 const UserBio = ({ gender, birthDay, city }: Props) => {
-    const males = { "male": "Мужской", "female": "Женский" };
+    const males= { "male": "Мужской", "female": "Женский" };
 
     return (
         <div className="description-wrapper">
