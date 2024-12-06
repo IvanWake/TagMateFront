@@ -1,3 +1,3 @@
-export const setAuthToken = (authToken: string) => {
-    document.cookie = `authToken=${authToken}; max-age=2592000`;
+export const setAuthToken = (tokenName:string, authToken: string) => {
+    document.cookie = `${tokenName}=${authToken}; max-age=2592000`;
 }

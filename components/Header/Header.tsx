@@ -1,6 +1,6 @@
 'use client';
 
-import { copyTextToClipboard } from "@/service/layout";
+import { copyTextToClipboard } from "@/services/layout";
 import styles from "./Header.module.css";
 
 type Props = { tag: string }

@@ -4,7 +4,7 @@ export async function GET(req: Request, { params }){
     const { tag } = params;
     const authToken = req.headers.get('Authorization')?.split(' ')[1];
 
-    const res = await fetch(`http://localhost:5000/api/profile/${tag}`, {
+    const res = await fetch(`${process.env.NEXT_BACKEND_URL}${tag}`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${authToken}`

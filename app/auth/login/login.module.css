@@ -98,6 +98,8 @@
 }
 
 .footer {
+    display: flex;
+    justify-items: center;
     position: absolute;
     text-align: center;
     bottom: 0;

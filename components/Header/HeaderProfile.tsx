@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
-import { displayHeaderProfileHandler } from "@/service/layout";
+import { displayHeaderProfileHandler } from "@/services/layout";
 import styles from "./Header.module.css";
 
 type Props = {

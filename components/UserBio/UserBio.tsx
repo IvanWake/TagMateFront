@@ -1,7 +1,7 @@
 'use client';
 
 
-import {formatBirthDay} from "@/utils/dataFormatters";
+import {formatBirthDay} from "@/utils/formatBirthDay";
 
 type Props = {
     gender: string,

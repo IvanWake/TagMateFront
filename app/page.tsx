@@ -12,7 +12,7 @@ import Interests from "@/components/Interests/Interests";
 import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import Loading from "@/components/Layout/Loading";
-import { setAuthToken } from "@/utils/authToken/setAuthToken";
+import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -28,14 +28,14 @@ const Page = () => {
                     setUserProfileData(result.data);
                 }
         }
+
         fetchUserProfileDataHandler();
     }, []);
-
 
     if (!userProfileData) return <Loading />
 
     return (
-        <>
+        <NonAuthRoute>
             <Header tag={userProfileData.serviceId} />
             <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
             <main>
@@ -57,7 +57,7 @@ const Page = () => {
                 <FamilyStatus/>
                 <Gallery/>
             </main>
-        </>
+        </NonAuthRoute>
     );
 }
 

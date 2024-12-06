@@ -4,7 +4,7 @@ export const fetchUserProfileData = async () => {
     const authToken = getAuthToken("authToken");
 
     try {
-        const res = await fetch(`/api/profile`, {
+        const res = await fetch('/api/profile', {
             headers: { "Authorization": `Bearer ${authToken}` }
         });
 
@@ -14,7 +14,7 @@ export const fetchUserProfileData = async () => {
 
         const data = await res.json();
         return { data: data.userData, status: res.status };
-    } catch (err) {
-        return { error: err };
+    } catch (e) {
+        return { error: e };
     }
 }
