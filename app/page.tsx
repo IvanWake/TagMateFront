@@ -22,10 +22,11 @@ const Page = () => {
         const fetchUserProfileDataHandler = async () => {
             const result = await fetchUserProfileData();
 
-                if (result.status != 200) {
-                    router.push("/auth/welcome");
-                } else {
+                if (result.status == 200) {
                     setUserProfileData(result.data);
+                } else {
+                    router.push("/auth/welcome");
+                    console.log(result.status)
                 }
         }
 

@@ -13,7 +13,9 @@ const NonAuthRoute = (props: Props) => {
     const [isUserLoading, setIsUserLoading] = useState(true);
     const router = useRouter();
 
+    const cookies = getAuthToken("authToken");
     useEffect(() => {
+
         setIsUserLoading(true);
         const fetchUserProfileDataHandler = () => {
             const isAuthToken = getAuthToken("authToken");
@@ -24,7 +26,8 @@ const NonAuthRoute = (props: Props) => {
             setIsUserLoading(false);
         }
         fetchUserProfileDataHandler();
-    }, []);
+
+    }, [cookies]);
 
     if (isUserLoading) return <Loading></Loading>;
 

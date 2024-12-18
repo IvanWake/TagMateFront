@@ -1,9 +1,10 @@
 'use client';
 
-import styles from "@/app/auth/login/login.module.css";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { userLogin } from "@/services/auth";
 import { useRouter } from 'next/navigation';
+import styles from "@/app/auth/login/login.module.css";
 
 const LoginForm = () => {
     const router = useRouter();
@@ -16,7 +17,6 @@ const LoginForm = () => {
     const onSubmitHandler = (formData) => {
         if (isValid) {
             userLogin(formData.userTag, formData.userPassword);
-            router.push("/");
         }
     }
     return (
