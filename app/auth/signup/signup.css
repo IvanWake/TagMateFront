@@ -100,7 +100,6 @@ select {
 }
 
 .step,
-.step-disabled,
 button {
     display: flex;
     position: fixed;

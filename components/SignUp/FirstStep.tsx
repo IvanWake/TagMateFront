@@ -1,10 +1,14 @@
 'use client';
 
+import { useFormContext } from "react-hook-form";
+
 type Props = {
-    nextStep: () => {}
+    nextStep: () => void
 }
 
 const FirstStep = ({ nextStep }: Props) => {
+    const { register, formState: { errors, isValid } } = useFormContext();
+
     return (
         <section className="1">
             <div className="header">
@@ -14,34 +18,45 @@ const FirstStep = ({ nextStep }: Props) => {
             <p>Расскажите немного о себе, чтобы вы могли знакомиться с другими пользователями <span>TagMate</span>.</p>
             <label>
                 Как нам следует вас называть?
-                <input type="text" placeholder="Фамилия" autoComplete="off" name="lastName" id="lastName" required />
-                    <input type="text" placeholder="Имя" autoComplete="off" name="firstName" id="firstName" required />
-                        <input type="text" placeholder="Отчество" autoComplete="off" name="patronymic" id="patronymic" required />
+                <input {...register("lastName", { required: "Это поле обязательно" })} type="text" placeholder="Фамилия" autoComplete="off" />
+                {errors.lastName && <span>{errors.lastName.message}</span>}
+                <input {...register("firstName", { required: "Это поле обязательно" })} type="text" placeholder="Имя" autoComplete="off" />
+                {errors.firstName && <span>{errors.firstName.message}</span>}
+                <input {...register("patronymic", { required: "Это поле обязательно" })} type="text" placeholder="Отчество" autoComplete="off" />
+                {errors.patronymic && <span>{errors.patronymic.message}</span>}
             </label>
             <label>
                 Выберите ваш пол
-                <select style={{height: "40px", marginTop: "5px"}} name="sex" id="sex" required>
+                <select {...register("sex", { required: "Это поле обязательно" })} style={{height: "40px", marginTop: "5px"}}>
                     <option value="male">Мужской</option>
                     <option value="female">Женский</option>
                 </select>
+                {errors.sex && <span>{errors.sex.message}</span>}
             </label>
             <label>
                 Введите вашу дату рождения
                 <div>
-                    <input type="date" name="birthday" id="birthday" required />
+                    <input {...register("birthday", { required: "Это поле обязательно" })} type="date" />
+                    {errors.birthday && <span>{errors.birthday.message}</span>}
                 </div>
             </label>
             <label>
                 Из какого вы города?
-                <select style={{height: "40px", marginTop: "5px"}} name="city" id="city" required>
+                <select {...register("city", { required: "Это поле обязательно" })} style={{height: "40px", marginTop: "5px"}}>
                     <option value="MOW">Москва</option>
                     <option value="SPB">Санкт-Петербург</option>
-                    <option value="KOS">Кострома</option>
                 </select>
+                {errors.city && <span>{errors.city.message}</span>}
             </label>
-            <div id="step-1" className="step-disabled" onClick={nextStep}>Далее</div>
+            <button
+                type="button"
+                id="step-1"
+                className="step"
+                disabled={errors.city || errors.birthday || errors.sex || errors.patronymic || errors.firstName || errors.lastName}
+                onClick={nextStep}>Далее</button>
         </section>
     );
 }
 
 export default FirstStep;
+
