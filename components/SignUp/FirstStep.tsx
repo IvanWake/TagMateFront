@@ -1,10 +1,14 @@
 'use client';
 
+import { useFormContext } from "react-hook-form";
+
 type Props = {
     nextStep: () => {}
 }
 
 const FirstStep = ({ nextStep }: Props) => {
+    const { register, formState: { errors } } = useFormContext();
+
     return (
         <section className="1">
             <div className="header">
@@ -14,13 +18,13 @@ const FirstStep = ({ nextStep }: Props) => {
             <p>Расскажите немного о себе, чтобы вы могли знакомиться с другими пользователями <span>TagMate</span>.</p>
             <label>
                 Как нам следует вас называть?
-                <input type="text" placeholder="Фамилия" autoComplete="off" name="lastName" id="lastName" required />
-                    <input type="text" placeholder="Имя" autoComplete="off" name="firstName" id="firstName" required />
-                        <input type="text" placeholder="Отчество" autoComplete="off" name="patronymic" id="patronymic" required />
+                <input {...register('lastName', { required: "Это поле обязательно" })} type="text" placeholder="Фамилия" autoComplete="off" id="lastName" />
+                    <input {...register('firstName', { required: "Это поле обязательно" })} type="text" placeholder="Имя" autoComplete="off" id="firstName" />
+                        <input {...register('surName', { required: "Это поле обязательно" })} type="text" placeholder="Отчество" autoComplete="off" id="surName"  />
             </label>
             <label>
                 Выберите ваш пол
-                <select style={{height: "40px", marginTop: "5px"}} name="sex" id="sex" required>
+                <select style={{height: "40px", marginTop: "5px"}} name="sex" id="sex">
                     <option value="male">Мужской</option>
                     <option value="female">Женский</option>
                 </select>
@@ -28,20 +32,21 @@ const FirstStep = ({ nextStep }: Props) => {
             <label>
                 Введите вашу дату рождения
                 <div>
-                    <input type="date" name="birthday" id="birthday" required />
+                    <input type="date" id="birthday" />
                 </div>
             </label>
             <label>
                 Из какого вы города?
-                <select style={{height: "40px", marginTop: "5px"}} name="city" id="city" required>
-                    <option value="MOW">Москва</option>
-                    <option value="SPB">Санкт-Петербург</option>
-                    <option value="KOS">Кострома</option>
+                <select style={{ height: "40px", marginTop: "5px" }} id="city">
+                    <option value="Москва">Москва</option>
+                    <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    <option value="Кострома">Кострома</option>
                 </select>
             </label>
-            <div id="step-1" className="step" onClick={nextStep}>Далее</div>
+            <button type="button" id="step-1" className="step" onClick={nextStep} disabled={false}>Далее</button>
         </section>
     );
 }
 
 export default FirstStep;
+
