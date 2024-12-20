@@ -39,7 +39,7 @@ const FirstStep = ({ nextStep }: Props) => {
                     <option value="KOS">Кострома</option>
                 </select>
             </label>
-            <div id="step-1" className="step-disabled" onClick={nextStep}>Далее</div>
+            <div id="step-1" className="step" onClick={nextStep}>Далее</div>
         </section>
     );
 }

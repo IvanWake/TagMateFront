@@ -3,12 +3,12 @@
     src: url('/fonts/unbounded.ttf');
 }
 
-
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Unbounded';
 }
 
 a {
