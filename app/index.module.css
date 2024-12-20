@@ -1,0 +1,34 @@
+.profile-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -72px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #FFFFFF;
+    background: linear-gradient(0deg, rgba(70, 70, 70, 0.7) 0%, rgba(70, 70, 70, 0.5) 70%, rgba(70, 70, 70, 0.01) 100%);
+    backdrop-filter: blur(2px);
+    padding: 1rem 0.5rem;
+}
+
+.profile-info .profile-name {
+    font-size: 1.05em;
+    font-weight: 500;
+}
+
+.profile-info .profile-online {
+    font-size: 0.85em;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.main {
+    position: relative;
+    z-index: 100;
+    background: #FFFFFF;
+    padding-top: 1rem;
+}
+
+
+

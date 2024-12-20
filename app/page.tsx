@@ -13,6 +13,7 @@ import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
 import Gallery from "@/components/Gallery/Gallery";
 import Loading from "@/components/Layout/Loading";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
+import styles from "./index.module.css";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -39,7 +40,7 @@ const Page = () => {
         <NonAuthRoute>
             <Header tag={userProfileData.serviceId} />
             <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-            <main>
+            <main className={styles.main}>
                 <HeaderProfileInfo
                     name={userProfileData.name}
                     lastName={userProfileData.lastName}
