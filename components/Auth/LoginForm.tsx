@@ -31,6 +31,7 @@ const LoginForm = () => {
                     <div className={styles["input-tag"]}>
                         <span className={styles.span}>#</span>
                         <input
+                            style={{ textTransform: "uppercase" }}
                             {...register("userTag", {
                                 required: "Заполните поле",
                                 maxLength: {

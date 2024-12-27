@@ -18,14 +18,14 @@ const SignUp = () => {
     const nextStepHandler = () => setCurrentStep(prev => prev + 1);
 
     const steps = {
-        1: <FirstStep nextStep={nextStepHandler}/>,
+        1: <FirstStep nextStep={nextStepHandler} />,
         2: <SecondStep nextStep={nextStepHandler} interests={interests}/>,
-        // 3: <ThirdStep/>
+        3: <ThirdStep />
     }
 
 
-    const submitHandler = (data) => {
-        console.log(data);
+    const submitHandler = (formData) => {
+        console.log(formData);
     }
 
     useEffect(() => {

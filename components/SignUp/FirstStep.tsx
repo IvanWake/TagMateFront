@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 type Props = {
@@ -7,7 +8,20 @@ type Props = {
 }
 
 const FirstStep = ({ nextStep }: Props) => {
-    const { register, formState: { errors } } = useFormContext();
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+    const { register, formState: { errors }, getValues, watch } = useFormContext();
+
+    const watchAllFields = watch();
+
+    useEffect(() => {
+        const values = getValues();
+
+        if (values.firstName && values.lastName && values.surName && values.sex && values.birthday && values.city) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
 
     return (
         <section className="1">
@@ -24,7 +38,7 @@ const FirstStep = ({ nextStep }: Props) => {
             </label>
             <label>
                 Выберите ваш пол
-                <select style={{height: "40px", marginTop: "5px"}} name="sex" id="sex">
+                <select { ...register('sex') } style={{ height: "40px", marginTop: "5px" }} name="sex" id="sex">
                     <option value="male">Мужской</option>
                     <option value="female">Женский</option>
                 </select>
@@ -32,18 +46,31 @@ const FirstStep = ({ nextStep }: Props) => {
             <label>
                 Введите вашу дату рождения
                 <div>
-                    <input type="date" id="birthday" />
+                    <input
+                        { ...register('birthday') }
+                        type="date"
+                        id="birthday"
+                        max={new Date().toISOString().split('T')[0]}
+                    />
                 </div>
             </label>
             <label>
                 Из какого вы города?
-                <select style={{ height: "40px", marginTop: "5px" }} id="city">
-                    <option value="Москва">Москва</option>
-                    <option value="Санкт-Петербург">Санкт-Петербург</option>
-                    <option value="Кострома">Кострома</option>
+                <select { ...register('city', { required: "Выберите город" }) } style={{ height: "40px", marginTop: "5px" }} id="city">
+                    <option value="1459">Москва</option>
+                    <option value="1900">Санкт-Петербург</option>
+                    <option value="1172">Кострома</option>
                 </select>
             </label>
-            <button type="button" id="step-1" className="step" onClick={nextStep} disabled={false}>Далее</button>
+            <button
+                type="button"
+                id="step-1"
+                className="step"
+                onClick={nextStep}
+                disabled={isButtonDisabled}
+            >
+                Далее
+            </button>
         </section>
     );
 }

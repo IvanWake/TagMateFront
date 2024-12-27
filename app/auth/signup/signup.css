@@ -138,17 +138,31 @@ button:active {
 
 .checkbox-wrapper {
     display: block;
-    overflow-x: scroll;
+    max-height: calc(4 * 100px + 30px); /* Высота для 4 строк + расстояние между ними */
+    overflow-y: scroll; /* Если элементов больше, добавляется вертикальная прокрутка */
 }
 
 .checkbox-wrapper .row {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+    gap: 10px; /* Расстояние между элементами */
+    align-content: flex-start; /* Элементы распределяются сверху вниз */
+}
+
+.regPass {
+    display: flex;
+    flex-direction: column;
+}
+
+.regPassContainer {
+    display: flex;
 }
 
 .checkbox-btn {
     display: inline-block;
+    flex: 0 0 calc(25% - 10px); /* Определяем ширину элемента, чтобы они располагались равномерно */
     margin: 5px 0;
+    box-sizing: border-box;
     user-select: none;
     position: relative;
 }
@@ -179,7 +193,7 @@ button:active {
 }
 
 /* Checked */
-.checkbox-btn input[type=checkbox]:checked+span {
+.checkbox-btn input[type=checkbox]:checked + span {
     border: 2px solid #00000060;
 }
 
@@ -194,6 +208,6 @@ button:active {
 }
 
 /* Active */
-.checkbox-btn input[type=checkbox]:active:not(:disabled)+span {
+.checkbox-btn input[type=checkbox]:active:not(:disabled) + span {
     transform: scale(0.98);
 }
