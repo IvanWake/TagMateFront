@@ -2,32 +2,14 @@
 
 import styles from "./Interests.module.css";
 
-const Interest = () => {
+type Props = { interest: string }
+
+const Interest = ({ interest }: Props) => {
     return (
         <>
             <div className={styles["interest-row"]}>
                 <div className={styles["interest-item"]}>
-                    Кулинария
-                </div>
-                <div className={styles["interest-item"]}>
-                    Оригами
-                </div>
-                <div className={styles["interest-item"]}>
-                    Аниме
-                </div>
-                <div className={styles["interest-item"]}>
-                    Прогулки
-                </div>
-            </div>
-            <div className={styles["interest-row"]}>
-                <div className={styles["interest-item"]}>
-                    Сериалы
-                </div>
-                <div className={styles["interest-item"]}>
-                    Веб-дизайн
-                </div>
-                <div className={styles["interest-item"]}>
-                    Кальян
+                    {interest}
                 </div>
             </div>
         </>

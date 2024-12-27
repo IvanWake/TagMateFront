@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
+import { fetchInterests } from "@/utils/fetchInterests";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
@@ -17,9 +18,16 @@ import styles from "./index.module.css";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
+    const [interestsList, setInterestsList] = useState();
     const router = useRouter();
 
     useEffect(() => {
+
+        const fetchInterestsHandler = async () => {
+            const res = await fetchInterests();
+            setInterestsList(res);
+        }
+
         const fetchUserProfileDataHandler = async () => {
             const result = await fetchUserProfileData();
 
@@ -32,6 +40,7 @@ const Page = () => {
         }
 
         fetchUserProfileDataHandler();
+        fetchInterestsHandler();
     }, []);
 
     if (!userProfileData) return <Loading />
@@ -55,9 +64,9 @@ const Page = () => {
                     city={userProfileData.city}
                     birthDay={userProfileData.birthDay}
                 />
-                <Interests/>
-                <FamilyStatus/>
-                <Gallery/>
+                <Interests interests={userProfileData.interests} interestsList={interestsList}/>
+                <FamilyStatus />
+                <Gallery />
             </main>
         </NonAuthRoute>
     );
