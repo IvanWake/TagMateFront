@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
+import { userRegister } from "@/services/auth";
 import { fetchInterests } from "@/utils/fetchInterests";
 import FirstStep from "@/components/SignUp/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep";
@@ -25,7 +26,7 @@ const SignUp = () => {
 
 
     const submitHandler = (formData) => {
-        console.log(formData);
+        userRegister(formData);
     }
 
     useEffect(() => {

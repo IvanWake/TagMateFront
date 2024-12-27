@@ -1,5 +1,5 @@
-export default async function POST(req: Request) {
-    const body = req.json();
+export async function POST(req: Request) {
+    const body = await req.json();
 
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/auth/registration`, {
         method: "POST",
@@ -22,8 +22,10 @@ export default async function POST(req: Request) {
     })
     const data = await res.json();
 
+
     if (!res.ok) {
         return { status: res.status }
+
     }
 
     return Response.json(data)
