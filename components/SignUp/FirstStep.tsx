@@ -3,11 +3,20 @@
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-type Props = {
-    nextStep: () => {}
+type City = {
+    _id: string,
+    id: number,
+    region: string,
+    city: string,
+    __v: number
 }
 
-const FirstStep = ({ nextStep }: Props) => {
+type Props = {
+    nextStep: () => {},
+    cities: City[]
+}
+
+const FirstStep = ({ nextStep, cities }: Props) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const { register, formState: { errors }, getValues, watch } = useFormContext();
 
@@ -57,9 +66,11 @@ const FirstStep = ({ nextStep }: Props) => {
             <label>
                 Из какого вы города?
                 <select { ...register('city', { required: "Выберите город" }) } style={{ height: "40px", marginTop: "5px" }} id="city">
-                    <option value="1459">Москва</option>
-                    <option value="1900">Санкт-Петербург</option>
-                    <option value="1172">Кострома</option>
+                    {
+                        cities?.map((city) => (
+                            <option key={city.id} value={city.id}>{city.city}</option>
+                        ))
+                    }
                 </select>
             </label>
             <button

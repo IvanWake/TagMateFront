@@ -2,17 +2,15 @@
 
 import styles from "./Interests.module.css";
 
-type Props = { interest: string }
+type Props = { interest: string, key: string }
 
-const Interest = ({ interest }: Props) => {
+const Interest = ({ interest, key }: Props) => {
     return (
-        <>
-            <div className={styles["interest-row"]}>
+            <div key={key} className={styles["interest-row"]}>
                 <div className={styles["interest-item"]}>
                     {interest}
                 </div>
             </div>
-        </>
     );
 }
 

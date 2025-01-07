@@ -1,10 +1,10 @@
 .interests-list {
     display: grid;
-    grid-template-rows: repeat(2, auto); /* Две строки */
-    grid-auto-flow: column; /* Заполнение по колонкам */
-    gap: 0.5rem; /* Расстояние между элементами */
-    overflow-x: auto; /* Горизонтальный скролл */
-    overflow-y: hidden; /* Отключение вертикального скролла */
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 0 0.5rem;
     white-space: nowrap;
 }

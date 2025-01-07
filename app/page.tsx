@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchInterests } from "@/utils/fetchInterests";
+import { fetchCityById } from "@/utils/fetchCities";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
@@ -18,6 +19,7 @@ import styles from "./index.module.css";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
+    const [city, setCity] = useState('');
     const [interestsList, setInterestsList] = useState();
     const router = useRouter();
 
@@ -33,6 +35,8 @@ const Page = () => {
 
                 if (result.status == 200) {
                     setUserProfileData(result.data);
+                    const resCity = await fetchCityById(result.data.city);
+                    setCity(resCity);
                 } else {
                     router.push("/auth/welcome");
                     console.log(result.status)
@@ -61,7 +65,7 @@ const Page = () => {
                 />
                 <UserBio
                     gender={userProfileData.gender}
-                    city={userProfileData.city}
+                    city={city[0]?.city}
                     birthDay={userProfileData.birthDay}
                 />
                 <Interests interests={userProfileData.interests} interestsList={interestsList}/>

@@ -7,7 +7,7 @@ import styles from "./UserBio.module.css";
 type Props = {
     gender: string,
     birthDay: string,
-    city: string
+    city: number
 }
 
 const UserBio = ({ gender, birthDay, city }: Props) => {

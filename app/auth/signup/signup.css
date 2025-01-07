@@ -2,8 +2,8 @@
     font-family: 'Unbounded';
 }
 
-body,
-form {
+.body,
+.form {
     display: flex;
     justify-content: center;
     align-items: flex-start !important;
@@ -14,7 +14,7 @@ form {
     font-family: 'Unbounded';
 }
 
-section {
+.section {
     width: 336px;
     margin: auto;
     padding-top: 20px;
@@ -138,15 +138,15 @@ button:active {
 
 .checkbox-wrapper {
     display: block;
-    max-height: calc(4 * 100px + 30px); /* Высота для 4 строк + расстояние между ними */
-    overflow-y: scroll; /* Если элементов больше, добавляется вертикальная прокрутка */
+    max-height: calc(4 * 100px + 30px);
+    overflow-y: scroll;
 }
 
 .checkbox-wrapper .row {
     display: flex;
-    flex-wrap: wrap; /* Перенос элементов на новую строку */
-    gap: 10px; /* Расстояние между элементами */
-    align-content: flex-start; /* Элементы распределяются сверху вниз */
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
 }
 
 .regPass {
@@ -160,7 +160,7 @@ button:active {
 
 .checkbox-btn {
     display: inline-block;
-    flex: 0 0 calc(25% - 10px); /* Определяем ширину элемента, чтобы они располагались равномерно */
+    flex: 0 0 calc(25% - 10px);
     margin: 5px 0;
     box-sizing: border-box;
     user-select: none;
