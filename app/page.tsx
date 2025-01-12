@@ -36,6 +36,7 @@ const Page = () => {
                 if (result.status == 200) {
                     setUserProfileData(result.data);
                     const resCity = await fetchCityById(result.data.city);
+
                     setCity(resCity);
                 } else {
                     router.push("/auth/welcome");

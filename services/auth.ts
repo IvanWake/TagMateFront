@@ -53,6 +53,7 @@ export const userRegister = async (formData: RegisterFormData) => {
         const token = data;
 
         setAuthToken("authToken", token);
+
     } catch (error) {
         return { error }
     }

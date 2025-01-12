@@ -26,10 +26,6 @@ const SignUp = () => {
     }
 
 
-    const submitHandler = (formData) => {
-        userRegister(formData);
-    }
-
     useEffect(() => {
         const fetchFormData = async () => {
             const citiesRes = await fetchCity();
@@ -44,6 +40,25 @@ const SignUp = () => {
 
         fetchFormData();
     }, []);
+
+    const submitHandler = async (data) => {
+        const formData = new FormData();
+
+        formData.append("firstName", data.firstName);
+        formData.append("lastName", data.lastName);
+        formData.append("surName", data.surName);
+        formData.append("sex", data.sex);
+        formData.append("birthday", data.birthday);
+        formData.append("city", data.city);
+        formData.append("purpose", data.purpose);
+        // formData.append("profileImage", data.profileImage[0]);
+        formData.append("interests", data.interests);
+        formData.append("email", data.email);
+        formData.append("password", data.password);
+        formData.append("repeatPassword", data.repeatPassword);
+        userRegister(data); // XD улетела форма =)
+        console.log(data);
+    }
 
 
     return (

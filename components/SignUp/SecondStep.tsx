@@ -47,6 +47,15 @@ const SecondStep = ({ nextStep, interests }: Props) => {
                     </div>
                 </div>
             </label>
+            {/*<label>*/}
+            {/*    Добавьте фотографию профиля*/}
+            {/*    <input*/}
+            {/*        { ...register('profileImage') }*/}
+            {/*        type="file"*/}
+            {/*        id="profile-image"*/}
+            {/*        accept="image/png, image/jpeg"*/}
+            {/*    />*/}
+            {/*</label>*/}
             <button type="button" className="step" onClick={nextStep}>Далее</button>
         </section>
     );
