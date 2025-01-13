@@ -15,9 +15,7 @@ const LoginForm = () => {
     } = useForm({ mode: "onBlur" });
 
     const onSubmitHandler = (formData) => {
-        if (isValid) {
-            userLogin(formData.userTag, formData.userPassword);
-        }
+        userLogin(formData.userTag, formData.userPassword);
     }
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -31,6 +29,7 @@ const LoginForm = () => {
                     <div className={styles["input-tag"]}>
                         <span className={styles.span}>#</span>
                         <input
+                            style={{ textTransform: "uppercase" }}
                             {...register("userTag", {
                                 required: "Заполните поле",
                                 maxLength: {

@@ -1,10 +1,37 @@
 'use client';
 
-type Props = {
-    nextStep: () => {}
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+
+type City = {
+    _id: string,
+    id: number,
+    region: string,
+    city: string,
+    __v: number
 }
 
-const FirstStep = ({ nextStep }: Props) => {
+type Props = {
+    nextStep: () => {},
+    cities: City[]
+}
+
+const FirstStep = ({ nextStep, cities }: Props) => {
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+    const { register, formState: { errors }, getValues, watch } = useFormContext();
+
+    const watchAllFields = watch();
+
+    useEffect(() => {
+        const values = getValues();
+
+        if (values.firstName && values.lastName && values.surName && values.sex && values.birthday && values.city) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
+
     return (
         <section className="1">
             <div className="header">
@@ -14,13 +41,12 @@ const FirstStep = ({ nextStep }: Props) => {
             <p>Расскажите немного о себе, чтобы вы могли знакомиться с другими пользователями <span>TagMate</span>.</p>
             <label>
                 Как нам следует вас называть?
-                <input type="text" placeholder="Фамилия" autoComplete="off" name="lastName" id="lastName" required />
-                    <input type="text" placeholder="Имя" autoComplete="off" name="firstName" id="firstName" required />
-                        <input type="text" placeholder="Отчество" autoComplete="off" name="patronymic" id="patronymic" required />
+                <input {...register('lastName', { required: "Это поле обязательно" })} type="text" placeholder="Фамилия" autoComplete="off" id="lastName" />
+                    <input {...register('firstName', { required: "Это поле обязательно" })} type="text" placeholder="Имя" autoComplete="off" id="firstName" />
             </label>
             <label>
                 Выберите ваш пол
-                <select style={{height: "40px", marginTop: "5px"}} name="sex" id="sex" required>
+                <select { ...register('sex') } style={{ height: "40px", marginTop: "5px" }} name="sex" id="sex">
                     <option value="male">Мужской</option>
                     <option value="female">Женский</option>
                 </select>
@@ -28,20 +54,36 @@ const FirstStep = ({ nextStep }: Props) => {
             <label>
                 Введите вашу дату рождения
                 <div>
-                    <input type="date" name="birthday" id="birthday" required />
+                    <input
+                        { ...register('birthday') }
+                        type="date"
+                        id="birthday"
+                        max={new Date().toISOString().split('T')[0]}
+                    />
                 </div>
             </label>
             <label>
                 Из какого вы города?
-                <select style={{height: "40px", marginTop: "5px"}} name="city" id="city" required>
-                    <option value="MOW">Москва</option>
-                    <option value="SPB">Санкт-Петербург</option>
-                    <option value="KOS">Кострома</option>
+                <select { ...register('city', { required: "Выберите город" }) } style={{ height: "40px", marginTop: "5px" }} id="city">
+                    {
+                        cities?.map((city) => (
+                            <option key={city.id} value={city.id}>{city.city}</option>
+                        ))
+                    }
                 </select>
             </label>
-            <div id="step-1" className="step-disabled" onClick={nextStep}>Далее</div>
+            <button
+                type="button"
+                id="step-1"
+                className="step"
+                onClick={nextStep}
+                disabled={isButtonDisabled}
+            >
+                Далее
+            </button>
         </section>
     );
 }
 
 export default FirstStep;
+

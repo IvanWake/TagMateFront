@@ -1,8 +1,21 @@
 import { setAuthToken } from "@/utils/authToken/setAuthToken";
 
+type RegisterFormData = {
+    email: string,
+    name: string,
+    lastName: string,
+    birthDay: string,
+    gender: string,
+    city: string,
+    purpose: string,
+    interests: string[],
+    password: string,
+    repeatPassword: string
+}
+
 export const userLogin = async (tag: string, password: string)=> {
     try {
-        const res =  await fetch("http://localhost:3000/api/auth/login", {
+        const res =  await fetch("/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -19,9 +32,28 @@ export const userLogin = async (tag: string, password: string)=> {
         const token = data;
 
         setAuthToken("authToken", token);
-    } catch (e) {
-        return { error: e };
+    } catch (error) {
+        return { error };
     }
 
+}
 
+export const userRegister = async (formData: RegisterFormData) => {
+    try {
+        const res = await fetch("/api/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+
+        const data = await res.json();
+        const token = data;
+
+        setAuthToken("authToken", token);
+
+    } catch (error) {
+        return { error }
+    }
 }

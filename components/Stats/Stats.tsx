@@ -1,5 +1,7 @@
 'use client';
 
+import styles from "./Stats.module.css";
+
 type Props = {
     mates: number,
     friendlinessFactor: number
@@ -7,14 +9,14 @@ type Props = {
 
 const Stats = ({ mates, friendlinessFactor }: Props) => {
     return (
-        <div className="stats-wrapper">
-            <div className="stats-element">
-                <div className="stats-element-info">{friendlinessFactor}%</div>
-                <div className="stats-element-name">Дружелюбие</div>
+        <div className={styles["stats-wrapper"]}>
+            <div className={styles["stats-element"]}>
+                <div className={styles["stats-element-info"]}>{friendlinessFactor}%</div>
+                <div className={styles["stats-element-name"]}>Дружелюбие</div>
             </div>
-            <div className="stats-element">
-                <div className="stats-element-info">{mates}</div>
-                <div className="stats-element-name">Мейты</div>
+            <div className={styles["stats-element"]}>
+                <div className={styles["stats-element-info"]}>{mates}</div>
+                <div className={styles["stats-element-name"]}>Мейты</div>
             </div>
         </div>
     );

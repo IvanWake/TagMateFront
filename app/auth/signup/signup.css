@@ -1,14 +1,9 @@
-@font-face {
-    font-family: 'Unbounded';
-    src: url('/fonts/unbounded.ttf');
-}
-
 * {
     font-family: 'Unbounded';
 }
 
-body,
-form {
+.body,
+.form {
     display: flex;
     justify-content: center;
     align-items: flex-start !important;
@@ -16,9 +11,10 @@ form {
     margin: 0;
     color: #000000;
     background-color: #ffffff;
+    font-family: 'Unbounded';
 }
 
-section {
+.section {
     width: 336px;
     margin: auto;
     padding-top: 20px;
@@ -142,17 +138,31 @@ button:active {
 
 .checkbox-wrapper {
     display: block;
-    overflow-x: scroll;
+    max-height: calc(4 * 100px + 30px);
+    overflow-y: scroll;
 }
 
 .checkbox-wrapper .row {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    align-content: flex-start;
+}
+
+.regPass {
+    display: flex;
+    flex-direction: column;
+}
+
+.regPassContainer {
+    display: flex;
 }
 
 .checkbox-btn {
     display: inline-block;
+    flex: 0 0 calc(25% - 10px);
     margin: 5px 0;
+    box-sizing: border-box;
     user-select: none;
     position: relative;
 }
@@ -183,7 +193,7 @@ button:active {
 }
 
 /* Checked */
-.checkbox-btn input[type=checkbox]:checked+span {
+.checkbox-btn input[type=checkbox]:checked + span {
     border: 2px solid #00000060;
 }
 
@@ -198,6 +208,6 @@ button:active {
 }
 
 /* Active */
-.checkbox-btn input[type=checkbox]:active:not(:disabled)+span {
+.checkbox-btn input[type=checkbox]:active:not(:disabled) + span {
     transform: scale(0.98);
 }

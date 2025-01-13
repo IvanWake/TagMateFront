@@ -3,10 +3,20 @@ import moment from "moment-with-locales-es6";
 moment.locale('ru');
 
 export const formatBirthDay = (birthDay: string) => {
-    const yearsOld = new Date().getFullYear() - moment.utc(birthDay).format('YYYY');
-    const yearsOldString = /\d*1\d$/.test(yearsOld) || /[05-9]$/.test(yearsOld) ? 'лет' : ( /1$/.test(yearsOld) ? 'год' : 'года');
+    const birthDate = moment.utc(birthDay);
+    const currentDate = moment.utc();
+    const yearsOld = currentDate.diff(birthDate, 'years');
 
-    const formattedBirthDay = `${moment.utc(birthDay).format('D MMM YYYY')} (${yearsOld} ${yearsOldString})`;
+    const yearsOldString =
+        yearsOld % 100 >= 11 && yearsOld % 100 <= 19
+            ? 'лет'
+            : yearsOld % 10 === 1
+                ? 'год'
+                : yearsOld % 10 >= 2 && yearsOld % 10 <= 4
+                    ? 'года'
+                    : 'лет';
+
+    const formattedBirthDay = `${birthDate.format('D MMM YYYY')} (${yearsOld} ${yearsOldString})`;
 
     return formattedBirthDay;
-}
+};
