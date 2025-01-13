@@ -4,7 +4,6 @@ type RegisterFormData = {
     email: string,
     name: string,
     lastName: string,
-    surName: string ,
     birthDay: string,
     gender: string,
     city: string,

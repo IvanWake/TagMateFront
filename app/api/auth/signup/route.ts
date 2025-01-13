@@ -10,7 +10,6 @@ export async function POST(req: Request) {
             email: body.email,
             name: body.firstName,
             lastName: body.lastName,
-            surName: body.surName ,
             birthDay: body.birthday,
             gender: body.sex,
             city: body.city,

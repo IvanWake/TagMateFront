@@ -43,7 +43,6 @@ const FirstStep = ({ nextStep, cities }: Props) => {
                 Как нам следует вас называть?
                 <input {...register('lastName', { required: "Это поле обязательно" })} type="text" placeholder="Фамилия" autoComplete="off" id="lastName" />
                     <input {...register('firstName', { required: "Это поле обязательно" })} type="text" placeholder="Имя" autoComplete="off" id="firstName" />
-                        <input {...register('surName', { required: "Это поле обязательно" })} type="text" placeholder="Отчество" autoComplete="off" id="surName"  />
             </label>
             <label>
                 Выберите ваш пол
