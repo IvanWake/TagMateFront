@@ -57,7 +57,6 @@ const SignUp = () => {
         formData.append("password", data.password);
         formData.append("repeatPassword", data.repeatPassword);
         userRegister(data); // XD улетела форма =)
-        console.log(data);
     }
 
 
