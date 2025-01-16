@@ -1,0 +1,131 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 46px 30px 0;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    max-width: 512px;
+    width: 100%;
+}
+
+.hero {
+    position: sticky;
+    top: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #FFFFFF;
+}
+
+.hero h1 {
+    font-family: var(--font-unbounded);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-family: var(--font-inter);
+    font-size: 12px;
+    font-weight: 600;
+    color: #797979;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input ::placeholder {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    color: #4E4E4E;
+}
+
+.input label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #797979;
+    font-family: var(--font-unbounded);
+}
+
+.input input,
+.input select {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 15px;
+    background: #F1F1F1;
+    padding: 20px;
+    border: none;
+    color: #4E4E4E;
+    appearance: none;
+}
+
+.icon {
+    display: flex;
+    position: relative;
+}
+
+.icon>input, .icon>select{
+    flex: 1;
+    padding-left: 50px;
+}
+
+.input .icon>img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    left: 30px;
+    right: 30px;
+    bottom: 40px;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 12px;
+    font-family: var(--font-unbounded);
+    font-weight: 600;
+    color: #BABABA;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #797979;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    max-width: 512px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    border: none;
+    margin: 0 auto;
+}
+
+.button.next {
+    color: #FFFFFF;
+    background: #0066DE;
+}

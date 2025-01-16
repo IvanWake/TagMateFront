@@ -6,17 +6,16 @@ import { useRouter } from "next/navigation";
 import { userRegister } from "@/services/auth";
 import { fetchInterests } from "@/utils/fetchInterests";
 import { fetchCity } from "@/utils/fetchCities";
-import FirstStep from "@/components/SignUp/FirstStep";
-import SecondStep from "@/components/SignUp/SecondStep";
-import FourthStep from "@/components/SignUp/FourthStep";
-import ThirdStep from "@/components/SignUp/ThirdStep";
+import FirstStep from "@/components/SignUp/FirstStep/FirstStep";
+import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
+import FourthStep from "@/components/SignUp/FourthStep/FourthStep";
+import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [interests, setInterests] = useState();
-    const [cities, setCities] = useState();
     const methods = useForm({ mode: "onChange" });
     const router = useRouter();
 
@@ -28,20 +27,17 @@ const SignUp = () => {
     // }
 
 
-    // useEffect(() => {
-    //     const fetchFormData = async () => {
-    //         const citiesRes = await fetchCity();
-    //         const interestsRes = await fetchInterests();
-    //
-    //         const interests = await interestsRes;
-    //         const cities = await citiesRes;
-    //
-    //         setInterests(interests);
-    //         setCities(cities)
-    //     }
-    //
-    //     fetchFormData();
-    // }, []);
+    useEffect(() => {
+        const fetchFormData = async () => {
+            const interestsRes = await fetchInterests();
+
+            const interests = await interestsRes;
+
+            setInterests(interests);
+        }
+
+        fetchFormData();
+    }, []);
 
     // const submitHandler = async (data) => {
     //     const formData = new FormData();
@@ -65,7 +61,7 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                    <FourthStep />
+                    <FirstStep />
             </FormProvider>
         </NonAuthRoute>
     );

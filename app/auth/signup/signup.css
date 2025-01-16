@@ -1,5 +1,14 @@
 body {
     height: 100svh;
     display: flex;
-    flex-direction: column;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+button:disabled {
+    background: #fff;
 }

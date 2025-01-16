@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 19px 30px 0;
+    padding: 46px 30px 0;
     margin: 0 auto;
     margin-bottom: 150px;
     max-width: 512px;
@@ -11,24 +11,24 @@
 
 .hero {
     position: sticky;
-    top: 19px;
+    top: 46px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: #FFFFFF;
 }
 
-.hero .back {
-    font-family: var(--font-unbounded);
-    font-size: 14px;
-    font-weight: 600;
-    color: #0066DE;
-}
-
 .hero h1 {
     font-family: var(--font-unbounded);
     font-size: 20px;
     font-weight: 700;
+}
+
+.hero p {
+    font-family: var(--font-inter);
+    font-size: 12px;
+    font-weight: 600;
+    color: #797979;
 }
 
 .form {
@@ -56,17 +56,38 @@
     font-family: var(--font-unbounded);
 }
 
-.input input {
+.input input{
     font-size: 14px;
     font-family: var(--font-unbounded);
     font-size: 14px;
     font-weight: 500;
     border-radius: 15px;
     background: #F1F1F1;
-    padding: 19px;
+    padding: 20px;
     border: none;
     color: #4E4E4E;
+}
+
+.select {
     appearance: none;
+}
+
+.icon {
+    display: flex;
+    position: relative;
+}
+
+.icon>input, .icon>select{
+    flex: 1;
+    padding-left: 50px;
+}
+
+.input .icon>img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 
 .footer {
@@ -74,10 +95,23 @@
     flex-direction: column;
     gap: 20px;
     position: fixed;
+    font-family: var(--font-inter);
     left: 30px;
     right: 30px;
     bottom: 40px;
     text-align: center;
+}
+
+.footer p {
+    font-size: 12px;
+    font-family: var(--font-inter);
+    font-weight: 600;
+    color: #BABABA;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #797979;
 }
 
 .button {

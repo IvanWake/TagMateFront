@@ -1,9 +1,7 @@
 'use client';
 
-import { useFormContext } from "react-hook-form";
 
 const ThirdStep = () => {
-    const { register, getValues, formState: { errors } } = useFormContext();
 
     return (
         <section className="3">
@@ -16,10 +14,7 @@ const ThirdStep = () => {
                 <div className="regPassContainer">
                     <div className="regPass">
                         <input
-                            {...register('password', {
-                                required: "Введите пароль",
-                                minLength: { value: 6, message: "Не меньше 6-ти символов" }
-                            })}
+
                             type="password"
                             placeholder="Пароль"
                             autoComplete="off"
@@ -29,10 +24,7 @@ const ThirdStep = () => {
                     </div>
                     <div className="regPass">
                         <input
-                            {...register('repeatPassword', {
-                                required: "Повторите пароль",
-                                validate: value => value === getValues('password') || "Пароли не совпадают"
-                            })}
+
                             type="password"
                             placeholder="Повторите"
                             autoComplete="off"
@@ -46,13 +38,7 @@ const ThirdStep = () => {
             <label className="regPass">
                 Введите почту, чтобы получить тег
                 <input
-                    {...register("email", {
-                        required: "Заполните E-mail",
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: "Неверный формат email"
-                        }
-                    })}
+
                     type="email"
                     placeholder="name@mail.ru"
                     id="email"
