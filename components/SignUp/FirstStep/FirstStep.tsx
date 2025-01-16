@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import {useEffect, useState} from "react";
+import {useFormContext} from "react-hook-form";
+import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
 import Link from "next/link";
-import signupStyles from "../FourthStep/FourthStep.module.css";
+import signupStyles from "./FirstStep.module.css";
 
 
 type City = {
@@ -16,24 +17,33 @@ type City = {
 
 type Props = {
     nextStep: () => {},
+    stepId: number,
     cities: City[]
 }
 
-const FirstStep = (/*{nextStep, cities}: Props*/) => {
+const FirstStep = ({ /*nextStep, cities,*/ stepId}: Props) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-    const { register, formState: { errors }, getValues, watch} = useFormContext();
+    const {register, formState: {errors}, getValues, watch} = useFormContext();
 
     const watchAllFields = watch();
 
-    useEffect(() => {
+    const logUserDataHandler = () => {
         const values = getValues();
+        cacheUserFormDataBySteps(stepId.toString(), {
+            firstName: values.firstName, lastName: values.lastName,
+            sex: values.sex, birthday: values.birthday, city: values.city
+        });
+    }
 
-        if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
-            setIsButtonDisabled(false);
-        } else {
-            setIsButtonDisabled(true);
-        }
-    }, [watchAllFields])
+    // useEffect(() => {
+    //     const values = getValues();
+    //
+    //     if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
+    //         setIsButtonDisabled(false);
+    //     } else {
+    //         setIsButtonDisabled(true);
+    //     }
+    // }, [watchAllFields])
 
     return (
         <>
@@ -62,7 +72,8 @@ const FirstStep = (/*{nextStep, cities}: Props*/) => {
                         <label>Из какого ты города?</label>
                         <div className={signupStyles.icon}>
                             <img src="/icons/auth/city.svg" alt="City"/>
-                            <select className={signupStyles.select} { ...register('city', { required: "Выберите город" }) } >
+                            <select
+                                className={signupStyles.select} {...register('city', {required: "Выберите город"})} >
                                 <option value="1459">Москва</option>
                                 <option value="1900">Санкт-Петербург</option>
                                 <option value="1580">Новосибирск</option>
@@ -75,12 +86,19 @@ const FirstStep = (/*{nextStep, cities}: Props*/) => {
                         <label htmlFor="birthday">Дата рождения</label>
                         <div className={signupStyles.icon}>
                             <img src="/icons/auth/calendar.svg" alt="Birth day"/>
-                            <input { ...register('birthday') } type="date" placeholder="15.09.2005" id="birthday"/>
+                            <input
+                                {...register('birthday')}
+                                type="date"
+                                placeholder="15.09.2005"
+                                id="birthday"
+                                max={new Date().toISOString().split('T')[0]}
+                            />
                         </div>
+
                     </div>
-                    <div class={signupStyles.input}>
+                    <div className={signupStyles.input}>
                         <label>Выбери пол</label>
-                        <select className={signupStyles.select} { ...register('sex') }>
+                        <select className={signupStyles.select} {...register('sex')}>
                             <option value="male">Мужской</option>
                             <option value="female">Женский</option>
                         </select>
@@ -89,7 +107,9 @@ const FirstStep = (/*{nextStep, cities}: Props*/) => {
             </main>
             <footer className={signupStyles.footer}>
                 <p>Есть аккаунт? <Link href="/auth/login">Войти</Link></p>
-                <button type="button" className={`${signupStyles.button} ${signupStyles.next}`} disabled={isButtonDisabled}>Далее</button>
+                <button type="button" onClick={logUserDataHandler}
+                        className={`${signupStyles.button} ${signupStyles.next}`}>Далее
+                </button>
             </footer>
         </>
     )

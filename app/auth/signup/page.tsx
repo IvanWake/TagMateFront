@@ -20,6 +20,8 @@ const SignUp = () => {
     const router = useRouter();
 
     // const nextStepHandler = () => setCurrentStep(prev => prev + 1);
+    // const prevStep = () => setCurrentStep(prev => prev - 1);
+
     // const steps = {
     //     1: <FirstStep nextStep={nextStepHandler} cities={cities}/>,
     //     2: <SecondStep nextStep={nextStepHandler} interests={interests}/>,
@@ -61,7 +63,7 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                    <FirstStep />
+                    <FirstStep stepId={currentStep}/>
             </FormProvider>
         </NonAuthRoute>
     );

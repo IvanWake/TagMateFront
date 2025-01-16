@@ -16,6 +16,7 @@
     flex-direction: column;
     gap: 10px;
     background-color: #FFFFFF;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -56,7 +57,8 @@
     font-family: var(--font-unbounded);
 }
 
-.input input{
+.input input,
+.input select {
     font-size: 14px;
     font-family: var(--font-unbounded);
     font-size: 14px;
@@ -66,9 +68,6 @@
     padding: 20px;
     border: none;
     color: #4E4E4E;
-}
-
-.select {
     appearance: none;
 }
 
@@ -95,7 +94,6 @@
     flex-direction: column;
     gap: 20px;
     position: fixed;
-    font-family: var(--font-inter);
     left: 30px;
     right: 30px;
     bottom: 40px;
@@ -123,7 +121,7 @@
     max-width: 512px;
     border-radius: 15px;
     font-size: 14px;
-    font-family: var(--font-unbounded);
+    font-family: var(--font-inter);
     border: none;
     margin: 0 auto;
 }
