@@ -1,18 +1,5 @@
 import { setAuthToken } from "@/utils/authToken/setAuthToken";
 
-type RegisterFormData = {
-    email: string,
-    name: string,
-    lastName: string,
-    birthDay: string,
-    gender: string,
-    city: string,
-    purpose: string,
-    interests: string[],
-    password: string,
-    repeatPassword: string
-}
-
 export const userLogin = async (tag: string, password: string)=> {
     try {
         const res =  await fetch("/api/auth/login", {

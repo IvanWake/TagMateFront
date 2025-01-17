@@ -1,9 +1,8 @@
 export async function POST(req: Request) {
     const formData = await req.formData();
     console.log(formData);
-    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/auth/registration`, {
+    const res = await fetch(`${process.env.TEST_NEXT_URL}/api/auth/registration`, {
         method: "POST",
-        cache: "no-cache",
         body: formData
     })
 
