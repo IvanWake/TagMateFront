@@ -38,15 +38,13 @@ export const userLogin = async (tag: string, password: string)=> {
 
 }
 
-export const userRegister = async (formData: RegisterFormData) => {
+export const userRegister = async (formData: FormData) => {
     try {
         const res = await fetch("/api/auth/signup", {
             method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(formData)
+            body: formData
         })
+        console.log(res);
 
         const data = await res.json();
         const token = data;

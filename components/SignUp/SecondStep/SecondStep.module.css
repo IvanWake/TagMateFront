@@ -17,20 +17,19 @@
     gap: 10px;
     padding: 20px 0 5px;
     background-color: #FFFFFF;
-    z-index: 2;
+}
+
+.hero .back {
+    font-family: var(--font-unbounded);
+    font-size: 14px;
+    font-weight: 600;
+    color: #0066DE;
 }
 
 .hero h1 {
     font-family: var(--font-unbounded);
     font-size: 20px;
     font-weight: 700;
-}
-
-.hero p {
-    font-family: var(--font-inter);
-    font-size: 12px;
-    font-weight: 600;
-    color: #797979;
 }
 
 .form {
@@ -51,7 +50,8 @@
     color: #4E4E4E;
 }
 
-.input label {
+.input label,
+.title {
     font-size: 14px;
     font-weight: 600;
     color: #797979;
@@ -60,34 +60,67 @@
 
 .input input,
 .input select {
-    font-size: 14px;
     font-family: var(--font-unbounded);
     font-size: 14px;
     font-weight: 500;
     border-radius: 15px;
     background: #F1F1F1;
-    padding: 20px;
+    padding: 19px;
     border: none;
     color: #4E4E4E;
     appearance: none;
 }
 
-.icon {
+.categories {
     display: flex;
-    position: relative;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.icon>input, .icon>select{
-    flex: 1;
-    padding-left: 50px;
+.category {
+    box-shadow: 0px 4px 20px #00000008;
+    padding: 20px;
+    border-radius: 20px;
 }
 
-.input .icon>img {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 20px;
-    top: 20px;
+.category .category-name {
+    color: #6072D8;
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.interest input[type="checkbox"] {
+    display: none;
+}
+
+.interest .interest-name {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    padding: 8px 16px;
+    background-color: #00000005;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.interest input[type="checkbox"]:checked+.interest-name {
+    background-color: #9AA9FF;
+    color: #ffffff;
 }
 
 .footer {
@@ -104,18 +137,6 @@
     text-align: center;
 }
 
-.footer p {
-    font-size: 12px;
-    font-family: var(--font-inter);
-    font-weight: 600;
-    color: #BABABA;
-}
-
-.footer a {
-    text-decoration: none;
-    color: #797979;
-}
-
 .button {
     display: flex;
     align-items: center;
@@ -125,9 +146,10 @@
     max-width: 512px;
     border-radius: 15px;
     font-size: 14px;
-    font-family: var(--font-inter);
+    font-family: var(--font-unbounded);
     border: none;
     margin: 0 auto;
+    transition: all 0.3s;
 }
 
 .button.next {

@@ -1,35 +1,24 @@
 'use client';
 
-import {useEffect, useState} from "react";
-import {useFormContext} from "react-hook-form";
-import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { cacheUserFormDataBySteps } from "@/utils/cacheUserFormDataBySteps";
+import { Step } from "@/types/signup/steps";
 import Link from "next/link";
 import signupStyles from "./FirstStep.module.css";
 
 
-type City = {
-    _id: string,
-    id: number,
-    region: string,
-    city: string,
-    __v: number
-}
 
-type Props = {
-    nextStep: () => {},
-    stepId: number,
-    cities: City[]
-}
-
-const FirstStep = ({ /*nextStep, cities,*/ stepId}: Props) => {
+const FirstStep = ({ /*nextStep,*/ stepId}: Step) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-    const {register, formState: {errors}, getValues, watch} = useFormContext();
+    const { register, formState: { errors}, getValues, watch } = useFormContext();
 
     const watchAllFields = watch();
 
     const logUserDataHandler = () => {
         const values = getValues();
-        cacheUserFormDataBySteps(stepId.toString(), {
+        console.log(values);
+        cacheUserFormDataBySteps(stepId, {
             firstName: values.firstName, lastName: values.lastName,
             sex: values.sex, birthday: values.birthday, city: values.city
         });

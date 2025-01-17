@@ -1,63 +1,57 @@
 'use client';
 
 import { useFormContext } from "react-hook-form";
+import { Category } from "@/types/signup/steps";
+import CategoryItem from "@/components/SignUp/SecondStep/CategoryItem";
+import signupStyles from "./SecondStep.module.css";
 
-type Interest = {
-    id: number,
-    value: string
-}
 
 type Props = {
     nextStep: () => {},
-    interests: Interest[]
+    prevStep: () => {},
+    stepId: number,
+    categories: Category[]
 }
 
-const SecondStep = ({ nextStep, interests }: Props) => {
-    const { register } = useFormContext();
+const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
+    const { register, formState: { errors}, getValues, watch } = useFormContext();
 
     return (
-        <section className="2">
-            <div className="header">
-                <h1 className="count">Шаг 2 из 3</h1>
-                <h1>Заполнение профиля</h1>
-            </div>
-            <label>
-                Что вы хотите обрести с нашей помощью?
-                <select {...register('purpose')} style={{height: "40px", marginTop: "5px"}} name="status" id="status" required>
-                    <option value="fiends">Друзей</option>
-                    <option value="relationship">Отношения</option>
-                    <option value="confederate">Единомышленников</option>
-                    <option value="companion">Собеседников</option>
-                    <option value="all">Всё вышеперечисленное</option>
-                </select>
-            </label>
-            <label>
-                Выберите все ваши интересы
-                <div className="checkbox-wrapper">
-                    <div className="row">
-                        {
-                            interests?.map((interest) => (
-                                <label className="checkbox-btn" key={interest.id} id={interest.id}>
-                                    <input {...register('interests')} type="checkbox" value={interest.id} />
-                                    <span>{interest.value}</span>
-                                </label>
-                            ))
-                        }
+        <>
+            <div className={signupStyles.main}>
+                <div className={signupStyles.hero}>
+                    <div className={signupStyles.back} onClick={() => prevStep()}>Назад</div>
+                    <h1>Почта и пароль</h1>
+                </div>
+                <input type="file" { ...register('avatar') } accept="image/*" />
+                <div className={signupStyles.form}>
+                    <div className={signupStyles.input}>
+                        <label>Что ты ищешь?</label>
+                        <select {...register('purpose')}>
+                            <option value="communication">Общение</option>
+                            <option value="relationship">Отношения</option>
+                            <option value="confederate">Единомышленников</option>
+                            <option value="all">Все перечисленное</option>
+                            <option value="none">Ничего</option>
+                        </select>
+                    </div>
 
+                    <div className={signupStyles["interests-container"]}>
+                        <div className={signupStyles.title}>Выбери свои интересы</div>
+                        <div className={signupStyles.categories}>
+                            {
+                                categories?.map((category) => (
+                                    <CategoryItem category={category} />
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
-            </label>
-            {/*<label>*/}
-            {/*    Добавьте фотографию профиля*/}
-            {/*    <input*/}
-            {/*        { ...register('profileImage') }*/}
-            {/*        type="file"*/}
-            {/*        id="profile-image"*/}
-            {/*        accept="image/png, image/jpeg"*/}
-            {/*    />*/}
-            {/*</label>*/}
-            <button type="button" className="step" onClick={nextStep}>Далее</button>
-        </section>
+            </div>
+            <div className={signupStyles.footer}>
+                <button type="submit" className={`${signupStyles.button} ${signupStyles.next}`}>Далее</button>
+            </div>
+        </>
     );
 }
 

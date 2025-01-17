@@ -1,7 +1,8 @@
 'use client';
+import { Step } from "@/types/signup/steps";
 
 
-const ThirdStep = () => {
+const ThirdStep = ({ stepId, nextStep }: Step) => {
 
     return (
         <>

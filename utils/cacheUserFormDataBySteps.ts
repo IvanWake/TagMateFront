@@ -1,3 +1,3 @@
-export const cacheUserFormDataBySteps = (id: string, stepData: any) => {
-    localStorage.setItem(id, JSON.stringify(stepData));
+export const cacheUserFormDataBySteps = (id: number, stepData: any) => {
+    localStorage.setItem(id.toString(), JSON.stringify(stepData));
 }
