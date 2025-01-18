@@ -1,7 +1,7 @@
 export async function POST(req: Request) {
     const formData = await req.formData();
     console.log(formData);
-    const res = await fetch(`${process.env.TEST_NEXT_URL}/api/auth/registration`, {
+    const res = await fetch(`${process.env.TEST_NEXT_URL }/api/auth/registration`, {
         method: "POST",
         body: formData
     })

@@ -50,7 +50,7 @@ const SignUp = () => {
         formData.append("city", "1900");
         formData.append("purpose", data.purpose);
         formData.append("avatar", data.avatar[0]);
-        formData.append("interests", JSON.stringify(data.interests));
+        formData.append("interests", JSON.stringify(["🎨 Рисование"]));
         formData.append("email", "IvanKentVaska228@gmail.com");
         formData.append("password", "12345678");
         formData.append("repeatPassword", "12345678");
@@ -62,7 +62,7 @@ const SignUp = () => {
         <NonAuthRoute>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(submitHandler)}>
-                    <SecondStep stepId={currentStep} categories={categories}/>
+                    <SecondStep stepId={currentStep} categories={categories} />
                     {/*<FirstStep stepId={currentStep} />*/}
                 </form>
             </FormProvider>
