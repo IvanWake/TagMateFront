@@ -61,10 +61,7 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(submitHandler)}>
-                    <SecondStep stepId={currentStep} categories={categories} />
-                    {/*<FirstStep stepId={currentStep} />*/}
-                </form>
+                    <ThirdStep stepId={currentStep} />
             </FormProvider>
         </NonAuthRoute>
     );
