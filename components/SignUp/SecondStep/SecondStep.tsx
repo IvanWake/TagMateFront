@@ -4,6 +4,7 @@ import { useFormContext } from "react-hook-form";
 import { Category } from "@/types/signup/steps";
 import CategoryItem from "@/components/SignUp/SecondStep/CategoryItem";
 import signupStyles from "./SecondStep.module.css";
+import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
 
 
 type Props = {
@@ -16,6 +17,15 @@ type Props = {
 const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
     const { register, formState: { errors}, getValues, watch } = useFormContext();
 
+    const logUserDataHandler = () => {
+        const values = getValues();
+        cacheUserFormDataBySteps(stepId, {
+            firstName: values.firstName, lastName: values.lastName,
+            sex: values.sex, birthday: values.birthday, city: values.city
+        });
+        nextStep();
+    }
+
     return (
         <>
             <div className={signupStyles.main}>
@@ -23,7 +33,6 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
                     <div className={signupStyles.back} onClick={() => prevStep()}>Назад</div>
                     <h1>Почта и пароль</h1>
                 </div>
-                <input type="file" { ...register('avatar') } accept="image/*" />
                 <div className={signupStyles.form}>
                     <div className={signupStyles.input}>
                         <label>Что ты ищешь?</label>
@@ -49,7 +58,7 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
                 </div>
             </div>
             <div className={signupStyles.footer}>
-                <button type="submit" className={`${signupStyles.button} ${signupStyles.next}`}>Далее</button>
+                <button type="button" onClick={logUserDataHandler} className={`${signupStyles.button} ${signupStyles.next}`}>Далее</button>
             </div>
         </>
     );

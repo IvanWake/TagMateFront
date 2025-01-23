@@ -4,12 +4,26 @@
 
 body {
     display: flex;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+    padding: 0 30px;
 }
 
 input[type="date"]::-webkit-inner-spin-button {
     display: none;
     -webkit-appearance: none;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     top: 0;
@@ -20,8 +34,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: auto;
     color: transparent;
     background: transparent;
-}
-
-button:disabled {
-    background: #fff;
 }

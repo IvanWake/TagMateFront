@@ -9,7 +9,7 @@ import signupStyles from "./FirstStep.module.css";
 
 
 
-const FirstStep = ({ /*nextStep,*/ stepId}: Step) => {
+const FirstStep = ({ nextStep, stepId }: Step) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const { register, formState: { errors}, getValues, watch } = useFormContext();
 
@@ -17,22 +17,22 @@ const FirstStep = ({ /*nextStep,*/ stepId}: Step) => {
 
     const logUserDataHandler = () => {
         const values = getValues();
-        console.log(values);
         cacheUserFormDataBySteps(stepId, {
             firstName: values.firstName, lastName: values.lastName,
             sex: values.sex, birthday: values.birthday, city: values.city
         });
+        nextStep();
     }
 
-    // useEffect(() => {
-    //     const values = getValues();
-    //
-    //     if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
-    //         setIsButtonDisabled(false);
-    //     } else {
-    //         setIsButtonDisabled(true);
-    //     }
-    // }, [watchAllFields])
+    useEffect(() => {
+        const values = getValues();
+
+        if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
 
     return (
         <>

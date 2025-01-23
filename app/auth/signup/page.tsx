@@ -9,6 +9,7 @@ import FirstStep from "@/components/SignUp/FirstStep/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
 import FourthStep from "@/components/SignUp/FourthStep/FourthStep";
+import FifthStep from "@/components/SignUp/FifthStep/FifthStep";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 
@@ -17,17 +18,6 @@ const SignUp = () => {
     const [categories, setCategories] = useState();
     const methods = useForm({ mode: "onChange" });
     const router = useRouter();
-
-    // const nextStepHandler = () => setCurrentStep(prev => prev + 1);
-    // const prevStep = () => setCurrentStep(prev => prev - 1);
-
-    // const steps = {
-    //     1: <FirstStep nextStep={nextStepHandler} cities={cities} stepId={currentStep}/>,
-    //     2: <SecondStep nextStep={nextStepHandler} interests={interests} stepId={currentStep}/>,
-    //     3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler}/>,
-    //     3: <FourthStep stepId={currentStep}/>,
-    // }
-
 
     useEffect(() => {
         const fetchFormData = async () => {
@@ -39,6 +29,18 @@ const SignUp = () => {
 
         fetchFormData();
     }, []);
+
+    const nextStepHandler = () => setCurrentStep(prev => prev + 1);
+    const prevStep = () => setCurrentStep(prev => prev - 1);
+
+    const steps = {
+        1: <FirstStep nextStep={nextStepHandler} stepId={currentStep}/>,
+        2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep}/>,
+        3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler}/>,
+        4: <FourthStep stepId={currentStep}/>,
+        4: <FifthStep stepId={currentStep}/>,
+    }
+
 
     const submitHandler = async (data) => {
         const formData = new FormData();
@@ -61,7 +63,11 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                    <ThirdStep stepId={currentStep} />
+                <form onSubmit={methods.handleSubmit(submitHandler)}>
+                    {
+                        steps[currentStep]
+                    }
+                </form>
             </FormProvider>
         </NonAuthRoute>
     );
