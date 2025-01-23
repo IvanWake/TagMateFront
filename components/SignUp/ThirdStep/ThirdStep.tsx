@@ -1,18 +1,34 @@
 'use client';
-import { useState, ChangeEvent } from "react";
+import {useState, ChangeEvent, useEffect} from "react";
+import { useFormContext } from "react-hook-form";
+import { cacheUserFormDataBySteps } from "@/utils/cacheUserFormDataBySteps";
 import { Step } from "@/types/signup/steps";
 import signupStyles from "./ThirdStep.module.css";
 
 
 const ThirdStep = ({ stepId, nextStep }: Step) => {
-
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const [previewImage, setPreviewImage] = useState();
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0]
-        if (file && file.type.startsWith('image/')) {
-            const imageUrl = URL.createObjectURL(file)
+    const { register, formState: { errors}, getValues, watch } = useFormContext();
+    const watchAllFields = watch();
+
+    useEffect(() => {
+        const values = getValues();
+
+        if (values.avatar[0]) {
+            const imageUrl = URL.createObjectURL(values.avatar[0])
             setPreviewImage(imageUrl)
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
         }
+    }, [watchAllFields])
+
+    const logUserDataHandler = () => {
+        cacheUserFormDataBySteps(stepId, {
+            avatar: previewImage
+        });
+        nextStep();
     }
 
     return (
@@ -25,7 +41,7 @@ const ThirdStep = ({ stepId, nextStep }: Step) => {
 
                 <div className={previewImage ? `${signupStyles["upload-wrapper"]} ${signupStyles["uploaded"]}` : signupStyles["upload-wrapper"]}>
                     <label className={signupStyles["upload-container"]}>
-                        <input onChange={handleFileChange} className={signupStyles.file} id="file-input" type="file"  accept=".jpg,.png,.heif" />
+                        <input {...register("avatar")} className={signupStyles.file} id="file-input" type="file" accept=".jpg,.png,.heif" />
                             <img className={signupStyles["upload-icon"]} src="/icons/auth/plus.svg" alt="avatar" />
                             <img src={previewImage} className={signupStyles["uploaded-image"]} alt="Uploaded image" />
                     </label>
@@ -33,7 +49,11 @@ const ThirdStep = ({ stepId, nextStep }: Step) => {
                 </div>
             </div>
             <div className={signupStyles.footer}>
-                <button className={`${signupStyles.button} ${signupStyles.next}`} disabled={true}>Далее</button>
+                <button
+                    type="button"
+                    className={`${signupStyles.button} ${signupStyles.next}`}
+                    onClick={logUserDataHandler}
+                    disabled={isButtonDisabled}>Далее</button>
             </div>
         </>
     );

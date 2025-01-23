@@ -37,26 +37,33 @@ const SignUp = () => {
         1: <FirstStep nextStep={nextStepHandler} stepId={currentStep}/>,
         2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep}/>,
         3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler}/>,
-        4: <FourthStep stepId={currentStep}/>,
-        4: <FifthStep stepId={currentStep}/>,
+        4: <FourthStep />,
+        5: <FifthStep />,
     }
 
 
     const submitHandler = async (data) => {
-        const formData = new FormData();
+        // const formData = new FormData();
+        //
+        // formData.append("name", "Ivashka");
+        // formData.append("lastName", "Ubivashka");
+        // formData.append("gender", "male");
+        // formData.append("birthDay", "2005-10-12");
+        // formData.append("city", "1900");
+        // formData.append("purpose", data.purpose);
+        // formData.append("avatar", data.avatar[0]);
+        // formData.append("interests", JSON.stringify(["🎨 Рисование"]));
+        // formData.append("email", "IvanKentVaska228@gmail.com");
+        // formData.append("password", "12345678");
+        // formData.append("repeatPassword", "12345678");
+        // userRegister(formData);
+        let formData = [];
+        for (let i = 1; i <= localStorage.length; i++) {
+                formData.push(JSON.parse(localStorage.getItem("stepId " + i)));
+            console.log(localStorage.getItem("stepId " + i))
+        }
 
-        formData.append("name", "Ivashka");
-        formData.append("lastName", "Ubivashka");
-        formData.append("gender", "male");
-        formData.append("birthDay", "2005-10-12");
-        formData.append("city", "1900");
-        formData.append("purpose", data.purpose);
-        formData.append("avatar", data.avatar[0]);
-        formData.append("interests", JSON.stringify(["🎨 Рисование"]));
-        formData.append("email", "IvanKentVaska228@gmail.com");
-        formData.append("password", "12345678");
-        formData.append("repeatPassword", "12345678");
-        userRegister(formData);
+        console.log(formData);
     }
 
 

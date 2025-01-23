@@ -5,6 +5,7 @@ import { Category } from "@/types/signup/steps";
 import CategoryItem from "@/components/SignUp/SecondStep/CategoryItem";
 import signupStyles from "./SecondStep.module.css";
 import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
+import {useEffect, useState} from "react";
 
 
 type Props = {
@@ -15,13 +16,26 @@ type Props = {
 }
 
 const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const { register, formState: { errors}, getValues, watch } = useFormContext();
+    const watchAllFields = watch();
+
+
+    useEffect(() => {
+        const values = getValues();
+
+        if (values.purpose && values.interests[0]) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
 
     const logUserDataHandler = () => {
         const values = getValues();
         cacheUserFormDataBySteps(stepId, {
-            firstName: values.firstName, lastName: values.lastName,
-            sex: values.sex, birthday: values.birthday, city: values.city
+            purpose: values.purpose,
+            interests: values.interests
         });
         nextStep();
     }
@@ -58,7 +72,13 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
                 </div>
             </div>
             <div className={signupStyles.footer}>
-                <button type="button" onClick={logUserDataHandler} className={`${signupStyles.button} ${signupStyles.next}`}>Далее</button>
+                <button
+                    className={`${signupStyles.button} ${signupStyles.next}`}
+                    type="button"
+                    onClick={logUserDataHandler}
+                    disabled={isButtonDisabled}
+                >Далее
+                </button>
             </div>
         </>
     );

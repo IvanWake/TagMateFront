@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import signupStyles from "./FourthStep.module.css";
 
 const FourthStep = () => {
-    const { register, getValues, formState: { errors } } = useFormContext();
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+    const { register, getValues, getFieldState, formState: { errors }, watch } = useFormContext();
+    const watchAllFields = watch();
+
+    useEffect(() => {
+        if (!getFieldState("repeatPassword").invalid) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
 
     return (
         <>
@@ -17,7 +28,7 @@ const FourthStep = () => {
                         <input
                             {...register('password', {
                                 required: "Введите пароль",
-                                minLength: { value: 6, message: "Не меньше 6-ти символов" }
+                                minLength: {value: 6, message: "Не меньше 6-ти символов"}
                             })}
                             type="password"
                             placeholder="Пароль"
@@ -48,7 +59,12 @@ const FourthStep = () => {
                 </div>
             </main>
             <footer className={signupStyles.footer}>
-                <button className={`${signupStyles.button} ${signupStyles.next}`}>Завершить</button>
+                <button
+                    type="submit"
+                    className={`${signupStyles.button} ${signupStyles.next}`}
+                    disabled={isButtonDisabled}
+                >Завершить
+                </button>
             </footer>
         </>
     );

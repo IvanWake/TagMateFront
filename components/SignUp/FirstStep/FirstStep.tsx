@@ -1,19 +1,28 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-import { cacheUserFormDataBySteps } from "@/utils/cacheUserFormDataBySteps";
-import { Step } from "@/types/signup/steps";
+import {useEffect, useState} from "react";
+import {useFormContext} from "react-hook-form";
+import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
+import {Step} from "@/types/signup/steps";
 import Link from "next/link";
 import signupStyles from "./FirstStep.module.css";
 
 
-
-const FirstStep = ({ nextStep, stepId }: Step) => {
+const FirstStep = ({nextStep, stepId}: Step) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-    const { register, formState: { errors}, getValues, watch } = useFormContext();
-
+    const { register, formState: {errors}, getValues, watch} = useFormContext();
     const watchAllFields = watch();
+
+    useEffect(() => {
+
+        const values = getValues();
+
+        if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [watchAllFields])
 
     const logUserDataHandler = () => {
         const values = getValues();
@@ -24,15 +33,7 @@ const FirstStep = ({ nextStep, stepId }: Step) => {
         nextStep();
     }
 
-    useEffect(() => {
-        const values = getValues();
 
-        if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
-            setIsButtonDisabled(false);
-        } else {
-            setIsButtonDisabled(true);
-        }
-    }, [watchAllFields])
 
     return (
         <>
@@ -96,8 +97,12 @@ const FirstStep = ({ nextStep, stepId }: Step) => {
             </main>
             <footer className={signupStyles.footer}>
                 <p>Есть аккаунт? <Link href="/auth/login">Войти</Link></p>
-                <button type="button" onClick={logUserDataHandler}
-                        className={`${signupStyles.button} ${signupStyles.next}`}>Далее
+                <button
+                    className={`${signupStyles.button} ${signupStyles.next}`}
+                    type="button"
+                    onClick={logUserDataHandler}
+                    disabled={isButtonDisabled}
+                    >Далее
                 </button>
             </footer>
         </>
