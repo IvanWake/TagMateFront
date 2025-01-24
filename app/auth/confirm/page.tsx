@@ -1,13 +1,17 @@
+'use client';
+
+import { useRouter } from "next/navigation";
 import InputConfirmCode from "@/components/SignUp/Confirm/InputConfirmCode";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 import confirmStyle from "@/app/auth/confirm/confirm.module.css";
 
 const Confirm = () => {
+    const router = useRouter();
     return (
         <NonAuthRoute>
             <div className={confirmStyle.main}>
                 <div className={confirmStyle.hero}>
-                    <div className={confirmStyle.back}>Назад</div>
+                    <div className={confirmStyle.back} onClick={() => router.push("/auth/signup")}>Назад</div>
                     <h1>Подтверждение кода</h1>
                 </div>
                 <div className={confirmStyle.form}>
@@ -19,7 +23,7 @@ const Confirm = () => {
                 </div>
             </div>
             <div className={confirmStyle.footer}>
-                <button className={`${confirmStyle.button} ${confirmStyle.next}`}>Подтвердить</button>
+                <button type="button" className={`${confirmStyle.button} ${confirmStyle.next}`} onClick={() => localStorage.clear()}>Подтвердить</button>
             </div>
         </NonAuthRoute>
     );

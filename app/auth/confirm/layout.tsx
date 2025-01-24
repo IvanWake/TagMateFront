@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Unbounded } from "next/font/google";
+import "./confirm.css";
+
 
 
 const inter = Inter({
