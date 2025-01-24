@@ -24,7 +24,7 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
     useEffect(() => {
         const values = getValues();
 
-        if (values.purpose && values.interests[0]) {
+        if (values.purpose && values?.interests) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);

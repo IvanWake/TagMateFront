@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef, type KeyboardEvent } from "react";
-import styleInput from "./FifthStep.module.css";
+import styleInput from "../../../app/auth/confirm/confirm.module.css";
 
 const InputConfirmCode = () => {
     const [confirmCode, setConfirmCode] = useState(["", "", "", ""])

@@ -6,7 +6,7 @@ import { Step } from "@/types/signup/steps";
 import signupStyles from "./ThirdStep.module.css";
 
 
-const ThirdStep = ({ stepId, nextStep }: Step) => {
+const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const [previewImage, setPreviewImage] = useState();
     const { register, formState: { errors}, getValues, watch } = useFormContext();
@@ -35,7 +35,7 @@ const ThirdStep = ({ stepId, nextStep }: Step) => {
         <>
             <div className={signupStyles.main}>
                 <div className={signupStyles.hero}>
-                    <div className={signupStyles.back}>Назад</div>
+                    <div className={signupStyles.back} onClick={() => prevStep()}>Назад</div>
                     <h1>Фотография профиля</h1>
                 </div>
 

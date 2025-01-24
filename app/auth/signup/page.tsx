@@ -5,28 +5,34 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { userRegister } from "@/services/auth";
 import { fetchInterests } from "@/utils/fetchInterests";
+import { getCurrentStep } from "@/utils/cacheUserFormDataBySteps";
 import FirstStep from "@/components/SignUp/FirstStep/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
 import FourthStep from "@/components/SignUp/FourthStep/FourthStep";
-import FifthStep from "@/components/SignUp/FifthStep/FifthStep";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [categories, setCategories] = useState();
-    const methods = useForm({ mode: "onChange" });
+    const defaultFormData = getCurrentStep().formData;
+    const methods = useForm({ mode: "onChange", defaultValues: {
+            firstName: defaultFormData[0].firstName,
+            lastName: defaultFormData[0].lastName,
+            sex: defaultFormData[0].sex,
+            birthday: defaultFormData[0].birthday,
+            city: defaultFormData[0].city,
+        } });
     const router = useRouter();
 
     useEffect(() => {
         const fetchFormData = async () => {
             const categoriesRes = await fetchInterests();
-
             const categories = await categoriesRes;
             setCategories(categories);
         }
-
+        setCurrentStep(getCurrentStep().formData.length  + 1);
         fetchFormData();
     }, []);
 
@@ -34,17 +40,15 @@ const SignUp = () => {
     const prevStep = () => setCurrentStep(prev => prev - 1);
 
     const steps = {
-        1: <FirstStep nextStep={nextStepHandler} stepId={currentStep}/>,
-        2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep}/>,
-        3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler}/>,
+        1: <FirstStep nextStep={nextStepHandler} stepId={currentStep} />,
+        2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep} prevStep={prevStep} />,
+        3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler} prevStep={prevStep} />,
         4: <FourthStep />,
-        5: <FifthStep />,
     }
 
 
     const submitHandler = async (data) => {
         // const formData = new FormData();
-        //
         // formData.append("name", "Ivashka");
         // formData.append("lastName", "Ubivashka");
         // formData.append("gender", "male");
@@ -57,13 +61,7 @@ const SignUp = () => {
         // formData.append("password", "12345678");
         // formData.append("repeatPassword", "12345678");
         // userRegister(formData);
-        let formData = [];
-        for (let i = 1; i <= localStorage.length; i++) {
-                formData.push(JSON.parse(localStorage.getItem("stepId " + i)));
-            console.log(localStorage.getItem("stepId " + i))
-        }
-
-        console.log(formData);
+        router.push("/auth/confirm");
     }
 
 

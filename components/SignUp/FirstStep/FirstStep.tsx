@@ -1,8 +1,8 @@
 'use client';
 
-import {useEffect, useState} from "react";
-import {useFormContext} from "react-hook-form";
-import {cacheUserFormDataBySteps} from "@/utils/cacheUserFormDataBySteps";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { cacheUserFormDataBySteps } from "@/utils/cacheUserFormDataBySteps";
 import {Step} from "@/types/signup/steps";
 import Link from "next/link";
 import signupStyles from "./FirstStep.module.css";
