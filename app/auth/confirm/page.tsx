@@ -7,6 +7,7 @@ import confirmStyle from "@/app/auth/confirm/confirm.module.css";
 
 const Confirm = () => {
     const router = useRouter();
+
     return (
         <NonAuthRoute>
             <div className={confirmStyle.main}>
