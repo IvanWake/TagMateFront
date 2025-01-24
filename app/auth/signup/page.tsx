@@ -16,14 +16,10 @@ import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [categories, setCategories] = useState();
-    const defaultFormData = getCurrentStep().formData;
-    const methods = useForm({ mode: "onChange", defaultValues: {
-            firstName: defaultFormData[0].firstName,
-            lastName: defaultFormData[0].lastName,
-            sex: defaultFormData[0].sex,
-            birthday: defaultFormData[0].birthday,
-            city: defaultFormData[0].city,
-        } });
+    const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
+        return { ...acc, ...obj };
+    }, {});
+    const methods = useForm({ mode: "onChange", defaultValues: defaultFormData });
     const router = useRouter();
 
     useEffect(() => {
@@ -43,7 +39,7 @@ const SignUp = () => {
         1: <FirstStep nextStep={nextStepHandler} stepId={currentStep} />,
         2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep} prevStep={prevStep} />,
         3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler} prevStep={prevStep} />,
-        4: <FourthStep />,
+        4: <FourthStep prevStep={prevStep}/>,
     }
 
 

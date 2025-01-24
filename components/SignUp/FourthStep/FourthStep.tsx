@@ -1,8 +1,9 @@
+'use client';
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import signupStyles from "./FourthStep.module.css";
 
-const FourthStep = () => {
+const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const { register, getValues, getFieldState, formState: { errors }, watch } = useFormContext();
     const watchAllFields = watch();
@@ -19,7 +20,7 @@ const FourthStep = () => {
         <>
             <main className={signupStyles.main}>
                 <div className={signupStyles.hero}>
-                    <div className={signupStyles.back}>Назад</div>
+                    <div className={signupStyles.back} onClick={() => prevStep()}>Назад</div>
                     <h1>Почта и пароль</h1>
                 </div>
                 <div className={signupStyles.form}>

@@ -24,13 +24,6 @@ const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
         }
     }, [watchAllFields])
 
-    const logUserDataHandler = () => {
-        cacheUserFormDataBySteps(stepId, {
-            avatar: previewImage
-        });
-        nextStep();
-    }
-
     return (
         <>
             <div className={signupStyles.main}>
@@ -52,7 +45,7 @@ const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
                 <button
                     type="button"
                     className={`${signupStyles.button} ${signupStyles.next}`}
-                    onClick={logUserDataHandler}
+                    onClick={() => nextStep()}
                     disabled={isButtonDisabled}>Далее</button>
             </div>
         </>
