@@ -1,32 +1,31 @@
 import Link from "next/link";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
+import welcomeStyles from "./welcome.module.css";
+
 
 const Page = () => {
     return (
         <NonAuthRoute>
-            <div className="page-welcome">
-                <section id="welcome">
-                    <div className="tagmate">
-                        <img src="/icons/tagmate-min.svg" width="128px"/>
-                        <div className="primary">Привет!</div>
-                        <div className="secondary">
-                            TagMate - ваш проводник в мире<br/>знакомств на улице, где каждый
-                            тег<br/>становится ключом к новым друзьям<br/>и возможным свиданиям.
-                        </div>
-                    </div>
-                    <div className="buttons">
-                        <Link href="/auth/login">
-                            <div className="button button-login">Войти</div>
-                        </Link>
-                        <Link href="/auth/signup">
-                            <div className="button button-register">Зарегистрироваться</div>
-                        </Link>
-                    </div>
-                </section>
-                <footer>
-                    <div className="copyright">© 2024 «TagMate»</div>
-                </footer>
-            </div>
+            <main className={welcomeStyles.main}>
+                <div className={welcomeStyles.logo}>
+                    <img src="/icons/tagmate-min.svg" alt="TagMate" width="120px" />
+                </div>
+                <div className={welcomeStyles.hero}>
+                    <h1 className={welcomeStyles.title}>Привет!</h1>
+                    <p className={welcomeStyles.desc}>TagMate — ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым
+                        друзьям и
+                        возможным свиданиям</p>
+                </div>
+                <div className={welcomeStyles.menu}>
+                    <Link href="/auth/login">
+                        <div className={`${welcomeStyles.button} ${welcomeStyles.login}`}>Войти</div>
+                    </Link>
+                    <Link href="/auth/signup">
+                        <div className={`${welcomeStyles.button} ${welcomeStyles.register}`}>Зарегистрироваться</div>
+                    </Link>
+                </div>
+            </main>
+            <footer className={welcomeStyles.footer}>© 2024 «Tagmate»</footer>
         </NonAuthRoute>
     );
 }

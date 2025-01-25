@@ -1,31 +1,17 @@
 export async function POST(req: Request) {
-    const body = await req.json();
-
-    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/auth/registration`, {
+    const formData = await req.formData();
+    console.log(formData);
+    const res = await fetch(`${process.env.TEST_NEXT_URL }/api/auth/registration`, {
         method: "POST",
-        headers: {
-            "Content-Type" : "application/json",
-        },
-        body: JSON.stringify({
-            email: body.email,
-            name: body.firstName,
-            lastName: body.lastName,
-            birthDay: body.birthday,
-            gender: body.sex,
-            city: body.city,
-            purpose: body.purpose,
-            interests: body.interests,
-            password: body.password,
-            repeatPassword: body.repeatPassword
-        })
+        body: formData
     })
-    const data = await res.json();
-
 
     if (!res.ok) {
+        const err = await res.text();
+        console.error("Ответ сервера:", err);
         return { status: res.status }
-
     }
 
+    const data = await res.json();
     return Response.json(data)
 }

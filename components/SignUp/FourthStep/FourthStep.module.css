@@ -1,0 +1,109 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 144px;
+}
+
+.hero {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0 5px;
+    background-color: #FFFFFF;
+}
+
+.hero .back {
+    font-family: var(--font-unbounded);
+    font-size: 14px;
+    font-weight: 600;
+    color: #0066DE;
+}
+
+.hero h1 {
+    font-family: var(--font-unbounded);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input ::placeholder {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    color: #4E4E4E;
+}
+
+.input label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #797979;
+    font-family: var(--font-unbounded);
+}
+
+.input input {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 15px;
+    background: #F1F1F1;
+    padding: 19px;
+    border: none;
+    color: #4E4E4E;
+    appearance: none;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, transparent, white);
+    backdrop-filter: blur(5px);
+    padding: 0 30px 40px;
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    max-width: 512px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    border: none;
+    margin: 0 auto;
+}
+
+.button.next {
+    color: #FFFFFF;
+    background: #0066DE;
+}
+
+.button.next:active {
+    background: #0057BC;
+}
+
+.button.next:disabled {
+    background: #E8E8E8;
+    color: #B1B1B1;
+}

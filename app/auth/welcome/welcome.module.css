@@ -1,0 +1,82 @@
+.body {
+    height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    font-family: var(--font-inter);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 30px;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    max-width: 512px;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.desc {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 12px;
+    color: #797979;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu a {
+    display: block;
+    width: 100%;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    max-width: 512px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+}
+
+.login {
+    color: #FFFFFF;
+    background: #0066DE;
+}
+
+.register {
+    background: #E8E8E8;
+    color: #4E4E4E;
+}
+
+.footer {
+    position: fixed;
+    left: 30px;
+    right: 30px;
+    bottom: 40px;
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 12px;
+    color: #4E4E4E;
+    text-align: center;
+}

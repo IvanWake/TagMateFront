@@ -1,0 +1,125 @@
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+    font-family: var(--font-unbounded);
+}
+
+.hero {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0 5px;
+    background-color: #FFFFFF;
+}
+
+.hero .back {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0066DE;
+    cursor: pointer;
+}
+
+.hero h1 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 136px;
+}
+
+.info-text {
+    font-size: 14px;
+    color: #797979;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info-text .info-mail {
+    color: #0066DE;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.input-group input {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 15px;
+    background: #F1F1F1;
+    border: none;
+    color: #4E4E4E;
+}
+
+.input-group input:focus {
+    outline: 2px solid #0066DE;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(0deg, white, transparent);
+    backdrop-filter: blur(5px);
+    padding: 20px 30px 40px;
+    text-align: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    max-width: 512px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    border: none;
+    margin: 0 auto;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.button.next {
+    color: #FFFFFF;
+    background: #0066DE;
+}
+
+.button.next:active {
+    background: #0057BC;
+}
+
+.button.next:disabled {
+    background: #E8E8E8;
+    color: #B1B1B1;
+    cursor: not-allowed;
+}
+
+.resend {
+    text-align: center;
+    color: #797979;
+    font-size: 12px;
+}
+
+.resend .resend-button {
+    cursor: pointer;
+    color: #0066DE;
+}
