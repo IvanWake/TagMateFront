@@ -1,4 +1,4 @@
-# TagMate `Front-end` =)
+# TagMate `Front-end`
 
 <hr />
 
