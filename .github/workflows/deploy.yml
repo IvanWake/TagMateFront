@@ -29,5 +29,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /var/www/tagmate.ru
-            npm install --production
+            npm install 
             pm2 restart all
