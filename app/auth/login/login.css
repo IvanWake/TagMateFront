@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+    padding: 0 30px;
+}
+
+input {
+    touch-action: manipulation;
+    font-size: 16px !important;
+}

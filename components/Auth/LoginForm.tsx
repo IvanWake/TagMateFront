@@ -1,35 +1,24 @@
 'use client';
 
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { userLogin } from "@/services/auth";
+import { useFormContext } from "react-hook-form";
 import { useRouter } from 'next/navigation';
-import styles from "@/app/auth/login/login.module.css";
+import Link from "next/link";
+import mainStyles from "@/components/Auth/Login.module.css";
 
 const LoginForm = () => {
-    const router = useRouter();
+    const { register } = useFormContext();
 
-    const { register,
-        handleSubmit,
-        formState: { isValid}
-    } = useForm({ mode: "onBlur" });
-
-    const onSubmitHandler = (formData) => {
-        userLogin(formData.userTag, formData.userPassword);
-    }
     return (
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <section id="welcome" className={styles.section}>
-
-                <div className={styles.tagmate}>
-                    <img src="/icons/tagmate-min.svg" width="100px" alt="logo"/>
-                    <p>Авторизация в <span className={styles.span}>TagMate</span></p>
-                </div>
-                <div className={styles.auth}>
-                    <div className={styles["input-tag"]}>
-                        <span className={styles.span}>#</span>
+        <div className={mainStyles.main}>
+            <div className={mainStyles.hero}>
+                <h1>Авторизация</h1>
+                <p>Добро пожаловать в TagMate</p>
+            </div>
+            <div className={mainStyles.form}>
+                <div className={mainStyles.input}>
+                    <label htmlFor={mainStyles["user-tag"]}>
+                        <div className={mainStyles.tag}>#</div>
                         <input
-                            style={{ textTransform: "uppercase" }}
                             {...register("userTag", {
                                 required: "Заполните поле",
                                 maxLength: {
@@ -38,30 +27,20 @@ const LoginForm = () => {
                                 }
                             })}
                             type="text"
-                            minLength="4"
-                            maxLength="4"
-                            autoComplete="off"
-                            placeholder="XXXX"
-                            autoFocus
+                            id="user-tag"
+                            maxLength={4}
+                            placeholder="Тег"
                         />
-                    </div>
+                    </label>
                     <input
-                        {...register("userPassword", {
-                            required: "Заполните поле",
-                            minLength: { value: 6, message: "Не меньше 6-ти символов" }
-                        })}
-                        className={styles.input}
                         type="password"
-                        autoComplete="off"
                         placeholder="Пароль"
                     />
-                    <button type="submit" className={styles.button}>Войти</button>
+                        <p>Забыли пароль? <Link href="/auth/recovery">Восстановить</Link></p>
                 </div>
-
-                <p className={styles["forgot-pw"]}>Забыли пароль? <span>Восстановить</span></p>
-            </section>
-        </form>
-    );
+            </div>
+        </div>
+);
 }
 
 export default LoginForm;

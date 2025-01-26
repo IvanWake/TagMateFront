@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
-import styles from "./login.module.css";
+import { Inter, Unbounded } from "next/font/google";
+import "./login.css";
+
+const inter = Inter({
+  subsets: ['cyrillic'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const unbounded = Unbounded({
+  subsets: ['cyrillic'],
+  variable: '--font-unbounded',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "TagMate | Авторизация",
@@ -12,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <body className={styles.body}>{children}</body>
+    <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

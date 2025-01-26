@@ -1,0 +1,147 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 144px;
+}
+
+.hero {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0 5px;
+    background-color: #FFFFFF;
+}
+
+.hero h1 {
+    font-family: var(--font-unbounded);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-family: var(--font-inter);
+    font-size: 12px;
+    font-weight: 600;
+    color: #797979;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input ::placeholder {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    color: #4E4E4E;
+}
+
+.input label {
+    display: flex;
+    gap: 5px;
+}
+
+.input input {
+    flex: 1;
+    padding: 19px;
+}
+
+.input input,
+.tag {
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 15px;
+    background: #F1F1F1;
+    border: none;
+    color: #4E4E4E;
+    appearance: none;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    color: #000000;
+}
+
+.input p {
+    font-size: 12px;
+    font-family: var(--font-inter);
+    font-weight: 600;
+    color: #BABABA;
+    text-align: center;
+}
+
+.input a {
+    text-decoration: none;
+    color: #797979;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, transparent, white);
+    backdrop-filter: blur(5px);
+    padding: 0 30px 40px;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 12px;
+    font-family: var(--font-inter);
+    font-weight: 600;
+    color: #797979;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #0066DE;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 100%;
+    max-width: 512px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: var(--font-unbounded);
+    border: none;
+    margin: 0 auto;
+    transition: all 0.3s;
+}
+
+.button.next {
+    color: #FFFFFF;
+    background: #0066DE;
+}
+
+.button.next:active {
+    background: #0057BC;
+}
+
+.button.next:disabled {
+    background: #E8E8E8;
+    color: #B1B1B1;
+}

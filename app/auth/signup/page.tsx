@@ -18,7 +18,7 @@ const SignUp = () => {
     const [categories, setCategories] = useState();
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
-    }, { birthDay: "08-08-2005" });
+    }, {});
     const methods = useForm({ mode: "onChange", defaultValues: defaultFormData });
     const router = useRouter();
 
