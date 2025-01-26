@@ -30,4 +30,5 @@ jobs:
           script: |
             cd /var/www/tagmate.ru
             npm install 
-            pm2 restart all
+            npm audit fix --force
+            /root/.nvm/versions/node/v22.13.1/bin/pm2 restart front
