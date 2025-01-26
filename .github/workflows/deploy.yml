@@ -30,4 +30,4 @@ jobs:
           script: |
             cd /var/www/tagmate.ru
             npm install 
-            pm2 restart all
+            pm2 restart front
