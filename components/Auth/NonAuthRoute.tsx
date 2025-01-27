@@ -19,9 +19,12 @@ const NonAuthRoute = (props: Props) => {
         setIsUserLoading(true);
         const fetchUserProfileDataHandler = () => {
             const isAuthToken = getAuthToken("authToken");
+            const confirmProcess = localStorage.getItem("confirmProcess");
 
             if (isAuthToken) {
                 router.push("/");
+            } else if (confirmProcess) {
+                router.push("/auth/confirm");
             }
             setIsUserLoading(false);
         }

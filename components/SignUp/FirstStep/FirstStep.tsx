@@ -46,7 +46,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                     <div className={signupStyles.input}>
                         <label>Как тебя зовут?</label>
                         <input
-                            {...register('firstName', {required: "Это поле обязательно"})}
+                            {...register('firstName', { required: "Это поле обязательно"})}
                             type="text"
                             placeholder="Имя"
                             autoComplete="off"

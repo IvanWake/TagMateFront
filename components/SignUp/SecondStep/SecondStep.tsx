@@ -50,7 +50,7 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
                 <div className={signupStyles.form}>
                     <div className={signupStyles.input}>
                         <label>Что ты ищешь?</label>
-                        <select {...register('purpose')}>
+                        <select {...register('purpose', { required: "Это поле обязательно" })}>
                             <option value="communication">Общение</option>
                             <option value="relationship">Отношения</option>
                             <option value="confederate">Единомышленников</option>
