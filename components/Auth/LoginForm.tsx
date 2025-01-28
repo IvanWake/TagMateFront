@@ -1,11 +1,12 @@
 'use client';
 
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import mainStyles from "@/components/Auth/Login.module.css";
 
 const LoginForm = () => {
+    const [upperCase, setUpperCase] = useState();
     const { register } = useFormContext();
 
     return (
@@ -26,6 +27,8 @@ const LoginForm = () => {
                                     message: "Не больше 4-ёх символов"
                                 }
                             })}
+                            onChange={(e) => setUpperCase(e.target.value.toUpperCase())}
+                            value={upperCase}
                             type="text"
                             id="user-tag"
                             maxLength={4}
@@ -33,6 +36,13 @@ const LoginForm = () => {
                         />
                     </label>
                     <input
+                        {...register("userPassword", {
+                            required: "Заполните поле",
+                            minLength: {
+                                value: 8,
+                                message: "Пароль не меньше 8-ми символов"
+                            }
+                        })}
                         type="password"
                         placeholder="Пароль"
                     />

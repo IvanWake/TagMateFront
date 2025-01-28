@@ -1,4 +1,6 @@
-export async function POST(req: Request) {
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(req: NextRequest) {
     const body = await req.json();
 
 
@@ -7,14 +9,16 @@ export async function POST(req: Request) {
         headers: {
             "Content-Type" : "application/json",
         },
-        body: JSON.stringify({ tag: body.userTag.toUpperCase(), password: body.userPassword })
+        body: JSON.stringify({ tag: body.userTag, password: body.userPassword })
     })
-    const data = await res.json();
 
     if (!res.ok) {
-        return { status: 401 };
+        const error = await res.json();
+        return NextResponse.json(error.message, { status: res.status, message: error.message });
     }
 
-    return Response.json(data);
+    const data = await res.json();
+
+    return NextResponse.json(data);
 }
 
