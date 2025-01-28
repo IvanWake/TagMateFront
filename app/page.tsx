@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchInterests } from "@/utils/fetchInterests";
-import { fetchCityById } from "@/utils/fetchCities";
 import Header from "@/components/Header/Header";
 import HeaderProfile from "@/components/Header/HeaderProfile";
 import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
@@ -35,7 +34,6 @@ const Page = () => {
 
                 if (result.status == 200) {
                     setUserProfileData(result.data);
-                    const resCity = await fetchCityById(result.data.city);
 
                     setCity(resCity);
                 } else {
@@ -66,7 +64,7 @@ const Page = () => {
                 />
                 <UserBio
                     gender={userProfileData.gender}
-                    city={city[0]?.city}
+                    city={userProfileData.city.city}
                     birthDay={userProfileData.birthDay}
                 />
                 <Interests interests={userProfileData.interests} interestsList={interestsList}/>
