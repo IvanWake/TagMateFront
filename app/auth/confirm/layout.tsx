@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Unbounded } from "next/font/google";
-import "./confirm.css";
+import styles from "./confirm.module.css";
 
 
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
-        <body>{children}</body>
+        <body className={styles.body}>{children}</body>
         </html>
     );
 }

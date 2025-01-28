@@ -18,7 +18,7 @@ const SignUp = () => {
     const [categories, setCategories] = useState();
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
-    }, { birthDay: "08-08-2005" });
+    }, {});
     const methods = useForm({ mode: "onChange", defaultValues: defaultFormData });
     const router = useRouter();
 
@@ -57,6 +57,8 @@ const SignUp = () => {
         // formData.append("password", "12345678");
         // formData.append("repeatPassword", "12345678");
         // userRegister(formData);
+        localStorage.setItem("confirmProcess", true);
+        localStorage.setItem("userMail", data.email);
         router.push("/auth/confirm");
     }
 

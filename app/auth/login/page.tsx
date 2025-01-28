@@ -1,17 +1,25 @@
+'use client';
+import { useForm, FormProvider } from "react-hook-form";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 import LoginForm from "@/components/Auth/LoginForm";
-import styles from "./login.module.css";
+import LoginFooter from "@/components/Auth/LoginFooter";
 
 
 const Page = () => {
+    const methods = useForm({ mode: "onChange" });
 
+    const submitHandler = (loginData) => {
+        console.log(loginData);
+    }
 
     return (
         <NonAuthRoute>
-                <LoginForm />
-                <footer className={styles.footer}>
-                    <div className={styles.copyright}>© 2024 «TagMate»</div>
-                </footer>
+            <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(submitHandler)}>
+                    <LoginForm/>
+                    <LoginFooter />
+                </form>
+            </FormProvider>
         </NonAuthRoute>
     );
 }
