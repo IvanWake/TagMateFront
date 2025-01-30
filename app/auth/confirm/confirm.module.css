@@ -61,6 +61,13 @@
     gap: 10px;
 }
 
+.alert {
+    color: #FF8587 !important;
+    text-align: center;
+    font-size: 12px;
+    font-family: var(--font-inter);
+}
+
 .input-group input {
     width: 55px;
     height: 55px;
@@ -76,6 +83,11 @@
 .input-group input:focus {
     outline: 2px solid #0066DE;
 }
+
+.input-error  {
+    outline: 2px solid #FF8587 !important;
+}
+
 
 .footer {
     display: flex;

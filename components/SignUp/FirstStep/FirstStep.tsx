@@ -17,7 +17,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
 
         const values = getValues();
 
-        if (values.firstName && values.lastName && values.gender && values.birthday && values.city) {
+        if (values.name && values.lastName && values.gender && values.birthDay && values.city) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
@@ -27,8 +27,8 @@ const FirstStep = ({nextStep, stepId}: Step) => {
     const logUserDataHandler = () => {
         const values = getValues();
         cacheUserFormDataBySteps(stepId, {
-            firstName: values.name, lastName: values.lastName,
-            gender: values.gender, birthday: values.birthday, city: values.city
+            name: values.name, lastName: values.lastName,
+            gender: values.gender, birthDay: values.birthDay, city: values.city
         });
         nextStep();
     }
@@ -77,7 +77,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                         <div className={signupStyles.icon}>
                             <img src="/icons/auth/calendar.svg" alt="Birth day"/>
                             <input
-                                {...register('birthday')}
+                                {...register('birthDay')}
                                 type="date"
                                 placeholder="15.09.2005"
                                 id="birthday"

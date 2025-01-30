@@ -29,7 +29,7 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                         <input
                             {...register('password', {
                                 required: "Введите пароль",
-                                minLength: {value: 6, message: "Не меньше 6-ти символов"}
+                                minLength: { value: 8, message: "Не меньше 8-ми символов"}
                             })}
                             type="password"
                             placeholder="Пароль"
