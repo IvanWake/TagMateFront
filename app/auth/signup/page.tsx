@@ -19,7 +19,7 @@ const SignUp = () => {
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
     }, {});
-    const methods = useForm({ mode: "onChange", defaultValues: defaultFormData });
+    const methods = useForm({ mode: "onTouched", defaultValues: defaultFormData });
     const router = useRouter();
 
     useEffect(() => {

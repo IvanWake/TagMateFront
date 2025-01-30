@@ -5,16 +5,7 @@ import signupStyles from "./FourthStep.module.css";
 
 const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-    const { register, getValues, getFieldState, formState: { errors }, watch } = useFormContext();
-    const watchAllFields = watch();
-
-    useEffect(() => {
-        if (!getFieldState("repeatPassword").invalid) {
-            setIsButtonDisabled(false);
-        } else {
-            setIsButtonDisabled(true);
-        }
-    }, [watchAllFields])
+    const { register, getValues, formState: { errors, isValid }, watch } = useFormContext();
 
     return (
         <>
@@ -29,11 +20,12 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                         <input
                             {...register('password', {
                                 required: "Введите пароль",
-                                minLength: { value: 8, message: "Не меньше 8-ми символов"}
+                                minLength: { value: 8, message: "Пароль не меньше 8-ми символов"}
                             })}
                             type="password"
                             placeholder="Пароль"
                         />
+                        { errors.password?.message && <p>{errors.password?.message}</p> }
                         <input
                             {...register('repeatPassword', {
                                 required: "Повторите пароль",
@@ -42,6 +34,8 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                             type="password"
                             placeholder="Повтори пароль"
                         />
+                        { errors.repeatPassword?.message && <p>{errors.repeatPassword?.message}</p> }
+
                     </div>
                     <div className={signupStyles.input}>
                         <label>Введи почту, чтобы получить тег</label>
@@ -56,6 +50,8 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                             type="email"
                             placeholder="твоя@почта.ру"
                         />
+                        { errors.email?.message && <p>{errors.email?.message}</p> }
+
                     </div>
                 </div>
             </main>
@@ -63,7 +59,7 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                 <button
                     type="submit"
                     className={`${signupStyles.button} ${signupStyles.next}`}
-                    disabled={isButtonDisabled}
+                    disabled={!isValid}
                 >Завершить
                 </button>
             </footer>

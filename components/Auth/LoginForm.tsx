@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import Link from "next/link";
 import mainStyles from "@/components/Auth/Login.module.css";
 
 const LoginForm = ({formError}: {formError: string}) => {
-    const [upperCase, setUpperCase] = useState();
     const { register } = useFormContext();
 
     return (
@@ -18,8 +16,12 @@ const LoginForm = ({formError}: {formError: string}) => {
             <div className={mainStyles.form}>
                 <div className={mainStyles.input}>
                     <label htmlFor={mainStyles["user-tag"]}>
-                        <div className={mainStyles.tag}>#</div>
+                        <div className={formError ? `${mainStyles.tag} ${mainStyles.inputError}` :
+                        `${mainStyles.tag}`}>
+                            #
+                        </div>
                         <input
+                            className={formError && `${mainStyles.inputError}`}
                             {...register("userTag", {
                                 required: "Заполните поле",
                                 minLength: {
