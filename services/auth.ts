@@ -12,13 +12,15 @@ export const userLogin = async (tag: string, password: string)=> {
 
         if (!res.ok) {
             const error = await res.json();
-            return { message: error };
+            return { message: error.message, status: error.status };
         }
 
         const data = await res.json();
         const token = data.token;
 
         setAuthToken("authToken", token);
+
+        return { status: data.status };
     } catch (error) {
         return { error };
     }

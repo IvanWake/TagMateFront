@@ -43,22 +43,22 @@ const SignUp = () => {
     }
 
 
-    const submitHandler = async (data) => {
-        // const formData = new FormData();
-        // formData.append("name", "Ivashka");
-        // formData.append("lastName", "Ubivashka");
-        // formData.append("gender", "male");
-        // formData.append("birthDay", "2005-10-12");
-        // formData.append("city", "1900");
-        // formData.append("purpose", data.purpose);
-        // formData.append("avatar", data.avatar[0]);
-        // formData.append("interests", JSON.stringify(["🎨 Рисование"]));
-        // formData.append("email", "IvanKentVaska228@gmail.com");
-        // formData.append("password", "12345678");
-        // formData.append("repeatPassword", "12345678");
-        // userRegister(formData);
-        localStorage.setItem("confirmProcess", true);
-        localStorage.setItem("userMail", data.email);
+    const submitHandler = async (signupData) => {
+        const formData = new FormData();
+        formData.append("email", signupData.email);
+        formData.append("name", signupData.name);
+        formData.append("lastName", signupData.lastName);
+        formData.append("birthDay", signupData.birthDay);
+        formData.append("gender", signupData.gender);
+        formData.append("city", signupData.city);
+        formData.append("purpose", signupData.purpose);
+        formData.append("interests", JSON.stringify(signupData.interests));
+        formData.append("avatar", signupData.avatar[0]);
+        formData.append("password",signupData.password);
+        formData.append("repeatPassword",signupData.repeatPassword);
+        userRegister(formData);
+        localStorage.setItem("confirmProcess", "true");
+        localStorage.setItem("userMail", signupData.email);
         router.push("/auth/confirm");
     }
 

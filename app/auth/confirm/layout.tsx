@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
-        <body className={styles.body}>{children}</body>
+        {children}
         </html>
     );
 }

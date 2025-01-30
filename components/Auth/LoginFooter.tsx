@@ -1,6 +1,5 @@
 'use client';
 
-import {isValidElement, useState} from "react";
 import { useFormContext } from "react-hook-form";
 import Link from "next/link";
 import footerStyles from "./Login.module.css";

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--font-unbounded);
 }
 
 .main {
@@ -11,8 +12,6 @@
     padding: 0 30px;
     margin: 0 auto;
     max-width: 512px;
-    width: 100%;
-    font-family: var(--font-unbounded);
 }
 
 .hero {
@@ -97,7 +96,7 @@
     max-width: 512px;
     border-radius: 15px;
     font-size: 14px;
-    font-family: var(--font-unbounded);
+    font-family: "Unbounded", sans-serif;
     border: none;
     margin: 0 auto;
     transition: all 0.3s;

@@ -16,16 +16,20 @@ const Page = () => {
 
     const submitHandler = async (loginData) => {
         const res = await userLogin(loginData.userTag, loginData.userPassword);
-        res?.message && setFormError(res.message);
+
+        if (res.status !== 200) {
+            setFormError(res.message);
+            return;
+        }
         router.push("/");
+
     }
 
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(submitHandler)}>
-                    <LoginForm/>
-                    {formError && <p>{formError}</p>}
+                    <LoginForm formError={formError} />
                     <LoginFooter />
                 </form>
             </FormProvider>

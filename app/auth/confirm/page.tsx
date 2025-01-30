@@ -2,9 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { getAuthToken } from "@/utils/authToken/getAuthToken";
 import InputConfirmCode from "@/components/SignUp/Confirm/InputConfirmCode";
-import confirmStyle from "@/app/auth/confirm/confirm.module.css";
+import confirmStyle from "./confirm.module.css";
 
 const Confirm = () => {
     const userMail = localStorage.getItem("userMail");
@@ -23,7 +22,7 @@ const Confirm = () => {
     }, [])
 
     return (
-        <>
+        <body className={confirmStyle.body}>
             <div className={confirmStyle.main}>
                 <div className={confirmStyle.hero}>
                     <div className={confirmStyle.back} onClick={backToConfirmHandler}>Назад</div>
@@ -40,7 +39,7 @@ const Confirm = () => {
             <div className={confirmStyle.footer}>
                 <button type="button" className={`${confirmStyle.button} ${confirmStyle.next}`} onClick={() => localStorage.clear()}>Подтвердить</button>
             </div>
-        </>
+        </body>
     );
 }
 

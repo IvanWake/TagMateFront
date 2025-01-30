@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import Link from "next/link";
 import mainStyles from "@/components/Auth/Login.module.css";
 
-const LoginForm = () => {
+const LoginForm = ({formError}: {formError: string}) => {
     const [upperCase, setUpperCase] = useState();
     const { register } = useFormContext();
 
@@ -22,13 +22,15 @@ const LoginForm = () => {
                         <input
                             {...register("userTag", {
                                 required: "Заполните поле",
+                                minLength: {
+                                    value: 4,
+                                    message: "Не меньше 4-ёх символов"
+                                },
                                 maxLength: {
                                     value: 4,
                                     message: "Не больше 4-ёх символов"
                                 }
                             })}
-                            onChange={(e) => setUpperCase(e.target.value.toUpperCase())}
-                            value={upperCase}
                             type="text"
                             id="user-tag"
                             maxLength={4}
@@ -36,6 +38,7 @@ const LoginForm = () => {
                         />
                     </label>
                     <input
+                        className={formError && `${mainStyles.inputError}`}
                         {...register("userPassword", {
                             required: "Заполните поле",
                             minLength: {
@@ -46,6 +49,9 @@ const LoginForm = () => {
                         type="password"
                         placeholder="Пароль"
                     />
+                    {
+                        formError && <p className={mainStyles.alert}>{formError}</p>
+                    }
                         <p>Забыли пароль? <Link href="/auth/recovery">Восстановить</Link></p>
                 </div>
             </div>
