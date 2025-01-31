@@ -81,7 +81,9 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                                 type="date"
                                 placeholder="15.09.2005"
                                 id="birthday"
-                                max={new Date().toISOString().split('T')[0]}
+                                max={new Date(new Date().getFullYear() - 14, new Date().getMonth(), new Date().getDate())
+                                    .toISOString()
+                                    .split("T")[0]}
                             />
                         </div>
 
