@@ -11,11 +11,13 @@ import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
 import FourthStep from "@/components/SignUp/FourthStep/FourthStep";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
+import styleForm from "./signup.module.css";
 
 
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [categories, setCategories] = useState();
+    const [serverError, setServerError] = useState();
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
     }, {});
@@ -39,7 +41,7 @@ const SignUp = () => {
         1: <FirstStep nextStep={nextStepHandler} stepId={currentStep} />,
         2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep} prevStep={prevStep} />,
         3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler} prevStep={prevStep} />,
-        4: <FourthStep prevStep={prevStep}/>,
+        4: <FourthStep prevStep={prevStep} serverError={serverError}/>,
     }
 
 
@@ -56,9 +58,12 @@ const SignUp = () => {
         formData.append("avatar", signupData.avatar[0]);
         formData.append("password",signupData.password);
         formData.append("repeatPassword",signupData.repeatPassword);
-        const res = userRegister(formData);
-        if
+        const res = await userRegister(formData);
 
+        if (res.message) {
+            setServerError(res.message);
+            return;
+        }
         localStorage.setItem("confirmProcess", "true");
         localStorage.setItem("userMail", signupData.email);
         router.push("/auth/confirm");
@@ -68,7 +73,7 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(submitHandler)}>
+                <form className={styleForm.form} onSubmit={methods.handleSubmit(submitHandler)}>
                     {
                         steps[currentStep]
                     }

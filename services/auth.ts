@@ -34,9 +34,14 @@ export const userRegister = async (formData: FormData) => {
             body: formData
         })
 
-        const data = await res.json();
-        const token = data;
+        if (!res.ok) {
+            const error = await res.json();
+            console.log(error.error || error.message);
+            return { message: error.error || erorr.message, status: error.status };
+        }
 
+
+        const data = await res.json();
     } catch (error) {
         return { error }
     }
