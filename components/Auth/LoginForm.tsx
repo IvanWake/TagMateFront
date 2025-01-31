@@ -1,11 +1,10 @@
 'use client';
 
 import { useFormContext } from "react-hook-form";
-import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import mainStyles from "@/components/Auth/Login.module.css";
 
-const LoginForm = () => {
+const LoginForm = ({formError}: {formError: string}) => {
     const { register } = useFormContext();
 
     return (
@@ -17,10 +16,18 @@ const LoginForm = () => {
             <div className={mainStyles.form}>
                 <div className={mainStyles.input}>
                     <label htmlFor={mainStyles["user-tag"]}>
-                        <div className={mainStyles.tag}>#</div>
+                        <div className={formError ? `${mainStyles.tag} ${mainStyles.inputError}` :
+                        `${mainStyles.tag}`}>
+                            #
+                        </div>
                         <input
+                            className={formError && `${mainStyles.inputError}`}
                             {...register("userTag", {
                                 required: "Заполните поле",
+                                minLength: {
+                                    value: 4,
+                                    message: "Не меньше 4-ёх символов"
+                                },
                                 maxLength: {
                                     value: 4,
                                     message: "Не больше 4-ёх символов"
@@ -33,9 +40,20 @@ const LoginForm = () => {
                         />
                     </label>
                     <input
+                        className={formError && `${mainStyles.inputError}`}
+                        {...register("userPassword", {
+                            required: "Заполните поле",
+                            minLength: {
+                                value: 8,
+                                message: "Пароль не меньше 8-ми символов"
+                            }
+                        })}
                         type="password"
                         placeholder="Пароль"
                     />
+                    {
+                        formError && <p className={mainStyles.alert}>{formError}</p>
+                    }
                         <p>Забыли пароль? <Link href="/auth/recovery">Восстановить</Link></p>
                 </div>
             </div>

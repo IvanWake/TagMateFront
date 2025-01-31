@@ -2,7 +2,7 @@
 import { useState, useRef, type KeyboardEvent } from "react";
 import styleInput from "../../../app/auth/confirm/confirm.module.css";
 
-const InputConfirmCode = () => {
+const InputConfirmCode = ({ submitHandler }: { submitHandler: () => }) => {
     const [confirmCode, setConfirmCode] = useState(["", "", "", ""])
     const inputRefs = [
         useRef<HTMLInputElement>(null),
@@ -28,22 +28,7 @@ const InputConfirmCode = () => {
     }
 
     return (
-        <div className={styleInput["input-group"]}>
-            {
-                confirmCode?.map((item, index) => (
-                    <input
-                        key={index}
-                        ref={inputRefs[index]}
-                        type="text"
-                        value={item}
-                        maxLength={1}
-                        autoComplete="one-time-code"
-                        onChange={(e) => onChangeHandler(index, e.target.value)}
-                        onKeyDown={(e) => onKeyDownHandler(index, e)}
-                    />
-                ))
-            }
-        </div>
+
     );
 }
 

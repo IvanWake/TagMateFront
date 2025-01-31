@@ -17,7 +17,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
 
         const values = getValues();
 
-        if (values.firstName && values.lastName && values.sex && values.birthday && values.city) {
+        if (values.name && values.lastName && values.gender && values.birthDay && values.city) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
@@ -27,8 +27,8 @@ const FirstStep = ({nextStep, stepId}: Step) => {
     const logUserDataHandler = () => {
         const values = getValues();
         cacheUserFormDataBySteps(stepId, {
-            firstName: values.firstName, lastName: values.lastName,
-            sex: values.sex, birthday: values.birthday, city: values.city
+            name: values.name, lastName: values.lastName,
+            gender: values.gender, birthDay: values.birthDay, city: values.city
         });
         nextStep();
     }
@@ -46,7 +46,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                     <div className={signupStyles.input}>
                         <label>Как тебя зовут?</label>
                         <input
-                            {...register('firstName', { required: "Это поле обязательно"})}
+                            {...register('name', { required: "Это поле обязательно"})}
                             type="text"
                             placeholder="Имя"
                             autoComplete="off"
@@ -77,18 +77,20 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                         <div className={signupStyles.icon}>
                             <img src="/icons/auth/calendar.svg" alt="Birth day"/>
                             <input
-                                {...register('birthday')}
+                                {...register('birthDay')}
                                 type="date"
                                 placeholder="15.09.2005"
                                 id="birthday"
-                                max={new Date().toISOString().split('T')[0]}
+                                max={new Date(new Date().getFullYear() - 14, new Date().getMonth(), new Date().getDate())
+                                    .toISOString()
+                                    .split("T")[0]}
                             />
                         </div>
 
                     </div>
                     <div className={signupStyles.input}>
                         <label>Выбери пол</label>
-                        <select className={signupStyles.select} {...register('sex')}>
+                        <select className={signupStyles.select} {...register('gender')}>
                             <option value="male">Мужской</option>
                             <option value="female">Женский</option>
                         </select>

@@ -11,15 +11,17 @@ import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
 import FourthStep from "@/components/SignUp/FourthStep/FourthStep";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
+import styleForm from "./signup.module.css";
 
 
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [categories, setCategories] = useState();
+    const [serverError, setServerError] = useState();
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
     }, {});
-    const methods = useForm({ mode: "onChange", defaultValues: defaultFormData });
+    const methods = useForm({ mode: "onTouched", defaultValues: defaultFormData });
     const router = useRouter();
 
     useEffect(() => {
@@ -39,26 +41,31 @@ const SignUp = () => {
         1: <FirstStep nextStep={nextStepHandler} stepId={currentStep} />,
         2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep} prevStep={prevStep} />,
         3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler} prevStep={prevStep} />,
-        4: <FourthStep prevStep={prevStep}/>,
+        4: <FourthStep prevStep={prevStep} serverError={serverError}/>,
     }
 
 
-    const submitHandler = async (data) => {
-        // const formData = new FormData();
-        // formData.append("name", "Ivashka");
-        // formData.append("lastName", "Ubivashka");
-        // formData.append("gender", "male");
-        // formData.append("birthDay", "2005-10-12");
-        // formData.append("city", "1900");
-        // formData.append("purpose", data.purpose);
-        // formData.append("avatar", data.avatar[0]);
-        // formData.append("interests", JSON.stringify(["🎨 Рисование"]));
-        // formData.append("email", "IvanKentVaska228@gmail.com");
-        // formData.append("password", "12345678");
-        // formData.append("repeatPassword", "12345678");
-        // userRegister(formData);
-        localStorage.setItem("confirmProcess", true);
-        localStorage.setItem("userMail", data.email);
+    const submitHandler = async (signupData) => {
+        const formData = new FormData();
+        formData.append("email", signupData.email);
+        formData.append("name", signupData.name);
+        formData.append("lastName", signupData.lastName);
+        formData.append("birthDay", signupData.birthDay);
+        formData.append("gender", signupData.gender);
+        formData.append("city", signupData.city);
+        formData.append("purpose", signupData.purpose);
+        formData.append("interests", JSON.stringify(signupData.interests));
+        formData.append("avatar", signupData.avatar[0]);
+        formData.append("password",signupData.password);
+        formData.append("repeatPassword",signupData.repeatPassword);
+        const res = await userRegister(formData);
+
+        if (res.message) {
+            setServerError(res.message);
+            return;
+        }
+        localStorage.setItem("confirmProcess", "true");
+        localStorage.setItem("userMail", signupData.email);
         router.push("/auth/confirm");
     }
 
@@ -66,7 +73,7 @@ const SignUp = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(submitHandler)}>
+                <form className={styleForm.form} onSubmit={methods.handleSubmit(submitHandler)}>
                     {
                         steps[currentStep]
                     }

@@ -1,17 +1,19 @@
-export async function POST(req: Request) {
+import { NextResponse, NextRequest} from "next/server";
+
+export async function POST(req: NextRequest) {
     const formData = await req.formData();
     console.log(formData);
-    const res = await fetch(`${process.env.TEST_NEXT_URL }/api/auth/registration`, {
+    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/auth/registration`, {
         method: "POST",
         body: formData
     })
 
     if (!res.ok) {
-        const err = await res.text();
-        console.error("Ответ сервера:", err);
-        return { status: res.status }
+        const error = await res.json();
+        return NextResponse.json(error, { status: res.status });
     }
 
+
     const data = await res.json();
-    return Response.json(data)
+    return NextResponse.json(data);
 }

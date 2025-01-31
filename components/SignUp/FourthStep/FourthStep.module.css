@@ -40,6 +40,15 @@
     gap: 10px;
 }
 
+.input-error  {
+    outline: 2px solid #FF8587 !important;
+}
+.input p {
+    color: #FF8587 !important;
+    font-size: 12px;
+    font-family: var(--font-inter);
+}
+
 .input ::placeholder {
     font-size: 14px;
     font-family: var(--font-unbounded);
