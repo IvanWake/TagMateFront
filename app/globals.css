@@ -7,3 +7,8 @@
 *:focus {
     outline: none;
 }
+
+input {
+    touch-action: manipulation !important;
+    font-size: 16px !important;
+}

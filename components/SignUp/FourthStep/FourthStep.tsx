@@ -4,7 +4,6 @@ import { useFormContext } from "react-hook-form";
 import signupStyles from "./FourthStep.module.css";
 
 const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
-    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const { register, getValues, formState: { errors, isValid }, watch } = useFormContext();
 
     return (
@@ -18,6 +17,7 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                     <div className={signupStyles.input}>
                         <label>Придумай пароль</label>
                         <input
+                            className={errors.password?.message && signupStyles["input-error"]}
                             {...register('password', {
                                 required: "Введите пароль",
                                 minLength: { value: 8, message: "Пароль не меньше 8-ми символов"}
@@ -27,6 +27,7 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                         />
                         { errors.password?.message && <p>{errors.password?.message}</p> }
                         <input
+                            className={errors.repeatPassword?.message && signupStyles["input-error"]}
                             {...register('repeatPassword', {
                                 required: "Повторите пароль",
                                 validate: value => value === getValues('password') || "Пароли не совпадают"
@@ -40,6 +41,7 @@ const FourthStep = ({ prevStep }: { prevStep: () => {} }) => {
                     <div className={signupStyles.input}>
                         <label>Введи почту, чтобы получить тег</label>
                         <input
+                            className={errors.email?.message && signupStyles["input-error"]}
                             {...register("email", {
                                 required: "Заполните E-mail",
                                 pattern: {

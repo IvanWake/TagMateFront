@@ -7,6 +7,7 @@ import { userLogin } from "@/services/auth";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 import LoginForm from "@/components/Auth/LoginForm";
 import LoginFooter from "@/components/Auth/LoginFooter";
+import mainStyles from "@/components/Auth/Login.module.css";
 
 
 const Page = () => {
@@ -28,7 +29,7 @@ const Page = () => {
     return (
         <NonAuthRoute>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(submitHandler)}>
+                <form className={mainStyles.form} onSubmit={methods.handleSubmit(submitHandler)}>
                     <LoginForm formError={formError} />
                     <LoginFooter />
                 </form>

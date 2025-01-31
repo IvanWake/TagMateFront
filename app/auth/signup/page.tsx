@@ -56,7 +56,9 @@ const SignUp = () => {
         formData.append("avatar", signupData.avatar[0]);
         formData.append("password",signupData.password);
         formData.append("repeatPassword",signupData.repeatPassword);
-        userRegister(formData);
+        const res = userRegister(formData);
+        if
+
         localStorage.setItem("confirmProcess", "true");
         localStorage.setItem("userMail", signupData.email);
         router.push("/auth/confirm");
