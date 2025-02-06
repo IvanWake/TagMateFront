@@ -34,11 +34,8 @@ const Page = () => {
 
                 if (result.status == 200) {
                     setUserProfileData(result.data);
-
-                    setCity(resCity);
                 } else {
                     router.push("/auth/welcome");
-                    console.log(result.status)
                 }
         }
 
@@ -50,27 +47,7 @@ const Page = () => {
 
     return (
         <NonAuthRoute>
-            <Header tag={userProfileData.serviceId} />
-            <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-            <main className={styles.main}>
-                <HeaderProfileInfo
-                    name={userProfileData.name}
-                    lastName={userProfileData.lastName}
-                    wasOnline={""}
-                />
-                <Stats
-                    mates={userProfileData.mates}
-                    friendlinessFactor={userProfileData.friendlinessFactor}
-                />
-                <UserBio
-                    gender={userProfileData.gender}
-                    city={userProfileData.city.city}
-                    birthDay={userProfileData.birthDay}
-                />
-                <Interests interests={userProfileData.interests} interestsList={interestsList}/>
-                <FamilyStatus />
-                <Gallery />
-            </main>
+            <h1>User profile</h1>
         </NonAuthRoute>
     );
 }

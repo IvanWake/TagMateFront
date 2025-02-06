@@ -6,6 +6,10 @@
     text-decoration: none;
 }
 
+.body a {
+    text-decoration: none;
+}
+
 .main {
     display: flex;
     flex-direction: column;

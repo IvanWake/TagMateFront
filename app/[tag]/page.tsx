@@ -24,18 +24,10 @@ const Page = ({ params }) => {
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
 
-            if (resultByTag.status === 404) {
-                router.push("/404");
-            } else {
-                if (resultByTag.status === 401) {
-                    router.push("/auth/welcome");
-                } else {
-                    if (result.data.serviceId === resultByTag.data.serviceId) {
-                        router.push("/");
-                    } else {
-                        setUserProfileData(resultByTag.data);
-                    }
-                }
+            console.log("Sosal", result);
+            console.log("Da", resultByTag);
+            if (result?.data.serviceId === resultByTag?.data.serviceId) {
+                router.push("/");
             }
         }
         fetchUserProfileDataHandler(tag);
@@ -45,27 +37,7 @@ const Page = ({ params }) => {
 
     return (
         <>
-            <Header tag={params.tag.toUpperCase()}/>
-            <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-            <main className="">
-                <HeaderProfileInfo
-                    name={userProfileData.name}
-                    lastName={userProfileData.lastName}
-                    wasOnline={""}
-                />
-                <Stats
-                    mates={userProfileData.mates}
-                    friendlinessFactor={userProfileData.friendlinessFactor}
-                />
-                <UserBio
-                    gender={userProfileData.gender}
-                    city={userProfileData.city}
-                    birthDay={userProfileData.birthDay}
-                />
-                <Interests/>
-                <FamilyStatus/>
-                <Gallery/>
-            </main>
+            <h1>По тегу</h1>
         </>
     );
 }

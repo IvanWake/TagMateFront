@@ -5,6 +5,12 @@
     padding: 0 30px;
 }
 
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .main {
     display: flex;
     flex-direction: column;

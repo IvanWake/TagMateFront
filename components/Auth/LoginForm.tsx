@@ -13,7 +13,7 @@ const LoginForm = ({formError}: {formError: string}) => {
                 <h1>Авторизация</h1>
                 <p>Добро пожаловать в TagMate</p>
             </div>
-            <div className={mainStyles.form}>
+            <div className={mainStyles.formDiv}>
                 <div className={mainStyles.input}>
                     <label htmlFor={mainStyles["user-tag"]}>
                         <div className={formError ? `${mainStyles.tag} ${mainStyles.inputError}` :

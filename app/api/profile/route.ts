@@ -11,7 +11,8 @@ export async function GET(req: Request ){
     });
 
     if (!res.ok) {
-        return NextResponse.json({ error: 'Profile not found' }, { status: res.status });
+        const error = await res.json();
+        return NextResponse.json(error || "User not found", { status: res.status });
 
     }
 
