@@ -7,6 +7,7 @@ const Error = () => {
                 {
                     display: "flex",
                     flexDirection: "column",
+                    gap: "20px",
                     fontSize: "150px",
                     justifyContent: "center",
                     alignItems: "center",
@@ -16,7 +17,7 @@ const Error = () => {
         >
             404
             <Link href="/">
-                <h1 style={{textDecoration: "none", fontSize: "36px", color: "#000"}}>Вернуться на главную</h1>
+                <h1 style={{textDecoration: "none", color: "#000", fontSize: "36px"}}>Вернуться на главную</h1>
             </Link>
         </div>
     );

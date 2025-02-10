@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
-import { deleteAuthToken } from "@/utils/authToken";
+import { getAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
-import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -15,17 +14,25 @@ const Page = ({ params }) => {
 
     useEffect(() => {
         const fetchUserProfileDataHandler = async (tag: string) => {
+            const isAuthToken = getAuthToken("authToken");
+            const confirmProcess = localStorage.getItem("confirmProcess");
+
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
 
-            if (result.status == 200 && resultByTag.status == 200) {
-                if (result?.data.serviceId === resultByTag?.data.serviceId) {
-                    router.push("/");
+            if (isAuthToken) {
+                if (result.status == 200 && resultByTag.status == 200) {
+                    if (result.data.serviceId === resultByTag.data.serviceId) {
+                        router.push("/");
+                    } else {
+                        setUserProfileData(resultByTag.data);
+                    }
                 } else {
-                    setUserProfileData(resultByTag.data);
+                    router.push("/404");
                 }
+            } else if (confirmProcess) {
+                router.push("/auth/confirm");
             } else {
-                deleteAuthToken("authToken");
                 router.push("/auth/welcome");
             }
 
@@ -36,9 +43,7 @@ const Page = ({ params }) => {
     if (!userProfileData) return <Loading/>
 
     return (
-        <NonAuthRoute>
-            <h1>По тегу</h1>
-        </NonAuthRoute>
+            <h1>По тегу {userProfileData.serviceId}</h1>
     );
 }
 

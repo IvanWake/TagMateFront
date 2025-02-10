@@ -30,7 +30,7 @@ const Page = () => {
 
     return (
         <NonAuthRoute>
-            <h1>User profile</h1>
+            <h1>{userProfileData.serviceId}</h1>
         </NonAuthRoute>
     );
 }

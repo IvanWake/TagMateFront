@@ -10,7 +10,6 @@ export const fetchUserProfileData = async () => {
 
         if (!res.ok) {
             const err = await res.json();
-            console.log(err);
             return { status: err.status };
         }
 

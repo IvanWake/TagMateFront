@@ -10,7 +10,6 @@ export const fetchUserProfileDataByTag = async (tag: string) => {
 
         if (!res.ok) {
             const err = await res.json();
-            console.log(err);
             return { status: err.status }
         }
 
