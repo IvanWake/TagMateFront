@@ -1,4 +1,4 @@
-import { setAuthToken } from "@/utils/authToken/setAuthToken";
+import { setAuthToken } from "@/utils/authToken";
 
 export const userLogin = async (tag: string, password: string)=> {
     try {

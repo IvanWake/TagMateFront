@@ -1,4 +1,4 @@
-import { getAuthToken } from "@/utils/authToken/getAuthToken";
+import { getAuthToken } from "@/utils/authToken";
 
 export const fetchUserProfileDataByTag = async (tag: string) => {
     const authToken = getAuthToken("authToken");
@@ -9,11 +9,13 @@ export const fetchUserProfileDataByTag = async (tag: string) => {
         });
 
         if (!res.ok) {
-            return { status: res.status }
+            const err = await res.json();
+            console.log(err);
+            return { status: err.status }
         }
 
         const data = await res.json();
-        return { data: data.userData };
+        return { data: data.userData, status: res.status};
     } catch (err) {
         return { error: err };
     }

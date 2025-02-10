@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, ReactNode, useState } from "react";
-import { getAuthToken } from "@/utils/authToken/getAuthToken";
+import { getAuthToken } from "@/utils/authToken";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Layout/Loading";
 

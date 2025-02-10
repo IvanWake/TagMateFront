@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(req: Request, { params }){
+export async function GET(req: NextRequest, { params }){
     const { tag } = params;
     const authToken = req.headers.get('Authorization')?.split(' ')[1];
 
-    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/${tag}`, {
+    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/profile/${tag}`, {
         method: "GET",
         cache: "no-store",
         headers: {
@@ -13,7 +13,7 @@ export async function GET(req: Request, { params }){
     });
 
     if (!res.ok) {
-        return NextResponse.json("Error", { status: res.status });
+        return NextResponse.json(res, { status: res.status });
     }
 
     const data = await res.json();
