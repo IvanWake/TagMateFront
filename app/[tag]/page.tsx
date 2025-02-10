@@ -23,9 +23,6 @@ const Page = ({ params }) => {
         const fetchUserProfileDataHandler = async (tag: string) => {
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
-
-            console.log("Sosal", result);
-            console.log("Da", resultByTag);
             if (result?.data.serviceId === resultByTag?.data.serviceId) {
                 router.push("/");
             }
