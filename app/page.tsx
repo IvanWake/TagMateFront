@@ -38,8 +38,6 @@ const Page = () => {
             <HeaderSummary />
             <ProfileHero />
             <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
-            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
-            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
         </NonAuthRoute>
     );
 }

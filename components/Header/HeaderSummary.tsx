@@ -1,8 +1,10 @@
+'use client';
+
+import { useEffect } from "react";
 import "./HeaderSummary.css";
 const HeaderSummary = () => {
-
-    document.addEventListener("DOMContentLoaded", function () {
-        function checkScroll() {
+    useEffect(() => {
+        const checkScroll = () => {
             const avatar = document.getElementById("profile");
             const miniHeader = document.getElementById("heading");
             const avatarRect = avatar.getBoundingClientRect();
@@ -14,8 +16,9 @@ const HeaderSummary = () => {
             }
         }
 
-        window.addEventListener("scroll", checkScroll);
-    });
+            window.addEventListener("scroll", checkScroll);
+    },[])
+
 
     return (
         <section className="heading-profile-summary" id="heading">
