@@ -6,6 +6,10 @@ import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { deleteAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
+import Header from "@/components/Header/Header";
+import HeaderSummary from "@/components/Header/HeaderSummary";
+import ProfileHero from "@/components/Profile/ProfileHero";
+import ProfileContent from "@/components/Profile/ProfileContent";
 
 const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -30,7 +34,12 @@ const Page = () => {
 
     return (
         <NonAuthRoute>
-            <h1>{userProfileData.serviceId}</h1>
+            <Header />
+            <HeaderSummary />
+            <ProfileHero />
+            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
+            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
+            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
         </NonAuthRoute>
     );
 }

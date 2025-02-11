@@ -1,0 +1,76 @@
+.user-tag-wrapper {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    border-radius: 20px;
+    border: 4px solid transparent;
+    background-attachment: fixed;
+    background-image: linear-gradient(90deg, #9CABFF 25.61%, #FFA8DB 98.77%);
+}
+
+.user-tag-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(90deg, #E1E5FF 0%, #FFE1FF 100%);
+}
+
+.user-tag-container .tag-icon {
+    position: absolute;
+    top: 50%;
+    left: 19px;
+    transform: translate(-50%, -50%);
+}
+
+.user-tag-container .user-tag {
+    position: absolute;
+    top: 50%;
+    left: 70px;
+    transform: translate(0%, -50%);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #5465C2;
+}
+
+.user-status-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-status-section .status-display {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border-radius: 20px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg, #F7F7F7 56%, #ffa8db33 100%);
+}
+
+.section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.status-display .status-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.status-display .status-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    right: 0px;
+    top: 0px;
+}
