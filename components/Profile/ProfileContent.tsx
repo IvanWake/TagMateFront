@@ -7,7 +7,7 @@ const ProfileContent = ({ tag, purpose }) => {
         <main className={profileContentStyles["profile-content"]}>
             <section className={profileContentStyles["profile-details"]}>
                 <UserTag tag={tag} />
-                { purpose !== "none"  && <UserPurpose purpose={"relationship"}/> }
+                { purpose !== "none"  && <UserPurpose purpose={purpose}/> }
             </section>
         </main>
     );

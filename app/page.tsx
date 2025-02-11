@@ -18,7 +18,6 @@ const Page = () => {
     useEffect(() => {
         const fetchUserProfileDataHandler = async () => {
             const result = await fetchUserProfileData();
-
                 if (result.status == 200) {
                     setUserProfileData(result.data);
                 } else {
@@ -26,7 +25,6 @@ const Page = () => {
                     router.push("/auth/welcome");
                 }
         }
-
         fetchUserProfileDataHandler();
     }, []);
 
@@ -36,7 +34,13 @@ const Page = () => {
         <NonAuthRoute>
             <Header />
             <HeaderSummary />
-            <ProfileHero />
+            <ProfileHero
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+                city={userProfileData.city.city}
+                avatar={userProfileData.avatar}
+                birthDay={userProfileData.birthDay}
+            />
             <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
         </NonAuthRoute>
     );

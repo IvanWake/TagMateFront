@@ -17,3 +17,11 @@ export type ProfileContent = {
     images: Image[],
     socials: Social[]
 }
+
+export type PersonalData = {
+    name: string,
+    lastName: string,
+    avatar: string,
+    city: string,
+    birthDay: Date
+}
