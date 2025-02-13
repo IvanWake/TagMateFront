@@ -46,6 +46,7 @@ const Page = () => {
                 purpose={userProfileData.purpose}
                 interests={userProfileData.interests}
                 socials={userProfileData.socials}
+                images={userProfileData.images}
             />
         </>
     );

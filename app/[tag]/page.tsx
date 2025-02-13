@@ -6,6 +6,10 @@ import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
 import { getAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
+import Header from "@/components/Header/Header";
+import HeaderSummary from "@/components/Header/HeaderSummary";
+import ProfileHero from "@/components/Profile/ProfileHero";
+import ProfileContent from "@/components/Profile/ProfileContent";
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -43,7 +47,24 @@ const Page = ({ params }) => {
     if (!userProfileData) return <Loading/>
 
     return (
-            <h1>По тегу {userProfileData.serviceId}</h1>
+        <>
+            <Header />
+            <HeaderSummary avatar={userProfileData.avatar} />
+            <ProfileHero
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+                city={userProfileData.city.city}
+                avatar={userProfileData.avatar}
+                birthDay={userProfileData.birthDay}
+            />
+            <ProfileContent
+                tag={userProfileData.serviceId}
+                purpose={userProfileData.purpose}
+                interests={userProfileData.interests}
+                socials={userProfileData.socials}
+                images={userProfileData.images}
+            />
+        </>
     );
 }
 
