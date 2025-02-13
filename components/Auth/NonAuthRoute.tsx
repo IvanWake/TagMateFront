@@ -22,7 +22,7 @@ const NonAuthRoute = (props: Props) => {
             const confirmProcess = localStorage.getItem("confirmProcess");
 
             if (isAuthToken) {
-                router.push("/");
+                window.location.replace("/");
             } else if (confirmProcess) {
                 router.push("/auth/confirm");
             }

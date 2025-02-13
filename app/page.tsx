@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
-import { deleteAuthToken } from "@/utils/authToken";
+import {deleteAuthToken, getAuthToken} from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 import Header from "@/components/Header/Header";
@@ -18,6 +18,7 @@ const Page = () => {
     useEffect(() => {
         const fetchUserProfileDataHandler = async () => {
             const result = await fetchUserProfileData();
+            console.log(result);
                 if (result.status == 200) {
                     setUserProfileData(result.data);
                 } else {
@@ -31,7 +32,7 @@ const Page = () => {
     if (!userProfileData) return <Loading />
 
     return (
-        <NonAuthRoute>
+        <>
             <Header />
             <HeaderSummary />
             <ProfileHero
@@ -42,7 +43,7 @@ const Page = () => {
                 birthDay={userProfileData.birthDay}
             />
             <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
-        </NonAuthRoute>
+        </>
     );
 }
 
