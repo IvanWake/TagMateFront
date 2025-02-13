@@ -1,0 +1,48 @@
+.user-interests {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 15px;
+}
+
+.section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.interests-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    padding: 0px;
+    gap: 8px;
+}
+
+.interest-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px 8px 12px;
+    gap: 4px;
+    height: 38px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 100px;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.interest-item:hover {
+    scale: .95;
+}
+
+.interest-name {
+    font-family: var(--font-inter);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.416px;
+}

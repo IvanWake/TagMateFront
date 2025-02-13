@@ -10,7 +10,7 @@ type Image = {
     path: string
 }
 
-export type ProfileContent = {
+export type ProfileData = {
     tag: string
     interests: Interest[],
     purpose: string,

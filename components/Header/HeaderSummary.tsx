@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import "./HeaderSummary.css";
-const HeaderSummary = () => {
+const HeaderSummary = ({ avatar }: { avatar: string }) => {
     useEffect(() => {
         const checkScroll = () => {
             const avatar = document.getElementById("profile");
@@ -22,7 +22,7 @@ const HeaderSummary = () => {
 
     return (
         <section className="heading-profile-summary" id="heading">
-            <img src="/icons/tagmate-min.svg" alt="profile image" className="profile-thumbnail"/>
+            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${avatar}`} alt="profile image" className="profile-thumbnail"/>
                 <div className="profile-summary">
                     <div className="user-location">Москва</div>
                     <div className="user-name">Сергей Андрианов</div>

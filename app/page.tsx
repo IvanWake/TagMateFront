@@ -34,7 +34,7 @@ const Page = () => {
     return (
         <>
             <Header />
-            <HeaderSummary />
+            <HeaderSummary avatar={userProfileData.avatar} />
             <ProfileHero
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
@@ -42,7 +42,11 @@ const Page = () => {
                 avatar={userProfileData.avatar}
                 birthDay={userProfileData.birthDay}
             />
-            <ProfileContent tag={userProfileData.serviceId} purpose={userProfileData.purpose}/>
+            <ProfileContent
+                tag={userProfileData.serviceId}
+                purpose={userProfileData.purpose}
+                interests={userProfileData.interests}
+            />
         </>
     );
 }
