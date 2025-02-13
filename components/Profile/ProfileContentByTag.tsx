@@ -5,8 +5,9 @@ import InterestList from "@/components/Interests/InterestList";
 import SocialLinksList from "@/components/Socials/SocialLinksList";
 import profileContentStyles from "./Profile.module.css";
 import Gallery from "@/components/Gallery/Gallery";
+import DangerZone from "@/components/DangerZone/DangerZone";
 
-const ProfileContent = ({ tag, purpose, interests, socials, images, isShowSocials }: ProfileData) => {
+const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowSocials }: ProfileData) => {
     return (
         <main className={profileContentStyles["profile-content"]}>
             <section className={profileContentStyles["profile-details"]}>
@@ -15,9 +16,10 @@ const ProfileContent = ({ tag, purpose, interests, socials, images, isShowSocial
                 <InterestList interests={interests} />
                 {isShowSocials && <SocialLinksList socials={socials}/>}
                 <Gallery images={images} />
+                <DangerZone />
             </section>
         </main>
     );
 }
 
-export default ProfileContent;
+export default ProfileContentByTag;

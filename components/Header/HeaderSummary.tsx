@@ -2,7 +2,14 @@
 
 import { useEffect } from "react";
 import "./HeaderSummary.css";
-const HeaderSummary = ({ avatar }: { avatar: string }) => {
+
+type Props = {
+    avatar: string,
+    name: string,
+    lastName: string
+}
+
+const HeaderSummary = ({ avatar, name, lastName }: Props) => {
     useEffect(() => {
         const checkScroll = () => {
             const avatar = document.getElementById("profile");
@@ -25,7 +32,7 @@ const HeaderSummary = ({ avatar }: { avatar: string }) => {
             <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${avatar}`} alt="profile image" className="profile-thumbnail"/>
                 <div className="profile-summary">
                     <div className="user-location">Москва</div>
-                    <div className="user-name">Сергей Андрианов</div>
+                    <div className="user-name">{`${name} ${lastName}`}</div>
                     {/*<div className="user-status">*/}
                     {/*    <div className="status-indicator"></div>*/}
                     {/*    <span>В сети</span>*/}

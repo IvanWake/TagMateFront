@@ -14,7 +14,7 @@ export const fetchUserProfileDataByTag = async (tag: string) => {
         }
 
         const data = await res.json();
-        return { data: data.userData, status: res.status};
+        return { data: data, status: res.status};
     } catch (err) {
         return { error: err };
     }

@@ -1,0 +1,38 @@
+.user-danger-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.danger-actions {
+    display: flex;
+}
+
+.danger-item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: #FF8587;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 12px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.danger-actions:hover {
+    cursor: pointer;
+}

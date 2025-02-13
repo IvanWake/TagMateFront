@@ -16,6 +16,7 @@ export type ProfileData = {
     purpose: string,
     images: Image[],
     socials: Social[]
+    isShowSocials?: boolean
 }
 
 export type PersonalData = {

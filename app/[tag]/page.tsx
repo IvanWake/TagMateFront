@@ -10,9 +10,12 @@ import Header from "@/components/Header/Header";
 import HeaderSummary from "@/components/Header/HeaderSummary";
 import ProfileHero from "@/components/Profile/ProfileHero";
 import ProfileContent from "@/components/Profile/ProfileContent";
+import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
+    const [userPrivacyData, setUserPrivacyData] = useState(null);
+    const [userOptionsData, setUserOptionsData] = useState(null);
     const { tag } = params;
     const router = useRouter();
 
@@ -26,10 +29,12 @@ const Page = ({ params }) => {
 
             if (isAuthToken) {
                 if (result.status == 200 && resultByTag.status == 200) {
-                    if (result.data.serviceId === resultByTag.data.serviceId) {
+                    if (result.data.serviceId === resultByTag.data.userData.serviceId) {
                         router.push("/");
                     } else {
-                        setUserProfileData(resultByTag.data);
+                        setUserProfileData(resultByTag.data.userData);
+                        setUserPrivacyData(resultByTag.data.privacyPolicy);
+                        setUserOptionsData(resultByTag.data.options);
                     }
                 } else {
                     router.push("/404");
@@ -49,7 +54,11 @@ const Page = ({ params }) => {
     return (
         <>
             <Header />
-            <HeaderSummary avatar={userProfileData.avatar} />
+            <HeaderSummary
+                avatar={userProfileData.avatar}
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+            />
             <ProfileHero
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
@@ -57,7 +66,8 @@ const Page = ({ params }) => {
                 avatar={userProfileData.avatar}
                 birthDay={userProfileData.birthDay}
             />
-            <ProfileContent
+            <ProfileContentByTag
+                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
                 tag={userProfileData.serviceId}
                 purpose={userProfileData.purpose}
                 interests={userProfileData.interests}
