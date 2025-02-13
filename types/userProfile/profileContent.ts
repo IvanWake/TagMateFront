@@ -1,11 +1,11 @@
 import { Interest } from "@/types/signup/steps";
 
-type Social = {
+export type Social = {
     social: string,
     link: string
 }
 
-type Image = {
+export type Image = {
     id: string,
     path: string
 }
