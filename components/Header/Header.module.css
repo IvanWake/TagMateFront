@@ -1,112 +1,66 @@
-.header {
-    position: sticky;
+.app-header {
+    max-width: 572px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Unbounded';
+    z-index: 100;
+    background: #ffffff;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 105;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    border-bottom: 1px solid #dcdcdc;
-    background-color: #FFFFFF;
-    height: 48px;
-}
-
-.header .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1;
-    margin: .5rem;
+    padding: 0 30px;
+    height: 60px;
 }
 
-.header-content>div {
+.app-branding {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 10px;
 }
 
-.profile-image {
-    position: sticky;
-    top: 48.8px;
-    width: 100%;
-    min-width: 300px;
-    min-height: 300px;
-    aspect-ratio: 1 / 1;
-}
-
-.profile-image img {
-    width: 100%;
-    min-width: 300px;
-    min-height: 300px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    overflow: hidden;
-}
-
-
-.profile-header-image {
-    width: 32px;
-    height: 32px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.profile-header-info {
+.app-branding .app-logo {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #000000;
 }
 
-.profile-header-info .profile-name {
-    font-size: 0.8em;
-    font-weight: 500;
+.app-branding .app-logo img {
+    width: 32px;
 }
 
-.profile-header-info .profile-online {
-    font-size: 0.75em;
-    font-weight: 300;
-    opacity: 0.9;
+.app-header .app-menu {
+    display: flex;
+    gap: 8px;
 }
 
-.profile-info .profile-name {
-    font-size: 1.05em;
-    font-weight: 500;
-}
-
-.profile-info .profile-online {
-    font-size: 0.85em;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-.button {
+.app-menu .menu-item {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.tag {
-    background-color: #e9edff;
-    padding: 0.25rem;
-    border-radius: 0.5rem;
-}
-
-.tag-div:hover {
+    height: 32px;
+    width: 32px;
+    color: #a1a1a1;
+    transition: all .3s ease;
     cursor: pointer;
 }
 
-.button>img {
-    transition: all .3s ease;
+.menu-item:hover {
+    scale: .9;
 }
 
-.button:hover>img {
-    transform: scale(1.1);
+.app-menu .notification-icon {
+    position: relative;
 }
 
-.button:active>img {
-    transform: scale(0.9);
+.app-menu .notification-icon.active::after {
+    position: absolute;
+    content: '';
+    background: #FF5F62;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    top: 6px;
+    right: 6px;
 }

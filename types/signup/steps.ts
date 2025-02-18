@@ -11,7 +11,8 @@ export type Category = {
 }
 
 export type Interest = {
-    category_id: number,
+    _id: string,
+    category_id: string,
     id: number,
     name: string
 }

@@ -4,39 +4,47 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
 import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
-import Header from "@/components/Header/Header";
-import HeaderProfile from "@/components/Header/HeaderProfile";
-import Stats from "@/components/Stats/Stats";
-import UserBio from "@/components/UserBio/UserBio";
-import Interests from "@/components/Interests/Interests";
-import FamilyStatus from "@/components/FamilyStatus/FamilyStatus";
-import Gallery from "@/components/Gallery/Gallery";
-import HeaderProfileInfo from "@/components/Header/HeaderProfileInfo";
+import { getAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
+import Header from "@/components/Header/Header";
+import HeaderSummary from "@/components/Header/HeaderSummary";
+import ProfileHero from "@/components/Profile/ProfileHero";
+import ProfileContent from "@/components/Profile/ProfileContent";
+import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
+    const [userPrivacyData, setUserPrivacyData] = useState(null);
+    const [userOptionsData, setUserOptionsData] = useState(null);
     const { tag } = params;
     const router = useRouter();
 
     useEffect(() => {
         const fetchUserProfileDataHandler = async (tag: string) => {
+            const isAuthToken = getAuthToken("authToken");
+            const confirmProcess = localStorage.getItem("confirmProcess");
+
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
 
-            if (resultByTag.status === 404) {
-                router.push("/404");
-            } else {
-                if (resultByTag.status === 401) {
-                    router.push("/auth/welcome");
-                } else {
-                    if (result.data.serviceId === resultByTag.data.serviceId) {
+            if (isAuthToken) {
+                if (result.status == 200 && resultByTag.status == 200) {
+                    if (result.data.serviceId === resultByTag.data.userData.serviceId) {
                         router.push("/");
                     } else {
-                        setUserProfileData(resultByTag.data);
+                        setUserProfileData(resultByTag.data.userData);
+                        setUserPrivacyData(resultByTag.data.privacyPolicy);
+                        setUserOptionsData(resultByTag.data.options);
                     }
+                } else {
+                    router.push("/404");
                 }
+            } else if (confirmProcess) {
+                router.push("/auth/confirm");
+            } else {
+                router.push("/auth/welcome");
             }
+
         }
         fetchUserProfileDataHandler(tag);
     }, [tag]);
@@ -45,27 +53,27 @@ const Page = ({ params }) => {
 
     return (
         <>
-            <Header tag={params.tag.toUpperCase()}/>
-            <HeaderProfile name={userProfileData.name} lastName={userProfileData.lastName} wasOnline={""}/>
-            <main className="">
-                <HeaderProfileInfo
-                    name={userProfileData.name}
-                    lastName={userProfileData.lastName}
-                    wasOnline={""}
-                />
-                <Stats
-                    mates={userProfileData.mates}
-                    friendlinessFactor={userProfileData.friendlinessFactor}
-                />
-                <UserBio
-                    gender={userProfileData.gender}
-                    city={userProfileData.city}
-                    birthDay={userProfileData.birthDay}
-                />
-                <Interests/>
-                <FamilyStatus/>
-                <Gallery/>
-            </main>
+            <Header />
+            <HeaderSummary
+                avatar={userProfileData.avatar}
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+            />
+            <ProfileHero
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+                city={userProfileData.city.city}
+                avatar={userProfileData.avatar}
+                birthDay={userProfileData.birthDay}
+            />
+            <ProfileContentByTag
+                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
+                tag={userProfileData.serviceId}
+                purpose={userProfileData.purpose}
+                interests={userProfileData.interests}
+                socials={userProfileData.socials}
+                images={userProfileData.images}
+            />
         </>
     );
 }

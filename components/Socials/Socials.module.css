@@ -1,0 +1,40 @@
+.user-social-media {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.social-media-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-media-item {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    gap: 10px;
+    background: #F9F9F9;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    transition: all .3s ease;
+
+}
+
+.social-media-item:active {
+    scale: .98;
+}
+

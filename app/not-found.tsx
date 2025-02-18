@@ -20,7 +20,6 @@ const Error = () => {
                 <h1 style={{textDecoration: "none", color: "#000", fontSize: "36px"}}>Вернуться на главную</h1>
             </Link>
         </div>
-
     );
 }
 

@@ -22,7 +22,7 @@ const Page = () => {
             setFormError(res.message);
             return;
         }
-        router.push("/");
+        window.location.replace("/");
 
     }
 

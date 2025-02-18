@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, ReactNode, useState } from "react";
-import { getAuthToken } from "@/utils/authToken/getAuthToken";
+import { getAuthToken } from "@/utils/authToken";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Layout/Loading";
 
@@ -22,7 +22,7 @@ const NonAuthRoute = (props: Props) => {
             const confirmProcess = localStorage.getItem("confirmProcess");
 
             if (isAuthToken) {
-                router.push("/");
+                window.location.replace("/");
             } else if (confirmProcess) {
                 router.push("/auth/confirm");
             }

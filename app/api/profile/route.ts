@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(req: Request ){
+export async function GET(req: NextRequest ){
     const authToken = req.headers.get('authorization')?.split(' ')[1];
 
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/profile`, {
@@ -11,7 +11,7 @@ export async function GET(req: Request ){
     });
 
     if (!res.ok) {
-        return NextResponse.json({ error: 'Profile not found' }, { status: res.status });
+        return NextResponse.json(res || "User not found", { status: res.status });
 
     }
 

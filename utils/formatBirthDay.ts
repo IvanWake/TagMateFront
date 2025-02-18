@@ -18,5 +18,5 @@ export const formatBirthDay = (birthDay: string) => {
 
     const formattedBirthDay = `${birthDate.format('D MMM YYYY')} (${yearsOld} ${yearsOldString})`;
 
-    return formattedBirthDay;
+    return { formattedBirthDay, yearsOld };
 };
