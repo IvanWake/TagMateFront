@@ -10,9 +10,10 @@ import HeaderSummary from "@/components/Header/HeaderSummary";
 import ProfileHero from "@/components/Profile/ProfileHero";
 import ProfileContent from "@/components/Profile/ProfileContent";
 
-const Page = () => {
+const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
     const router = useRouter();
+    const { tag } = params;
 
     useEffect(() => {
         const fetchUserProfileDataHandler = async () => {
@@ -33,7 +34,11 @@ const Page = () => {
     return (
         <>
             <Header />
-            <HeaderSummary avatar={userProfileData.avatar} />
+            <HeaderSummary
+                name={userProfileData.name}
+                lastName={userProfileData.lastName}
+                avatar={userProfileData.avatar}
+            />
             <ProfileHero
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
@@ -42,6 +47,7 @@ const Page = () => {
                 birthDay={userProfileData.birthDay}
             />
             <ProfileContent
+                isShowSocials={true}
                 tag={userProfileData.serviceId}
                 purpose={userProfileData.purpose}
                 interests={userProfileData.interests}
