@@ -60,6 +60,7 @@ const Page = ({ params }) => {
                 lastName={userProfileData.lastName}
             />
             <ProfileHero
+                isUserByTag={true}
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
                 city={userProfileData.city.city}
