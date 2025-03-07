@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "."
-          target: "/var/www/tagmate.ru"
+          target: "/var/www/tag-mate.ru"
 
       - name: Перезапускаем сервер
         uses: appleboy/ssh-action@v0.1.7
@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/tagmate.ru
+            cd /var/www/tag-mate.ru
             npm install 
             npm audit fix --force
             /root/.nvm/versions/node/v22.13.1/bin/pm2 restart front
