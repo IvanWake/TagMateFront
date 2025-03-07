@@ -31,4 +31,4 @@ jobs:
             cd /var/www/tag-mate.ru
             npm install 
             npm audit fix --force
-            /root/.nvm/versions/node/v22.13.1/bin/pm2 restart front
+            /root/.nvm/versions/node/v22.13.1/bin/pm2 restart Frontend
