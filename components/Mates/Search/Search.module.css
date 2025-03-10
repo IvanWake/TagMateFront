@@ -1,0 +1,26 @@
+.searchInput {
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+    margin-top: 60px;
+    padding: 0 30px;
+}
+
+.searchInputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #F1F1F1;
+    border-radius: 15px;
+    color: #4E4E4E;
+}
+
+.searchInputWrapper input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    appearance: none;
+    color: #4E4E4E;
+}

@@ -1,0 +1,55 @@
+.mates {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.matesList {
+    display: flex;
+    flex-direction: column;
+}
+
+.userItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 30px;
+    transition: all 0.25s ease-out;
+}
+
+.userItem:hover {
+    background: #00000010;
+}
+
+.userPicture {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.userName {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+
+.userDescription {
+    font-weight: 400;
+    font-size: 10px;
+    color: #797979;
+}
+
+.sectionTitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0 30px;
+}
