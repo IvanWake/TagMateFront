@@ -2,7 +2,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - dev
+      - dev # Ветка
 
 jobs:
   deploy:
