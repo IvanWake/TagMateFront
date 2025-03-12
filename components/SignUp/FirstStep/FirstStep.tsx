@@ -40,7 +40,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
             <main className={signupStyles.main}>
                 <div className={signupStyles.hero}>
                     <h1>Создание профиля</h1>
-                    <p>Расскажи немного о себе, чтобы ты мог знакомиться с другими пользователями</p>
+                    <p>Расскажите немного о себе, чтобы люди смогли вас познать</p>
                 </div>
                 <div className={signupStyles.form}>
                     <div className={signupStyles.input}>
@@ -59,7 +59,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                         />
                     </div>
                     <div className={signupStyles.input}>
-                        <label>Из какого ты города?</label>
+                        <label>Из какого вы города?</label>
                         <div className={signupStyles.icon}>
                             <img src="/icons/auth/city.svg" alt="City"/>
                             <select
