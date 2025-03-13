@@ -14,6 +14,7 @@ const ProfileContent = ({ tag, purpose, interests, socials, images, isShowSocial
                 { purpose !== "none"  && <UserPurpose purpose={purpose}/> }
                 <InterestList interests={interests} />
                 { isShowSocials && socials.length > 0 &&  <SocialLinksList socials={socials}/> }
+                <Gallery images={images} />
             </section>
         </main>
     );
