@@ -10,10 +10,10 @@ const MatesMain = () => {
                 <Search />
 
                 {/* Список мейтов */}
-                {/* <Mates /> */}
+                 <Mates />
 
                 {/* Результаты поиска */}
-                <SearchUsers />
+                {/*<SearchUsers />*/}
             </div>
         </main>
     );

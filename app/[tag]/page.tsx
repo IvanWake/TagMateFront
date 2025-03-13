@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
-import { fetchUserProfileDataByTag } from "@/utils/fetchUserProfileDataByTag";
+import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
+import { fetchUserProfileDataByTag } from "@/utils/fetchUserData/fetchUserProfileDataByTag";
 import { getAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";

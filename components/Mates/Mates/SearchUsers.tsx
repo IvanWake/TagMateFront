@@ -1,5 +1,5 @@
 import mainStyles from "./Mates.module.css";
-import MatesList from "./MatesList";
+import UsersList from "./UsersList";
 
 const Mates = () => {
     return (
@@ -7,7 +7,7 @@ const Mates = () => {
             <section className={mainStyles.mates}>
                 <div className={mainStyles.sectionTitle}>Результаты поиска</div>
                 {/* Если найдены: */}
-                {/* <MatesList /> */}
+                {/* <UsersList /> */}
 
                 {/* Если НЕ найдены: */}
                 <div className={mainStyles.matesText}>По вашему запросу ничего не найдено.</div>

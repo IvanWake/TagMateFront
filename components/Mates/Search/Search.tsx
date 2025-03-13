@@ -8,7 +8,7 @@ const Search = () => {
                     <svg width="20" height="20">
                         <use href="#icon-search"></use>
                     </svg>
-                    <input type="search" placeholder="По имени или тегу" />
+                    <input type="search" placeholder="Поиск" />
                 </div>
             </section>
 

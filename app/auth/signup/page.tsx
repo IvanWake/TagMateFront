@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { userRegister } from "@/services/auth";
-import { fetchInterests } from "@/utils/fetchInterests";
+import { fetchInterests } from "@/utils/fetchUserData/fetchInterests";
 import { getCurrentStep } from "@/utils/cacheUserFormDataBySteps";
 import FirstStep from "@/components/SignUp/FirstStep/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep/SecondStep";

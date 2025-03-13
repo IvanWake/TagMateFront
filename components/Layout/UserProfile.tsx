@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
+import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
 import { deleteAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import NonAuthRoute from "@/components/Auth/NonAuthRoute";

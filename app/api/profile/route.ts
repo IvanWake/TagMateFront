@@ -12,7 +12,6 @@ export async function GET(req: NextRequest ){
 
     if (!res.ok) {
         return NextResponse.json(res || "User not found", { status: res.status });
-
     }
 
     const data = await res.json();
