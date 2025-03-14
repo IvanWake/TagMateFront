@@ -1,9 +1,22 @@
+import { UserItemSearch } from "@/types/mates/userItem";
 import mainStyles from "./Mates.module.css";
+import User from "@/components/Mates/Mates/User";
 
-const UsersList = () => {
+const UsersList = ({ userItems }: UserItemSearch<{ city: string, id: number, region: string }>) => {
     return (
         <div className={mainStyles.matesList}>
-        {/*    Тут массив отрисовывешь и пробрасываешь пропсы в комопнент Mate условно*/}
+            {
+                userItems?.map((userItem) => (
+                    <User
+                        name={userItem.name}
+                        lastName={userItem.lastName}
+                        city={userItem.city.city}
+                        avatar={userItem.avatar}
+                        serviceId={userItem.serviceId}
+                        birthDay={userItem.birthDay}
+                    />
+                ))
+            }
         </div>
     );
 };

@@ -8,10 +8,7 @@ const MatesMain = () => {
         <main className={matesMainStyles.main}>
             <div className={matesMainStyles.mainСontent}>
                 <Search />
-
-                {/* Список мейтов */}
-                 <Mates />
-
+                <Mates />
                 {/* Результаты поиска */}
                 {/*<SearchUsers />*/}
             </div>
