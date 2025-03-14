@@ -9,7 +9,7 @@ const SearchPage = () => {
         <AuthRoute>
             <Header />
             <MatesMain />
-            {/* <TabBar /> */}
+            {/*<TabBar />*/}
         </AuthRoute>
     );
 }

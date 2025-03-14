@@ -54,6 +54,12 @@
     padding: 0 30px;
 }
 
+.matesTitle {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 20px;
+}
+
 .matesText {
     font-family: var(--font-inter);
     font-weight: 600;

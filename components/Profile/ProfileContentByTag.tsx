@@ -8,14 +8,15 @@ import Gallery from "@/components/Gallery/Gallery";
 import DangerZone from "@/components/DangerZone/DangerZone";
 
 const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowSocials }: ProfileData) => {
+    console.log(images);
     return (
         <main className={profileContentStyles["profile-content"]}>
             <section className={profileContentStyles["profile-details"]}>
                 <UserTag tag={tag} />
                 { purpose !== "none"  && <UserPurpose purpose={purpose}/> }
                 <InterestList interests={interests} />
-                {isShowSocials && <SocialLinksList socials={socials}/>}
-                <Gallery images={images} />
+                { isShowSocials && socials.length > 0 &&  <SocialLinksList socials={socials}/> }
+                {images.length > 0 && <Gallery images={images} />}
                 <DangerZone />
             </section>
         </main>
