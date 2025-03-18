@@ -1,6 +1,7 @@
 import { PersonalData } from "@/types/userProfile/profileContent";
 import { formatBirthDay } from "@/utils/formatBirthDay";
 import profileHero from "./Profile.module.css";
+import AddMate from "@/components/Profile/AddMate/AddMate";
 
 const ProfileHero = ({ name, lastName, avatar, city, birthDay, isUserByTag }: PersonalData) => {
     return (
@@ -14,9 +15,7 @@ const ProfileHero = ({ name, lastName, avatar, city, birthDay, isUserByTag }: Pe
                     {/*    <span>В сети</span>*/}
                     {/*</div>*/}
                     {
-                        isUserByTag && <div className={`${profileHero["user-mate-menu"]}`}>
-                            <div className={`${profileHero["user-add-mate"]}`}>Добавить в мейты</div>
-                        </div>
+                        isUserByTag && <AddMate />
                     }
                 </div>
         </section>

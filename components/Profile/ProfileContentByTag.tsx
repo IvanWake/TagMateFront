@@ -16,7 +16,7 @@ const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowS
                 { purpose !== "none"  && <UserPurpose purpose={purpose}/> }
                 <InterestList interests={interests} />
                 { isShowSocials && socials.length > 0 &&  <SocialLinksList socials={socials}/> }
-                {images.length > 0 && <Gallery images={images} />}
+                { images.length > 0 && <Gallery images={images} /> }
                 <DangerZone />
             </section>
         </main>
