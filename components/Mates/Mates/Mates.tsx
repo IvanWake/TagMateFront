@@ -28,7 +28,7 @@ const Mates = () => {
             <section className={mainStyles.mates}>
                 <div className={mainStyles.sectionTitle}>Мейты</div>
                 {
-                    userMates.length > 0 ? <UsersList userItems={userMates}/> : <NoMates/>
+                    userMates.length > 0 ? <UsersList userItems={userMates} /> : <NoMates />
                 }
             </section>
             {

@@ -73,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../../../public/purposesImg/search_bg-elem.svg);
+    /* background-image: url(../../../public/purposesImg/search_bg-elem.svg); */
     background-repeat: no-repeat;
     background-size: 100%;
     aspect-ratio: 393 / 205;

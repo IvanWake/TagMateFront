@@ -1,0 +1,53 @@
+.appFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 24px;
+    max-width: 572px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 100;
+    background: #ffffff;
+    position: sticky;
+    bottom: 0;
+    padding-top: 7px;
+    padding-bottom: 13px;
+  }
+  
+  .navItem {
+    cursor: pointer;
+    max-height: 40px;
+    min-width: 68px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #a1a1a1;
+    transition: all .3s ease;
+    text-decoration: none;
+  }
+  
+  .navItem .navIcon {
+    transition: all .3s ease;
+  }
+  
+  .appFooter:hover .navItem:not(:hover) .navIcon {
+    opacity: 0.6;
+  }
+  
+  .navItem:hover .navIcon {
+    scale: 0.9;
+  }
+  
+  .navItem.active {
+    color: #627aff;
+  }
+  
+  .navItem .navLabel {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+  }
+    
