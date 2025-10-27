@@ -6,7 +6,7 @@ import AddMate from "@/components/Profile/AddMate/AddMate";
 const ProfileHero = ({ name, lastName, avatar, city, birthDay, isUserByTag }: PersonalData) => {
     return (
         <section className={profileHero["profile-hero"]} id="profile">
-            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${avatar}`} alt="profile image" className={profileHero["profile-image"]} />
+            <img src={avatar} alt="profile image" className={profileHero["profile-image"]} />
                 <div className={profileHero["profile-info"]}>
                     <div className={profileHero["user-location"]}>{city}</div>
                     <div className={profileHero["user-name"]}>{`${name} ${lastName}`}, {formatBirthDay(birthDay).yearsOld}</div>

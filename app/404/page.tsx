@@ -1,4 +1,4 @@
-import Link from "next/link";
+'use client';
 
 const Error = () => {
     return (
@@ -16,9 +16,9 @@ const Error = () => {
             }
         >
             404
-            <Link href="/">
+            <button onClick={() => window.location.replace("/")}>
                 <h1 style={{textDecoration: "none", color: "#000", fontSize: "36px"}}>Вернуться на главную</h1>
-            </Link>
+            </button>
         </div>
 
     );

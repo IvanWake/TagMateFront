@@ -64,7 +64,7 @@ const Page = ({ params }) => {
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
                 city={userProfileData.city.city}
-                avatar={userProfileData.avatar}
+                avatar={userProfileData.avatar.path}
                 birthDay={userProfileData.birthDay}
             />
             <ProfileContentByTag

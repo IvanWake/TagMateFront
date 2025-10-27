@@ -5,6 +5,7 @@ export const fetchUserProfileData = async () => {
 
     try {
         const res = await fetch('/api/profile', {
+            cache: "no-cache",
             headers: { "Authorization": `Bearer ${authToken}` }
         });
 

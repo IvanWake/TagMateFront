@@ -46,7 +46,7 @@ const Confirm = () => {
             return;
         }
         localStorage.clear();
-        router.push("/");
+        window.location.replace("/")
     }
 
     useEffect(() => {
