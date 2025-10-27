@@ -104,12 +104,12 @@
     font-size: 12px;
     font-family: var(--font-inter);
     font-weight: 600;
-    color: #BABABA;
+    color: #797979;
 }
 
 .footer a {
     text-decoration: none;
-    color: #797979;
+    color: #0066DE;
 }
 
 .button {
@@ -121,7 +121,7 @@
     max-width: 512px;
     border-radius: 15px;
     font-size: 14px;
-    font-family: var(--font-inter);
+    font-family: var(--font-unbounded);
     border: none;
     margin: 0 auto;
 }

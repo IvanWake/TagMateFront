@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { fetchUserProfileData } from "@/utils/fetchUserProfileData";
+import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
 import {deleteAuthToken, getAuthToken} from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";
@@ -37,13 +37,13 @@ const Page = ({ params }) => {
             <HeaderSummary
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
-                avatar={userProfileData.avatar}
+                avatar={userProfileData.avatar.path}
             />
             <ProfileHero
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}
                 city={userProfileData.city.city}
-                avatar={userProfileData.avatar}
+                avatar={userProfileData.avatar.path}
                 birthDay={userProfileData.birthDay}
             />
             <ProfileContent

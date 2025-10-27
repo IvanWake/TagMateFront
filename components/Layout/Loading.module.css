@@ -1,18 +1,17 @@
 .page {
     display: flex;
-    align-items: center; /* эквивалент класса items-center */
-    justify-content: center; /* эквивалент класса justify-center */
-    min-height: 100vh; /* эквивалент класса min-h-screen */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .page .spin {
-    width: 15rem;
-    height: 15rem;
-    border: 0.5rem solid #90cdf4;
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid #627AFF;
     border-radius: 50%;
     border-top-color: transparent;
-    animation: spin 1s linear infinite;
-    margin-right: 0.5rem; /* Для отступа между спиннером и текстом */
+    animation: spin .65s linear infinite;
 }
 
 

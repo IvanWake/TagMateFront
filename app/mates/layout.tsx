@@ -14,12 +14,11 @@ const unbounded = Unbounded({
   display: 'swap',
 });
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
-  return {
-    title: `TagMate | ${params.tag}`,
-    description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
-  }
-}
+export const metadata: Metadata = {
+  title: "TagMate | Мейты",
+  description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
-      <body >{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

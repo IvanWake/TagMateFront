@@ -63,7 +63,7 @@ const FourthStep = ({ prevStep, serverError }: Props) => {
                                 }
                             })}
                             type="email"
-                            placeholder="твоя@почта.ру"
+                            placeholder="ваша@почта.ру"
                         />
                         {
                             serverError ? <p>{serverError}</p> :

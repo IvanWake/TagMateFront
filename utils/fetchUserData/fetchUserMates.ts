@@ -1,10 +1,10 @@
 import { getAuthToken } from "@/utils/authToken";
 
-export const fetchUserProfileData = async () => {
+export const fetchUserMates = async () => {
     const authToken = getAuthToken("authToken");
 
     try {
-        const res = await fetch('/api/profile', {
+        const res = await fetch('/api/profile/mates', {
             headers: { "Authorization": `Bearer ${authToken}` }
         });
 
@@ -14,7 +14,7 @@ export const fetchUserProfileData = async () => {
         }
 
         const data = await res.json();
-        return { data: data.userData, status: res.status };
+        return { data: data.message, status: res.status };
     } catch (e) {
         return { error: e };
     }

@@ -1,0 +1,29 @@
+.user-mate-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.user-add-mate, .user-add-mate-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #FFF;
+    color: #000;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.user-add-mate-active {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #FFF !important;
+}
+
+
+
