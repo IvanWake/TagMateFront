@@ -33,10 +33,10 @@ const HeaderSummary = ({ avatar, name, lastName }: Props) => {
                 <div className="profile-summary">
                     <div className="user-location">Москва</div>
                     <div className="user-name">{`${name} ${lastName}`}</div>
-                    {/*<div className="user-status">*/}
-                    {/*    <div className="status-indicator"></div>*/}
-                    {/*    <span>В сети</span>*/}
-                    {/*</div>*/}
+                    <div className="user-status">
+                        <div className="status-indicator"></div>
+                        <span>В сети</span>
+                    </div>
                 </div>
         </section>
     );

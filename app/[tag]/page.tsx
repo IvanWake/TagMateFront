@@ -30,7 +30,7 @@ const Page = ({ params }) => {
             if (isAuthToken) {
                 if (result.status == 200 && resultByTag.status == 200) {
                     if (result.data.serviceId === resultByTag.data.userData.serviceId) {
-                        router.push("/");
+                        window.location.replace("/");
                     } else {
                         setUserProfileData(resultByTag.data.userData);
                         setUserPrivacyData(resultByTag.data.privacyPolicy);
@@ -66,6 +66,7 @@ const Page = ({ params }) => {
                 city={userProfileData.city.city}
                 avatar={userProfileData.avatar.path}
                 birthDay={userProfileData.birthDay}
+                tag={tag}
             />
             <ProfileContentByTag
                 isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
