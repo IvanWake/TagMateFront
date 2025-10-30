@@ -2,6 +2,7 @@
 
 import AddMateButton from "@/components/Profile/AddMate/AddMateButton";
 import RequestPendingButton from "@/components/Profile/AddMate/RequestPendingButton";
+import InMatesButton from "@/components/Profile/AddMate/InMatesButton";
 
 type Props = {
     tag: string,
@@ -10,7 +11,7 @@ type Props = {
 
 const AddMate = ({ tag, isUserMate }: Props) => {
     const isUserMateValues = {
-        access: <h1 style={{ color: "white" }}>Коля дай стейт</h1>,
+        access: <InMatesButton />,
         pending: <RequestPendingButton tag={tag} />,
         none: <AddMateButton tag={tag} />
     }
