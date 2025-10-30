@@ -1,6 +1,8 @@
 import addMateStyles from "@/components/Profile/AddMate/AddMate.module.css";
 
-const RequestPending = () => {
+type Props = { tag: string };
+
+const RequestPendingButton = ({ tag }: Props) => {
     return (
         <div className={`${addMateStyles["user-mate-menu"]}`}>
             <div className={`${addMateStyles["user-add-mate-active"]}`}>Заявка отправлена</div>
@@ -8,4 +10,4 @@ const RequestPending = () => {
     );
 }
 
-export default RequestPending;
+export default RequestPendingButton;

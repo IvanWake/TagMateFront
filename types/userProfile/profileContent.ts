@@ -25,5 +25,7 @@ export type PersonalData = {
     avatar: string,
     city: string,
     birthDay: Date,
-    isUserByTag?: boolean
+    isUserByTag?: boolean,
+    tag: string,
+    isUserMate: string
 }
