@@ -67,6 +67,7 @@ const Page = ({ params }) => {
                 avatar={userProfileData.avatar.path}
                 birthDay={userProfileData.birthDay}
                 tag={tag}
+                isUserMate={"access"}
             />
             <ProfileContentByTag
                 isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}

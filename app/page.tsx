@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
-import {deleteAuthToken, getAuthToken} from "@/utils/authToken";
+import { deleteAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";
 import HeaderSummary from "@/components/Header/HeaderSummary";
@@ -13,7 +13,6 @@ import ProfileContent from "@/components/Profile/ProfileContent";
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
     const router = useRouter();
-    const { tag } = params;
 
     useEffect(() => {
         const fetchUserProfileDataHandler = async () => {

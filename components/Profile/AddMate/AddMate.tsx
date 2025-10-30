@@ -1,20 +1,29 @@
 'use client';
 
-import addMateStyles from "./AddMate.module.css";
-import { friendSend } from "@/services/whitelist";
+import AddMateButton from "@/components/Profile/AddMate/AddMateButton";
+import RequestPendingButton from "@/components/Profile/AddMate/RequestPendingButton";
 
+type Props = {
+    tag: string,
+    isUserMate: string
+}
 
-const AddMate = ({ tag }: { tag: string }) => {
-    const testFetch = async () => {
-            const res = await friendSend(tag);
-    };
+const AddMate = ({ tag, isUserMate }: Props) => {
+    const isUserMateValues = {
+        access: <h1 style={{ color: "white" }}>Коля дай стейт</h1>,
+        pending: <RequestPendingButton tag={tag} />,
+        none: <AddMateButton tag={tag} />
+    }
 
     return (
-        <div onClick={testFetch}>
-            <div className={`${addMateStyles["user-mate-menu"]}`}>
-                <div className={`${addMateStyles["user-add-mate"]}`}>Добавить в мейты</div>
-            </div>
-        </div>
+        <>
+            {/*{*/}
+            {/*    isUserMate ?*/}
+            {/*        <h1>Пизда</h1> : */}
+            {/*        <AddMateButton tag={tag} />*/}
+            {/*}*/}
+            {isUserMateValues[isUserMate]}
+        </>
     );
 }
 
