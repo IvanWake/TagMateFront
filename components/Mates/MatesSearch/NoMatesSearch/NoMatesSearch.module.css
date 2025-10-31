@@ -1,0 +1,27 @@
+.noMatesSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  color: #797979;
+  text-align: center;
+}
+.noMatesSearchImg {
+  margin-top: 112px;
+}
+.noMatesSearchTitle {
+  font-family: var(--font-onest);
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+}
+.noMatesSearchText {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+  margin-top: 10px;
+  color: #797979;
+}

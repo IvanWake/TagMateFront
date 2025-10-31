@@ -2,7 +2,10 @@ import moment from "moment-with-locales-es6";
 
 moment.locale('ru');
 
-export const formatBirthDay = (birthDay: string) => {
+export function formatBirthDay(birthDay: string): { formattedBirthDay: string; yearsOld: number };
+export function formatBirthDay(birthDay: Date): { formattedBirthDay: string; yearsOld: number };
+
+export function formatBirthDay(birthDay: string | Date): { formattedBirthDay: string; yearsOld: number }{
     const birthDate = moment.utc(birthDay);
     const currentDate = moment.utc();
     const yearsOld = currentDate.diff(birthDate, 'years');

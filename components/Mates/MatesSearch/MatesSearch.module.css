@@ -1,0 +1,86 @@
+.wrapper {
+  max-width: 512px;
+  padding: 0 30px;
+}
+.searchInput {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchInputWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 100px;
+  padding: 10px 15px;
+  background: #f1f1f1;
+  transition: all 0.25s ease-in;
+  border: 2px solid transparent;
+}
+
+.searchInputWrapper input {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  color: #616161;
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+.searchInputWrapper:has(input:focus) {
+  border: 2px solid #9188ff;
+  color: rgba(0, 0, 0, 0.37);
+}
+
+.list {
+  margin: 25px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+.userItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.25s ease-out;
+}
+
+.userItem:hover {
+  background: #00000010;
+}
+
+.userPicture {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.userName {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.userDescription {
+  font-family: var(--font-onest);
+  font-weight: 500;
+  font-size: 12px;
+  color: #797979;
+}

@@ -11,6 +11,7 @@ import HeaderSummary from "@/components/Header/HeaderSummary";
 import ProfileHero from "@/components/Profile/ProfileHero";
 import ProfileContent from "@/components/Profile/ProfileContent";
 import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
+import TabBar from '@/components/TabBar/TabBar';
 
 const Page = ({ params }) => {
     const [userProfileData, setUserProfileData] = useState(null);
@@ -77,6 +78,7 @@ const Page = ({ params }) => {
                 socials={userProfileData.socials}
                 images={userProfileData.images}
             />
+            <TabBar/>
         </>
     );
 }
