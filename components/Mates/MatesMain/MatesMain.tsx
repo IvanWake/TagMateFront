@@ -29,17 +29,17 @@ const MatesMain = () => {
 
                 <Link href="/mates/requests" className={matesMainStyles.requests} aria-label="Заявки">
                     <div className={matesMainStyles.requestsLeft}>
-                        <div className={matesMainStyles.requestsAvatars}>
-                            {requestsCount > 0 ? previewAvatars.map((u, idx) => (
-                                <img
-                                    key={u.id}
-                                    src={u.avatar}
-                                    alt="request user"
-                                    className={matesMainStyles.requestAvatar}
-                                    style={{ zIndex: previewAvatars.length - idx }}
-                                />
-                            )) : <Image src={matesRequestAddImg} alt="Тут пока пусто" />}
-                        </div>
+                        {/*<div className={matesMainStyles.requestsAvatars}>*/}
+                        {/*    {requestsCount > 0 ? previewAvatars.map((u, idx) => (*/}
+                        {/*        <img*/}
+                        {/*            key={u.id}*/}
+                        {/*            src={u.avatar}*/}
+                        {/*            alt="request user"*/}
+                        {/*            className={matesMainStyles.requestAvatar}*/}
+                        {/*            style={{ zIndex: previewAvatars.length - idx }}*/}
+                        {/*        />*/}
+                        {/*    )) : <Image src={matesRequestAddImg} alt="Тут пока пусто" />}*/}
+                        {/*</div>*/}
                         <div className={matesMainStyles.requestsInfo}>
                             <div className={matesMainStyles.requestsTitle}>Заявки</div>
                             {requestsCount > 0 ? <div className={matesMainStyles.requestsCount}>{requestsCount}</div> : <></>}
