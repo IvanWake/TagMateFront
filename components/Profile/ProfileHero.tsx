@@ -15,7 +15,7 @@ const ProfileHero = ({name, lastName, avatar, city, birthDay, isUserByTag, tag, 
                     <>
                         <div className="user-status">
                             {/*<div className="status-indicator"></div>*/}
-                            <span>Был в сети недавно</span>
+                            <span>Был недавно</span>
                         </div>
                         <AddMate tag={tag} isUserMate={isUserMate} />
                     </>

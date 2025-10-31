@@ -9,11 +9,9 @@ const Header = () => {
         <>
             <header className={headerStyles["app-header"]}>
                 <div className={headerStyles["app-branding"]}>
-                    <Link href="/">
                         <div className={headerStyles["app-logo"]}>
                             <img src="/icons/tagmate-min.svg" alt="logo"/>
                         </div>
-                    </Link>
                 </div>
                 <div className={headerStyles["app-menu"]}>
                     <div

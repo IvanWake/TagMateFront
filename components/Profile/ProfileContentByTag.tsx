@@ -7,7 +7,7 @@ import profileContentStyles from "./Profile.module.css";
 import Gallery from "@/components/Gallery/Gallery";
 import DangerZone from "@/components/DangerZone/DangerZone";
 
-const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowSocials }: ProfileData) => {
+const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowSocials, isUserMate, inBlackList }: ProfileData) => {
     console.log(images);
     return (
         <main className={profileContentStyles["profile-content"]}>
@@ -17,7 +17,7 @@ const ProfileContentByTag = ({ tag, purpose, interests, socials, images, isShowS
                 <InterestList interests={interests} />
                 { isShowSocials && socials.length > 0 &&  <SocialLinksList socials={socials}/> }
                 { images.length > 0 && <Gallery images={images} /> }
-                <DangerZone />
+                <DangerZone isUserMate={isUserMate} inBlackList={inBlackList} tag={tag}/>
             </section>
         </main>
     );

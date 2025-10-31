@@ -32,7 +32,7 @@ const Page = ({ params }) => {
                     if (result.data.serviceId === resultByTag.data.userData.serviceId) {
                         window.location.replace("/");
                     } else {
-                        setUserProfileData(resultByTag.data.userData);
+                        setUserProfileData(resultByTag.data);
                         setUserPrivacyData(resultByTag.data.privacyPolicy);
                         setUserOptionsData(resultByTag.data.options);
                     }
@@ -55,27 +55,29 @@ const Page = ({ params }) => {
         <>
             <Header />
             <HeaderSummary
-                avatar={userProfileData.avatar}
-                name={userProfileData.name}
-                lastName={userProfileData.lastName}
+                avatar={userProfileData.userData.avatar.path}
+                name={userProfileData.userData.name}
+                lastName={userProfileData.userData.lastName}
             />
             <ProfileHero
                 isUserByTag={true}
-                name={userProfileData.name}
-                lastName={userProfileData.lastName}
-                city={userProfileData.city.city}
-                avatar={userProfileData.avatar.path}
-                birthDay={userProfileData.birthDay}
+                name={userProfileData.userData.name}
+                lastName={userProfileData.userData.lastName}
+                city={userProfileData.userData.city.city}
+                avatar={userProfileData.userData.avatar.path}
+                birthDay={userProfileData.userData.birthDay}
                 tag={tag}
                 isUserMate={"access"}
             />
             <ProfileContentByTag
                 isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
-                tag={userProfileData.serviceId}
-                purpose={userProfileData.purpose}
-                interests={userProfileData.interests}
-                socials={userProfileData.socials}
-                images={userProfileData.images}
+                tag={userProfileData.userData.serviceId}
+                purpose={userProfileData.userData.purpose}
+                interests={userProfileData.userData.interests}
+                socials={userProfileData.userData.socials}
+                images={userProfileData.userData.images}
+                isUserMate={"access"}
+                inBlackList={userProfileData.userData.inBlackList}
             />
         </>
     );

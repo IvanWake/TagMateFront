@@ -11,19 +11,14 @@ type Props = {
 
 const AddMate = ({ tag, isUserMate }: Props) => {
     const isUserMateValues = {
-        access: <InMatesButton />,
-        pending: <RequestPendingButton tag={tag} />,
-        none: <AddMateButton tag={tag} />
+        "access": <InMatesButton />,
+        "pending": <RequestPendingButton tag={tag} />,
+        "null": <AddMateButton tag={tag} />
     }
 
     return (
         <>
-            {/*{*/}
-            {/*    isUserMate ?*/}
-            {/*        <h1>Пизда</h1> : */}
-            {/*        <AddMateButton tag={tag} />*/}
-            {/*}*/}
-            {isUserMateValues[isUserMate]}
+            { isUserMateValues[isUserMate] }
         </>
     );
 }
