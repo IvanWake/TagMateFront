@@ -11,6 +11,8 @@
 
 body {
   padding-bottom: 60px;
+  font-family: var(--font-onest), var(--font-inter), var(--font-unbounded),
+    system-ui, sans-serif;
 }
 
 input {
