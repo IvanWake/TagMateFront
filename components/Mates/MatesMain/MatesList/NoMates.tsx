@@ -1,7 +1,7 @@
 import mainStyles from "./MatesList.module.css";
-import matesMainImg from "../../../../public/purposesImg/mates_main-img.svg";
-import Image from "next/image";
+import matesMainImg from "@/public/purposesImg/mates_main-img.svg";
 import Link from "next/link";
+import Image from "next/image";
 
 const NoMates = () => {
     return (

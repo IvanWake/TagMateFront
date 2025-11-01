@@ -1,5 +1,7 @@
 .wrapper {
   max-width: 512px;
+  margin: 0 auto;
+  width: 100%;
   padding: 0 30px;
 }
 .searchInput {
@@ -38,6 +40,16 @@
 .searchInputWrapper:has(input:focus) {
   border: 2px solid #9188ff;
   color: rgba(0, 0, 0, 0.37);
+}
+
+.closeIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .list {
