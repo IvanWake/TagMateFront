@@ -9,33 +9,33 @@ import noRequestsImg1 from "../../../public/purposesImg/mates_requests-img1.svg"
 import noRequestsImg2 from "../../../public/purposesImg/mates_requests-img2.svg";
 
 const incomingRequests = [
-  {
-    id: "1",
-    name: "Иван",
-    lastName: "Иванов",
-    city: "Москва",
-    avatar: "/Serega.jpg",
-    birthDay: new Date(1995, 4, 12),
-  },
-  {
-    id: "2",
-    name: "Мария",
-    lastName: "Петрова",
-    city: "Санкт-Петербург",
-    avatar: "https://i.pravatar.cc/100",
-    birthDay: new Date(1998, 10, 5),
-  },
+  // {
+  //   id: "1",
+  //   name: "Иван",
+  //   lastName: "Иванов",
+  //   city: "Москва",
+  //   avatar: "/Serega.jpg",
+  //   birthDay: new Date(1995, 4, 12),
+  // },
+  // {
+  //   id: "2",
+  //   name: "Мария",
+  //   lastName: "Петрова",
+  //   city: "Санкт-Петербург",
+  //   avatar: "https://i.pravatar.cc/100",
+  //   birthDay: new Date(1998, 10, 5),
+  // },
 ];
 
 const outgoingRequests = [
-  {
-    id: "3",
-    name: "Алексей",
-    lastName: "Сидоров",
-    city: "Казань",
-    avatar: "https://i.pravatar.cc/100",
-    birthDay: new Date(1992, 7, 23),
-  },
+  // {
+  //   id: "3",
+  //   name: "Алексей",
+  //   lastName: "Сидоров",
+  //   city: "Казань",
+  //   avatar: "https://i.pravatar.cc/100",
+  //   birthDay: new Date(1992, 7, 23),
+  // },
 ];
 
 export default function MatesRequests() {
