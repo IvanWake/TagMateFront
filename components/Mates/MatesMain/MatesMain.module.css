@@ -33,6 +33,7 @@
   justify-content: space-between;
   border-radius: 22px;
   padding: 20px;
+  min-height: 60px;
   background: #fbfbfb;
   text-decoration: none;
   color: inherit;

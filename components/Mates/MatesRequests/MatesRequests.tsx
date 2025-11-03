@@ -5,8 +5,14 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./MatesRequests.module.css";
 import { formatBirthDay } from "@/utils/formatBirthDay";
-import noRequestsImg1 from "../../../public/purposesImg/mates_requests-img1.svg"; 
-import noRequestsImg2 from "../../../public/purposesImg/mates_requests-img2.svg";
+import noRequestsImg1 from "@/public/purposesImg/mates_requests-img1.svg";
+import noRequestsImg2 from "@/public/purposesImg/mates_requests-img2.svg";
+import ArrowLeftIcon from "../MatesSvgIcons/ArrowLeftIcon";
+
+const incomingDescription =
+  "Здесь появятся заявки в мейты от людей, которым ты понравился. Заполни профиль и они скоро появятся";
+const outgoingDescription =
+  "А здесь появятся твои заявки в мейты, заполни профиль, возьми тег и вперед";
 
 const incomingRequests = [
   // {
@@ -45,35 +51,30 @@ export default function MatesRequests() {
 
   return (
     <div className={styles.wrapper}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <Link href="/mates" className={styles.back}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z" fill="#9188FF" />
-          </svg>
+          <ArrowLeftIcon />
           Назад
         </Link>
         <div className={styles.title}>Заявки</div>
         <Link href="/mates" className={styles.back} style={{ visibility: "hidden" }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z" fill="#9188FF" />
-          </svg>
-          Назад
+          <ArrowLeftIcon />
         </Link>
-      </header>
+      </div>
 
       <div className={styles.tabs}>
-        <button
+        <div
           className={`${styles.tab} ${tab === "in" ? styles.active : ""}`}
           onClick={() => setTab("in")}
         >
           Входящие
-        </button>
-        <button
+        </div>
+        <div
           className={`${styles.tab} ${tab === "out" ? styles.active : ""}`}
           onClick={() => setTab("out")}
         >
           Исходящие
-        </button>
+        </div>
       </div>
 
       <div className={styles.list}>
@@ -81,11 +82,7 @@ export default function MatesRequests() {
           <NoRequests
             image={tab === "in" ? noRequestsImg1: noRequestsImg2}
             title="Заявок пока нет"
-            description={
-            tab === "in"
-                ? "Здесь появятся заявки в мейты от людей, которым ты понравился. Заполни профиль и они скоро появятся"
-                : "А здесь появятся твои заявки в мейты, заполни профиль, возьми тег и вперед"
-            }
+            description={tab === "in" ? incomingDescription : outgoingDescription}
         />
         ) : (
           requests.map((user) => (
@@ -97,11 +94,11 @@ export default function MatesRequests() {
                 <div className={styles.actions}>
                   {tab === "in" ? (
                     <>
-                      <button className={styles.accept}>Добавить</button>
-                      <button className={styles.reject}>Отклонить</button>
+                      <div className={styles.accept}>Добавить</div>
+                      <div className={styles.reject}>Отклонить</div>
                     </>
                   ) : (
-                    <button className={styles.cancel}>Отменить заявку</button>
+                    <div className={styles.cancel}>Отменить заявку</div>
                   )}
                 </div>
               </div>

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styles from "./NoRequests.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 type NoRequestsProps = {
   image: string;
