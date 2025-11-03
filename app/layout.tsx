@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Unbounded } from "next/font/google";
+import { Inter, Unbounded, Onest } from "next/font/google";
 import indexStyles from "./index.module.css";
 import "./index.css";
+
+const onest = Onest({
+  subsets: ['cyrillic'],
+  variable: '--font-onest',
+  display: 'swap',
+});
 
 const inter = Inter({
   subsets: ['cyrillic'],
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
+    <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
       <body className={indexStyles.body}>{children}</body>
     </html>
   );
