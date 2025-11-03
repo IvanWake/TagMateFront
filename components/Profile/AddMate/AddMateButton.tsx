@@ -7,6 +7,7 @@ import { friendSend } from "@/services/whitelist";
 const AddMateButton = ({ tag }: { tag: string }) => {
     const addMateHandler = async () => {
             const res = await friendSend(tag);
+        window.location.reload();
     };
 
     return (

@@ -15,8 +15,10 @@ export type ProfileData = {
     interests: Interest[],
     purpose: string,
     images: Image[],
-    socials: Social[]
-    isShowSocials?: boolean
+    socials: Social[],
+    isShowSocials?: boolean,
+    isUserMate: string,
+    inBlackList: boolean
 }
 
 export type PersonalData = {

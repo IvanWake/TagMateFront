@@ -34,8 +34,8 @@ const HeaderSummary = ({ avatar, name, lastName }: Props) => {
                     <div className="user-location">Москва</div>
                     <div className="user-name">{`${name} ${lastName}`}</div>
                     <div className="user-status">
-                        <div className="status-indicator"></div>
-                        <span>В сети</span>
+                        {/*<div className="status-indicator"></div>*/}
+                        <span>Был недавно</span>
                     </div>
                 </div>
         </section>
