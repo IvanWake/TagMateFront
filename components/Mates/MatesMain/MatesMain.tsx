@@ -2,19 +2,11 @@ import matesMainStyles from "./MatesMain.module.css";
 import Link from "next/link";
 import MatesList from "./MatesList/MatesList";
 import { mockMates } from "./mockMates";
-// import matesRequestAddImg from "@/public/purposesImg/mates_requests_add-img.svg";
 import SearchIcon from "@/components/Mates/MatesSvgIcons/SearchIcon";
 import ArrowRightIcon from "@/components/Mates/MatesSvgIcons/ArrowRightIcon";
 
 const MatesMain = () => {
-    const requests = [
-        { id: 1, avatar: "https://i.pravatar.cc/100" },
-        { id: 2, avatar: "https://i.pravatar.cc/100" },
-        // { id: 3, avatar: "https://i.pravatar.cc/100" },
-        // { id: 4, avatar: "https://i.pravatar.cc/100" },
-    ];
-    const requestsCount = requests.length;
-    // const previewAvatars = requests.slice(0, 3);
+    const requestsCount = 3;
     const matesLength = mockMates.length;
     return (
         <div className={matesMainStyles.main}>
@@ -35,7 +27,7 @@ const MatesMain = () => {
                     <div className={matesMainStyles.requestsLeft}>
                         <div className={matesMainStyles.requestsInfo}>
                             <div className={matesMainStyles.requestsTitle}>Заявки</div>
-                            {requestsCount > 0 ? <div className={matesMainStyles.requestsCount}>{requestsCount}</div> : <></>}
+                            { requestsCount > 0 && <div className={matesMainStyles.requestsCount}>{requestsCount}</div> }
                         </div>
                     </div>
                     <div className={matesMainStyles.requestsArrow}>

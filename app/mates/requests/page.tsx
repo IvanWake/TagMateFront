@@ -6,10 +6,10 @@ import MatesRequests from "@/components/Mates/MatesRequests/MatesRequests";
 const MatesRequestPage = () => {
 
     return (
-        <AuthRoute>
+        <>
             <MatesRequests />
             <TabBar />
-        </AuthRoute>
+        </>
     );
 }
 
