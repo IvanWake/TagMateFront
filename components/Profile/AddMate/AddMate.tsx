@@ -11,10 +11,12 @@ type Props = {
 
 const AddMate = ({ tag, isUserMate }: Props) => {
     const isUserMateValues = {
-        "access": <InMatesButton />,
+        "access": <InMatesButton tag={tag}/>,
         "pending": <RequestPendingButton tag={tag} />,
         "null": <AddMateButton tag={tag} />
     }
+
+    console.log(isUserMate)
 
     return (
         <>

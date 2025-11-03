@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
+    const authToken = req.headers.get('authorization')?.split(' ')[1];
     const body = await req.json();
 
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/friends/accept`, {
         method: "POST",
         headers: {
             "Content-Type" : "application/json",
+            "Authorization": `Bearer ${authToken}`
         },
         body: JSON.stringify({ friendId: body.tag })
     })

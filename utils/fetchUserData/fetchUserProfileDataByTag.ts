@@ -5,7 +5,10 @@ export const fetchUserProfileDataByTag = async (tag: string) => {
 
     try {
         const res = await fetch(`/api/profile/${tag}`, {
-            headers: { "Authorization": `Bearer ${authToken}` }
+            headers: {
+                "Authorization": `Bearer ${authToken}`
+            },
+            cache: 'no-store'
         });
 
         if (!res.ok) {

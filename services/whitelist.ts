@@ -1,61 +1,16 @@
 import { getAuthToken } from "@/utils/authToken";
 
-export const friendSend = async (tag: string) => {
+export const friendsActions = async (tag: string, type: string) => {
     const authToken = getAuthToken("authToken");
 
     try {
-        const res = await fetch('/api/friends/send', {
+        const res = await fetch(`/api/friends/${type}`, {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
+                "Authorization": `Bearer ${authToken}`
             },
-            body: JSON.stringify({ tag: tag, authToken: authToken })
-        });
-
-        if (!res.ok) {
-            const err = await res.json();
-            return { status: err.status };
-        }
-
-        return { status: res.status };
-    } catch (e) {
-        return { error: e };
-    }
-}
-
-export const cancelFriendRequest = async (tag: string) => {
-    const authToken = getAuthToken("authToken");
-
-    try {
-        const res = await fetch('/api/friends/cancel', {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({ tag: tag, authToken: authToken })
-        });
-
-        if (!res.ok) {
-            const err = await res.json();
-            return { status: err.status };
-        }
-
-        return { status: res.status };
-    } catch (e) {
-        return { error: e };
-    }
-}
-
-export const rejectFriendRequest = async (tag: string) => {
-    const authToken = getAuthToken("authToken");
-
-    try {
-        const res = await fetch('/api/friends/reject', {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({ tag: tag, authToken: authToken })
+            body: JSON.stringify({ tag: tag  })
         });
 
         if (!res.ok) {

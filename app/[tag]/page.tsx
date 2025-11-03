@@ -68,7 +68,7 @@ const Page = ({ params }) => {
                 avatar={userProfileData.userData.avatar.path}
                 birthDay={userProfileData.userData.birthDay}
                 tag={tag}
-                isUserMate={"access"}
+                isUserMate={userOptionsData.isUserFriend}
             />
             <ProfileContentByTag
                 isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
@@ -77,7 +77,7 @@ const Page = ({ params }) => {
                 interests={userProfileData.userData.interests}
                 socials={userProfileData.userData.socials}
                 images={userProfileData.userData.images}
-                isUserMate={"access"}
+                isUserMate={userOptionsData.isUserFriend}
                 inBlackList={userProfileData.userData.inBlackList}
             />
             <TabBar/>
