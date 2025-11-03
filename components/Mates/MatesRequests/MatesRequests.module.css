@@ -1,5 +1,7 @@
 .wrapper {
   max-width: 512px;
+  margin: 0 auto;
+  width: 100%;
   padding: 0 30px;
 }
 .header {
@@ -44,6 +46,7 @@
   padding: 15px;
   background: none;
   border: none;
+  text-align: center;
   font-family: var(--font-onest);
   font-weight: 600;
   font-size: 14px;

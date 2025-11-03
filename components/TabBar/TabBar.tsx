@@ -1,18 +1,17 @@
 import styles from './TabBar.module.css';
+import TabMatesIcon from './TabBarSvgIcons/TabMatesIcon';
+import TabProfileIcon from './TabBarSvgIcons/TabProfileIcon';
 
 const TabBar = () => {
     return (
         <footer className={styles.footer}>
-            <div className={styles.icon}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.8 3H10.5118C11.2455 3 11.6124 3 11.9577 3.08289C12.2638 3.15638 12.5564 3.27759 12.8249 3.44208C13.1275 3.62752 13.3868 3.88681 13.9052 4.40523L13.9059 4.40589L18.6059 9.10589L18.606 9.10594C19.7939 10.2939 20.388 10.888 20.6105 11.5729C20.8063 12.1755 20.8063 12.8245 20.6105 13.4271C20.388 14.112 19.7939 14.7061 18.6059 15.8941L18.6059 15.8941L15.8941 18.6059L15.8941 18.6059C14.7061 19.7939 14.112 20.388 13.4271 20.6105C12.8245 20.8063 12.1755 20.8063 11.5729 20.6105C10.888 20.388 10.2939 19.7939 9.10594 18.606L9.10589 18.6059L4.40589 13.9059L4.40523 13.9052C3.88681 13.3868 3.62752 13.1275 3.44208 12.8249C3.27759 12.5564 3.15638 12.2638 3.08289 11.9577C3 11.6124 3 11.2455 3 10.5118V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3Z" stroke="#A29FA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-            <div className={styles.iconActive}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z" stroke="#A29FA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M6.12903 15.2734C3.29032 16.7765 3.29032 19.2259 6.12903 20.7196C9.35484 22.4268 14.6452 22.4268 17.871 20.7196C20.7097 19.2166 20.7097 16.7672 17.871 15.2734C14.6569 13.5755 9.36657 13.5755 6.12903 15.2734Z" stroke="#A29FA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+            <div className={styles.footerWrapper}>
+                <div className={styles.icon}>
+                    <TabMatesIcon color="#A29FA8" width={24} height={24} />
+                </div>
+                <div className={styles.iconActive}>
+                    <TabProfileIcon color="#A29FA8" width={24} height={24} />
+                </div>
             </div>
         </footer>
     );
