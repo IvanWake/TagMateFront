@@ -1,0 +1,97 @@
+.main {
+  font-family: "Unbounded";
+  margin: 0 auto;
+  max-width: 512px;
+  width: 100%;
+  flex: 1;
+  margin-bottom: 20px;
+  padding: 0 30px;
+}
+
+.mainСontent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+}
+
+.topTitle {
+  font-family: var(--font-onest);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.requests {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 22px;
+  padding: 20px;
+  min-height: 60px;
+  background: #fbfbfb;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+.requests:hover {
+  background: #eef0f4;
+}
+
+.requestsLeft {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.requestsAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.requestAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fbfbfb;
+  object-fit: cover;
+  background: #fbfbfb;
+}
+
+.requestAvatar + .requestAvatar {
+  margin-left: -20px;
+}
+
+.requestsInfo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.requestsTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #797979;
+  font-family: var(--font-onest);
+}
+
+.requestsCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  min-width: 20px;
+  min-height: 20px;
+  background: #627aff;
+  font-family: var(--font-onest);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 120%;
+  color: #fff;
+}

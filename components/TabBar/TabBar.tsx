@@ -1,29 +1,17 @@
+import styles from './TabBar.module.css';
+import TabMatesIcon from './TabBarSvgIcons/TabMatesIcon';
+import TabProfileIcon from './TabBarSvgIcons/TabProfileIcon';
+
 const TabBar = () => {
     return (
-        <footer className="app-footer">
-            <div className="nav-item">
-                <svg width="24" height="24" className="nav-icon">
-                    <use href="#icon-feed"></use>
-                </svg>
-                <div className="nav-label">Лента</div>
-            </div>
-            <div className="nav-item">
-                <svg width="24" height="24" className="nav-icon">
-                    <use href="#icon-mates"></use>
-                </svg>
-                <div className="nav-label">Мейты</div>
-            </div>
-            <div className="nav-item">
-                <svg width="24" height="24" className="nav-icon">
-                    <use href="#icon-settings"></use>
-                </svg>
-                <div className="nav-label">Настройки</div>
-            </div>
-            <div className="nav-item active">
-                <svg width="24" height="24" className="nav-icon">
-                    <use href="#icon-profile"></use>
-                </svg>
-                <div className="nav-label">Профиль</div>
+        <footer className={styles.footer}>
+            <div className={styles.footerWrapper}>
+                <div className={styles.icon}>
+                    <TabMatesIcon color="#A29FA8" width={24} height={24} />
+                </div>
+                <div className={styles.iconActive}>
+                    <TabProfileIcon color="#A29FA8" width={24} height={24} />
+                </div>
             </div>
         </footer>
     );

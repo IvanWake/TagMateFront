@@ -13,9 +13,11 @@
 
 .danger-actions {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.danger-item {
+.danger-block {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -31,6 +33,43 @@
     padding: 12px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.danger-unblock {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 12px;
+    text-align: center;
+    color: #4D4D4D;
+}
+
+.danger-remove-friend {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: transparent;
+    border: 2px solid #FF8587;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 12px;
+    text-align: center;
+    color: #FF8587;
 }
 
 .danger-actions:hover {

@@ -1,21 +1,28 @@
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  position: relative;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
+}
+
+body {
+  padding-bottom: 60px;
+  font-family: var(--font-onest), var(--font-inter), var(--font-unbounded),
+    system-ui, sans-serif;
 }
 
 input {
-    touch-action: manipulation !important;
-    font-size: 16px !important;
+  touch-action: manipulation !important;
+  font-size: 16px !important;
 }
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance:none;
+  -webkit-appearance: none;
 }

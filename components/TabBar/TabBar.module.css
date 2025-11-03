@@ -1,0 +1,27 @@
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 60px;
+  padding-top: 7px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.footerWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 512px;
+  width: 100%;
+}
+
+.icon {
+  transition: stroke 0.3s ease;
+}
+
+.iconActive path {
+  stroke: #7462ff !important;
+}
