@@ -1,6 +1,6 @@
 import { getAuthToken } from "@/utils/authToken";
 
-export const friendsActions = async (tag: string, type: string) => {
+export const whiteListActions = async (tag: string, type: string) => {
     const authToken = getAuthToken("authToken");
 
     try {

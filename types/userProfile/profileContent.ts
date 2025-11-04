@@ -18,7 +18,9 @@ export type ProfileData = {
     socials: Social[],
     isShowSocials?: boolean,
     isUserMate: string,
-    inBlackList: boolean
+    inBlackList: boolean,
+    isBlocked: boolean
+
 }
 
 export type PersonalData = {
@@ -29,5 +31,6 @@ export type PersonalData = {
     birthDay: Date,
     isUserByTag?: boolean,
     tag: string,
-    isUserMate: string
+    isUserMate: string,
+    isBlocked: boolean
 }

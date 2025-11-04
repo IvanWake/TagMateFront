@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
             "Content-Type" : "application/json",
             "Authorization": `Bearer ${authToken}`
         },
-        body: JSON.stringify({ friendId: body.tag })
+        body: JSON.stringify({ tag: body.tag })
     })
 
     if (!res.ok) {

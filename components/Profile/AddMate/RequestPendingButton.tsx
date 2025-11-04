@@ -1,13 +1,13 @@
 'use client';
 
-import { friendsActions } from "@/services/whitelist";
+import { whiteListActions } from "@/services/whitelist";
 import addMateStyles from "@/components/Profile/AddMate/AddMate.module.css";
 
 type Props = { tag: string };
 
 const RequestPendingButton = ({ tag }: Props) => {
     const cancelMateRequestHandler = async () => {
-        await friendsActions(tag, "cancel");
+        await whiteListActions(tag, "cancel");
         window.location.reload();
     };
     return (

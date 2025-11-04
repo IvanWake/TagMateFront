@@ -54,6 +54,7 @@ const Page = ({ params }) => {
 
     return (
         <>
+
             <Header />
             <HeaderSummary
                 avatar={userProfileData.userData.avatar.path}
@@ -69,17 +70,22 @@ const Page = ({ params }) => {
                 birthDay={userProfileData.userData.birthDay}
                 tag={tag}
                 isUserMate={userOptionsData.isUserFriend}
+                isBlocked={userProfileData.isBlocked}
             />
-            <ProfileContentByTag
-                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
-                tag={userProfileData.userData.serviceId}
-                purpose={userProfileData.userData.purpose}
-                interests={userProfileData.userData.interests}
-                socials={userProfileData.userData.socials}
-                images={userProfileData.userData.images}
-                isUserMate={userOptionsData.isUserFriend}
-                inBlackList={userProfileData.userData.inBlackList}
-            />
+
+                <ProfileContentByTag
+                    isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
+                    tag={userProfileData.userData.serviceId}
+                    purpose={userProfileData.userData.purpose}
+                    interests={userProfileData.userData.interests}
+                    socials={userProfileData.userData.socials}
+                    images={userProfileData.userData.images}
+                    isUserMate={userOptionsData.isUserFriend}
+                    inBlackList={userProfileData.inBlackList}
+                    isBlocked={userProfileData.isBlocked}
+                />
+
+
             <TabBar/>
         </>
     );

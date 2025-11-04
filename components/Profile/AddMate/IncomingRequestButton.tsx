@@ -1,13 +1,13 @@
 'use client';
 
-import { friendsActions } from "@/services/whitelist";
+import { whiteListActions } from "@/services/whitelist";
 import addMateStyles from "@/components/Profile/AddMate/AddMate.module.css";
 
 type Props = { tag: string }
 
 const IncomingRequestButton = ({ tag }: Props) => {
     const acceptMateRequestHandler = async () => {
-        await friendsActions(tag, "accept");
+        await whiteListActions(tag, "accept");
         window.location.reload();
     };
 

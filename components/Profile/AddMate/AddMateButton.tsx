@@ -1,12 +1,12 @@
 'use client';
 
 import addMateStyles from "./AddMate.module.css";
-import { friendsActions } from "@/services/whitelist";
+import { whiteListActions } from "@/services/whitelist";
 
 
 const AddMateButton = ({ tag }: { tag: string }) => {
     const addMateHandler = async () => {
-            await friendsActions(tag, "send");
+            await whiteListActions(tag, "send");
         window.location.reload();
     };
 

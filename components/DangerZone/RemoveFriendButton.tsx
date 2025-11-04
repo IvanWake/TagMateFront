@@ -1,13 +1,13 @@
 'use client';
 
-import { friendsActions } from "@/services/whitelist";
+import { whiteListActions } from "@/services/whitelist";
 import dangerZoneStyles from "@/components/DangerZone/DangerZone.module.css";
 
 type Props = { tag: string }
 
 const RemoveFriendButton = ({ tag }: Props) => {
     const removeMateHandler = async () => {
-        await friendsActions(tag, "remove");
+        await whiteListActions(tag, "remove");
         window.location.reload();
     };
 
