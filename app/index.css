@@ -5,3 +5,5 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+
+::-webkit-search-cancel-button { display: none; }
