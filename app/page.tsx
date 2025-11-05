@@ -33,7 +33,7 @@ const Page = ({ params }) => {
 
     return (
         <>
-            <Header />
+            <Header displaySettings={true}/>
             <HeaderSummary
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}

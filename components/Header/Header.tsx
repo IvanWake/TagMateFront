@@ -3,7 +3,7 @@
 import Link from "next/link";
 import headerStyles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ displaySettings }: { displaySettings: boolean }) => {
 
     return (
         <>
@@ -13,15 +13,16 @@ const Header = () => {
                             <img src="/icons/tagmate-min.svg" alt="logo"/>
                         </div>
                 </div>
-                <div className={headerStyles["app-menu"]}>
+                {
+                    displaySettings &&
+                    <div className={headerStyles["app-menu"]}>
                     <div
-                        className={`${headerStyles["menu-item"]} ${headerStyles["notification-icon"]} ${headerStyles["active"]}`}
+                        className={`${headerStyles["menu-item"]} ${headerStyles["notification-icon"]}`}
                     >
-                        <svg width="24" height="24">
-                            <use xlinkHref="#icon-notification"></use>
-                        </svg>
+                        <img src="/icons/settings.svg" alt="settings"/>
                     </div>
                 </div>
+                }
             </header>
             <svg style={{ display: "none" }}>
                 <symbol id="icon-notification" viewBox="0 0 24 24" fill="none">

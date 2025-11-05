@@ -55,7 +55,7 @@ const Page = ({ params }) => {
     return (
         <>
 
-            <Header/>
+            <Header displaySettings={false}/>
             <HeaderSummary
                 avatar={userProfileData.userData.avatar.path}
                 name={userProfileData.userData.name}

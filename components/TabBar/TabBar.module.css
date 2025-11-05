@@ -22,6 +22,11 @@
   transition: stroke 0.3s ease;
 }
 
+.icon:hover,
+.iconActive:hover {
+  cursor: pointer;
+}
+
 .iconActive path {
   stroke: #7462ff !important;
 }
