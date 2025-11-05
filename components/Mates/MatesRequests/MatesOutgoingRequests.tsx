@@ -1,7 +1,6 @@
 'use client';
 
 import MatesRequest from "@/components/Mates/MatesRequests/MatesRequest";
-import { UserItemSearch } from "@/types/mates/userItem";
 
 const MatesOutgoingRequests = ({ requests, tab }: any) => {
     return (

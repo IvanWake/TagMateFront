@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from "react";
+import { getMatesRequests } from "@/services/whitelist";
 import Link from "next/link";
 import matesMainStyles from "./MatesMain.module.css";
 import MatesList from "./MatesList/MatesList";
@@ -5,7 +9,16 @@ import SearchIcon from "@/components/Mates/MatesSvgIcons/SearchIcon";
 import ArrowRightIcon from "@/components/Mates/MatesSvgIcons/ArrowRightIcon";
 
 const MatesMain = () => {
-    const requestsCount = 0;
+    const [requestsCount, setRequestsCount] = useState(0);
+
+    useEffect(() => {
+        const fetchMatesRequestsHandler = async () => {
+            const matesRequests = await getMatesRequests();
+            setRequestsCount(matesRequests.data.incoming.length + matesRequests.data.outgoing.length);
+        }
+        fetchMatesRequestsHandler();
+    }, [])
+
     return (
         <div className={matesMainStyles.main}>
             <div className={matesMainStyles.mainСontent}>

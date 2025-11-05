@@ -1,17 +1,15 @@
 "use client";
 
-import {useState, useEffect} from "react";
-import {getMatesRequests} from "@/services/whitelist";
+import { useState, useEffect } from "react";
+import { getMatesRequests } from "@/services/whitelist";
 import styles from "./MatesRequests.module.css";
 import Link from "next/link";
 import NoRequests from "./NoRequests/NoRequests";
 import ArrowLeftIcon from "../MatesSvgIcons/ArrowLeftIcon";
 import noRequestsImg1 from "@/public/purposesImg/mates_requests-img1.svg";
 import noRequestsImg2 from "@/public/purposesImg/mates_requests-img2.svg";
-import MatesRequest from "@/components/Mates/MatesRequests/MatesRequest";
 import Loading from "@/components/Layout/Loading";
 import MatesIncomingRequests from "@/components/Mates/MatesRequests/MatesIncomingRequests";
-import user from "@/components/Mates/MatesMain/MatesList/User";
 
 const incomingDescription =
     "Здесь появятся заявки в мейты от людей, которым ты понравился. Заполни профиль и они скоро появятся";
@@ -65,7 +63,6 @@ export default function MatesRequests() {
             <div className={styles.list}>
                 {
                     isLoading ? <Loading/> :
-
                         tab === "in" ?
                             requests.incoming.length === 0 ?
                                 <NoRequests
@@ -88,7 +85,6 @@ export default function MatesRequests() {
                                     requests={requests.outgoing}
                                     tab={tab}
                                 />
-
                 }
 
             </div>
