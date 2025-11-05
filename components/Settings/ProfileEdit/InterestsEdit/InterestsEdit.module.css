@@ -1,0 +1,31 @@
+.header {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #9188ff;
+  text-decoration: none;
+}
+
+.title {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+}

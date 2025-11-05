@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Unbounded } from "next/font/google";
+import { Inter, Unbounded, Onest } from "next/font/google";
 
-
+const onest = Onest({
+  subsets: ['cyrillic'],
+  variable: '--font-onest',
+  display: 'swap',
+});
 
 const inter = Inter({
     subsets: ['cyrillic'],
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
+        <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
             {children}
         </html>
     );
