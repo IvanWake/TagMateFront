@@ -6,7 +6,7 @@ import { whiteListActions } from "@/services/whitelist";
 
 const AddMateButton = ({ tag }: { tag: string }) => {
     const addMateHandler = async () => {
-            await whiteListActions(tag, "send");
+        await whiteListActions(tag, "send");
         window.location.reload();
     };
 

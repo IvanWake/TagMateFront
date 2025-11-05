@@ -23,3 +23,26 @@ export const whiteListActions = async (tag: string, type: string) => {
         return { error: e };
     }
 }
+
+export const getMatesRequests = async () => {
+    const authToken = getAuthToken("authToken");
+
+    try {
+        const res = await fetch(`/api/friends/requests`, {
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            return { status: err.status };
+        }
+        const data = await res.json();
+        return { data };
+    } catch (e) {
+        return { error: e };
+    }
+}

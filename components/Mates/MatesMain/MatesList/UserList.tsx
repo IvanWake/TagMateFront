@@ -15,7 +15,7 @@ const UserList = ({ userItems }: UserListProps) => {
                         name={userItem.name}
                         lastName={userItem.lastName}
                         city={userItem.city.city}
-                        avatar={userItem.avatar}
+                        avatar={userItem.avatar.path}
                         serviceId={userItem.serviceId}
                         birthDay={userItem.birthDay}
                     />

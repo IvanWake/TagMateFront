@@ -1,3 +1,4 @@
+'use client';
 import styles from "./NoRequests.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +14,7 @@ const NoRequests = ({ image, title, description }: NoRequestsProps) => (
     <Image src={image} alt={title} />
     <div className={styles.noRequestsTitle}>{title}</div>
     <div className={styles.noRequestsText}>{description}</div>
-    <Link href="/" className={styles.noRequestsButton} aria-label="Профиль">Открыть профиль</Link>
+    <div onClick={() => window.location.replace("/")} className={styles.noRequestsButton} aria-label="Профиль">Открыть профиль</div>
   </div>
 );
 

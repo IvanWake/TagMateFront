@@ -5,4 +5,5 @@ export type UserItemSearch<T> = {
     city: T,
     avatar: string,
     birthDay: Date
+    tab?: string
 }

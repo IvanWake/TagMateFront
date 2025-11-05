@@ -6,10 +6,10 @@ import MatesSearch from "@/components/Mates/MatesSearch/MatesSearch";
 const SearchPage = () => {
 
     return (
-        <>
+        <AuthRoute>
             <MatesSearch />
             <TabBar />
-        </>
+        </AuthRoute>
     );
 }
 
