@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
-import { fetchUserProfileDataByTag } from "@/utils/fetchUserData/fetchUserProfileDataByTag";
-import { getAuthToken } from "@/utils/authToken";
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {fetchUserProfileData} from "@/utils/fetchUserData/fetchUserProfileData";
+import {fetchUserProfileDataByTag} from "@/utils/fetchUserData/fetchUserProfileDataByTag";
+import {getAuthToken} from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";
 import HeaderSummary from "@/components/Header/HeaderSummary";
@@ -55,7 +55,7 @@ const Page = ({ params }) => {
     return (
         <>
 
-            <Header />
+            <Header/>
             <HeaderSummary
                 avatar={userProfileData.userData.avatar.path}
                 name={userProfileData.userData.name}
@@ -71,19 +71,19 @@ const Page = ({ params }) => {
                 tag={tag}
                 isUserMate={userOptionsData.isUserFriend}
                 isBlocked={userProfileData.isBlocked}
+                inBlackList={userProfileData.inBlackList}
             />
-
-                <ProfileContentByTag
-                    isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
-                    tag={userProfileData.userData.serviceId}
-                    purpose={userProfileData.userData.purpose}
-                    interests={userProfileData.userData.interests}
-                    socials={userProfileData.userData.socials}
-                    images={userProfileData.userData.images}
-                    isUserMate={userOptionsData.isUserFriend}
-                    inBlackList={userProfileData.inBlackList}
-                    isBlocked={userProfileData.isBlocked}
-                />
+            <ProfileContentByTag
+                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
+                tag={userProfileData.userData.serviceId}
+                purpose={userProfileData.userData.purpose}
+                interests={userProfileData.userData.interests}
+                socials={userProfileData.userData.socials}
+                images={userProfileData.userData.images}
+                isUserMate={userOptionsData.isUserFriend}
+                inBlackList={userProfileData.inBlackList}
+                isBlocked={userProfileData.isBlocked}
+            />
 
 
             <TabBar/>

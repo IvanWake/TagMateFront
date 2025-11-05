@@ -1,9 +1,11 @@
 import addMateStyles from "@/components/Profile/AddMate/AddMate.module.css";
 
-const RequestPendingButton = () => {
+type Props = { text: string }
+
+const RequestPendingButton = ({ text }: Props) => {
     return (
         <div className={`${addMateStyles["user-mate-menu"]}`}>
-            <div className={`${addMateStyles["user-add-mate-active"]}`}>Вы в чёрном списке</div>
+            <div className={`${addMateStyles["user-add-mate-active"]}`}>{text}</div>
         </div>
     );
 }

@@ -32,5 +32,6 @@ export type PersonalData = {
     isUserByTag?: boolean,
     tag: string,
     isUserMate: string,
-    isBlocked: boolean
+    isBlocked: boolean,
+    inBlackList: boolean
 }

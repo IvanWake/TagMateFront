@@ -3,7 +3,7 @@ import { formatBirthDay } from "@/utils/formatBirthDay";
 import profileHero from "./Profile.module.css";
 import AddMate from "@/components/Profile/AddMate/AddMate";
 
-const ProfileHero = ({name, lastName, avatar, city, birthDay, isUserByTag, tag, isUserMate, isBlocked }: PersonalData) => {
+const ProfileHero = ({name, lastName, avatar, city, birthDay, isUserByTag, tag, isUserMate, isBlocked, inBlackList }: PersonalData) => {
     return (
         <section className={profileHero["profile-hero"]} id="profile">
             <img src={avatar} alt="profile image" className={profileHero["profile-image"]}/>
@@ -17,7 +17,7 @@ const ProfileHero = ({name, lastName, avatar, city, birthDay, isUserByTag, tag, 
                             {/*<div className="status-indicator"></div>*/}
                             <span>Был недавно</span>
                         </div>
-                        <AddMate tag={tag} isUserMate={isUserMate} isBlocked={isBlocked} />
+                        <AddMate tag={tag} isUserMate={isUserMate} isBlocked={isBlocked} inBlackList={inBlackList} />
                     </>
                 }
             </div>

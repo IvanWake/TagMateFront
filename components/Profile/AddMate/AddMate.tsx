@@ -9,10 +9,11 @@ import InBlackListButton from "@/components/Profile/AddMate/InBlackListButton";
 type Props = {
     tag: string,
     isUserMate: string,
-    isBlocked: boolean
+    isBlocked: boolean,
+    inBlackList: boolean
 }
 
-const AddMate = ({ tag, isUserMate, isBlocked }: Props) => {
+const AddMate = ({ tag, isUserMate, isBlocked, inBlackList }: Props) => {
     const isUserMateValues = {
         "access": <InMatesButton />,
         "pending": <RequestPendingButton tag={tag} />,
@@ -23,7 +24,8 @@ const AddMate = ({ tag, isUserMate, isBlocked }: Props) => {
     return (
         <>
             {
-                isBlocked ? <InBlackListButton />: isUserMateValues[isUserMate]
+                inBlackList ? <InBlackListButton text={"В чёрном списке"} /> :
+                isBlocked ? <InBlackListButton text={"Вы в чёрном списке"} /> : isUserMateValues[isUserMate]
             }
         </>
     );
