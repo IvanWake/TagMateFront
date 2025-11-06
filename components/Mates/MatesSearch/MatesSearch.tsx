@@ -1,80 +1,103 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import mainStyles from "./MatesSearch.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import { getSearchRequest } from "@/services/search";
+import { formatBirthDay } from "@/utils/formatBirthDay";
 import Link from "next/link";
 import NoMatesSearch from "./NoMatesSearch/NoMatesSearch";
-import { formatBirthDay } from "@/utils/formatBirthDay";
 import CloseIcon from "../MatesSvgIcons/CloseIcon";
 import ArrowLeftIcon from "../MatesSvgIcons/ArrowLeftIcon";
-
-const mockResults = [
-  {
-    id: "1",
-    name: "Иван",
-    lastName: "Иванов",
-    city: "Москва",
-    avatar: "/Serega.jpg",
-    birthDay: new Date(1995, 4, 12),
-  },
-  {
-    id: "2",
-    name: "Мария",
-    lastName: "Петрова",
-    city: "Санкт-Петербург",
-    avatar: "https://i.pravatar.cc/100",
-    birthDay: new Date(1998, 10, 5),
-  },
-];
+import mainStyles from "./MatesSearch.module.css";
+import Loading from "@/components/Layout/Loading";
 
 const MatesSearch = () => {
-  const [query, setQuery] = useState("");
-  // Для примера: если есть текст, показываем моковые результаты, иначе пусто
-  const results = query ? mockResults : [];
+    const [isLoading, setIsLoading] = useState(false);
+    const [query, setQuery] = useState("");
+    const [results, setResults] = useState([]);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  return (
-    <div className={mainStyles.wrapper}>
-      <section className={mainStyles.searchInput}>
-          <Link href="/mates" aria-label="Назад">
-            <ArrowLeftIcon color="#949494"/>
-          </Link>
-        <div className={mainStyles.searchInputWrapper}>
-          <input
-            type="search"
-            placeholder="Имя, фамилия, тег"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-          />
-          {query && (
-            <div
-              aria-label="Очистить"
-              onClick={() => setQuery("")}
-              className={mainStyles.closeIcon}
-            >
-              <CloseIcon />
-            </div>
-          )}
+    const setQueryHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        setQuery(inputValue);
+        if (inputValue.length === 0) {
+            setIsLoading(false);
+            return;
+        }
+
+        setIsLoading(true);
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+
+        timerRef.current = setTimeout(async () => {
+            const res = await getSearchRequest(inputValue);
+            if (res.data?.users != null && typeof res.data?.users === 'object' && !Array.isArray(res.data?.users)) {
+                setResults([]);
+            } else {
+                setResults(res.data?.users);
+            }
+
+            setIsLoading(false);
+        }, 1000);
+    };
+
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) clearTimeout(timerRef.current);
+        }
+    }, []);
+
+    return (
+        <div className={mainStyles.wrapper}>
+            <section className={mainStyles.searchInput}>
+                <Link href="/mates" aria-label="Назад">
+                    <ArrowLeftIcon color="#949494"/>
+                </Link>
+                <div className={mainStyles.searchInputWrapper}>
+                    <input
+                        type="search"
+                        placeholder="Имя, фамилия, тег"
+                        value={query}
+                        onChange={setQueryHandler}
+                    />
+                    {
+                        query && (
+                        <div
+                            aria-label="Очистить"
+                            onClick={() => setQuery("")}
+                            className={mainStyles.closeIcon}
+                        >
+                            <CloseIcon/>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            <section className={mainStyles.list}>
+                {
+                    isLoading ? <Loading/> :
+                        results?.length === 0 || query.length === 0 ?
+                            <NoMatesSearch
+                            />
+                            : (
+                                results?.map((user) => (
+
+                                    <Link href={`/${user.serviceId}`}>
+                                        <div key={user._id} className={mainStyles.userItem}>
+                                            <img src={user.avatar.path} alt="userImage"
+                                                 className={mainStyles.userPicture}/>
+                                            <div className={mainStyles.userInfo}>
+                                                <div className={mainStyles.userName}>{user.name} {user.lastName}</div>
+                                                <div
+                                                    className={mainStyles.userDescription}>{`${formatBirthDay(user.birthDay).yearsOld}, ${user.city.city}`}</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
+                            )}
+            </section>
         </div>
-      </section>
-
-      <section className={mainStyles.list}>
-        {results.length === 0 ? (
-          <NoMatesSearch
-        />
-        ) : (
-          results.map((user) => (
-            <div key={user.id} className={mainStyles.userItem}>
-              <img src={user.avatar} alt="" className={mainStyles.userPicture} />
-              <div className={mainStyles.userInfo}>
-                <div className={mainStyles.userName}>{user.name} {user.lastName}</div>
-                <div className={mainStyles.userDescription}>{`${formatBirthDay(user.birthDay).yearsOld}, ${user.city}`}</div>
-              </div>
-            </div>
-          ))
-        )}
-      </section>
-    </div>
-  );
+    );
 };
 
 export default MatesSearch;

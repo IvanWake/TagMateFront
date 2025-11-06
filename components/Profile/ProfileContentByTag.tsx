@@ -18,7 +18,6 @@ const ProfileContentByTag = ({
                                  inBlackList,
                                  isBlocked
                              }: ProfileData) => {
-    console.log(images);
     return (
         <main className={profileContentStyles["profile-content"]}>
             <section className={profileContentStyles["profile-details"]}>
