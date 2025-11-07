@@ -1,0 +1,274 @@
+.container {
+  max-width: 512px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 30px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  font-family: var(--font-onest);
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-onest);
+  font-weight: 800;
+  font-size: 20px;
+  color: #000;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #000000;
+}
+
+.settingItemsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.setting {
+  border-radius: 22px;
+  padding: 15px 20px;
+  background: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0px;
+  cursor: pointer;
+  background: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.settingInfo {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 200px;
+}
+
+.settingItemInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settingItemText {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.settingTitle {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.settingDescription {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 130%;
+  color: #5b5b5b;
+}
+
+.settingText {
+  font-size: 16px;
+  color: #000000;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ededed;
+}
+
+.logoutText {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ff5f62;
+}
+
+/* Стили для Toggle Switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  border-radius: 100px;
+  width: 51px;
+  height: 31px;
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  border-radius: 100px;
+  width: 27px;
+  height: 27px;
+  left: 2px;
+  bottom: 2px;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.06), 0 3px 8px 0 rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  background-color: white;
+  transition: 0.4s;
+}
+
+.toggleInput:checked + .toggleSlider {
+  background-color: #9188ff;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+  transform: translateX(20px);
+}
+
+.toggleInput:focus + .toggleSlider {
+  box-shadow: 0 0 1px #9188ff;
+}
+
+/* Стили Модалки */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 30px 10px 20px;
+  max-width: 468px;
+  width: 90%;
+  text-align: center;
+  animation: slideUp 0.2s ease-out;
+}
+
+.modalTitle {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin: 25px 0 30px 0;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cancelButton {
+  flex: 1;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px 20px;
+  max-width: 120px;
+  border: none;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  color: #627aff;
+  width: fit-content;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: #e0e0e0;
+}
+
+.confirmButton {
+  flex: 1;
+  border-radius: 10px;
+  padding: 10px 20px;
+  max-width: 120px;
+  background: #fff;
+  border: none;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ff5f62;
+  width: fit-content;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirmButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
