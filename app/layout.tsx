@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Onest, Unbounded } from "next/font/google";
+import { Inter, Unbounded, Onest } from "next/font/google";
 import indexStyles from "./index.module.css";
 import "./index.css";
 

@@ -1,0 +1,133 @@
+/* Хедер */
+.header {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #9188ff;
+  text-decoration: none;
+}
+
+.title {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+}
+
+.container {
+  max-width: 512px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 30px;
+  background-color: #ffffff;
+  font-family: var(--font-onest);
+}
+
+/* Основной контент */
+.content {
+  margin-top: 46px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-family: var(--font-onest);
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 25px;
+  padding: 15px 20px;
+  background: #fbfbfb;
+  transition: all 0.25s ease-in;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.inputWithIcons {
+  padding: 15px 15px;
+}
+
+.inputField {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 15px;
+  color: #5b5b5b;
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+  width: 100%;
+
+}
+
+/* Стили для плейсхолдера */
+.inputField::placeholder {
+  color: #5b5b5b;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.input:has(.inputField:focus) {
+  border: 2px solid #9188ff;
+}
+
+.input:has(.inputField:focus) .inputField::placeholder {
+  color: rgba(65, 65, 86, 0.4);
+}
+
+/* Стили для автозаполнения */
+.inputField:-webkit-autofill {
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 15px;
+  -webkit-box-shadow: 0 0 0px 1000px #fbfbfb inset;
+  -webkit-text-fill-color: #5b5b5b;
+}
+
+/* Иконки */
+.leftIcon {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  color: #9188ff;
+}
+
+.rightIcon {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  color: #9188ff;
+}
