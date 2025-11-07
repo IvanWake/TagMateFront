@@ -37,7 +37,7 @@ const MatesSearch = () => {
                 setResults(res.data?.users);
             }
 
-            setIsLoading(false);
+            setIsLoading(false); //SUka
         }, 1000);
     };
 
