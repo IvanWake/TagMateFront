@@ -74,7 +74,7 @@ const Page = ({ params }) => {
                 inBlackList={userProfileData.inBlackList}
             />
             <ProfileContentByTag
-                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
+                publicProfile={userPrivacyData.publicProfile}
                 tag={userProfileData.userData.serviceId}
                 purpose={userProfileData.userData.purpose}
                 interests={userProfileData.userData.interests}

@@ -61,7 +61,7 @@ const FirstStep = ({nextStep, stepId}: Step) => {
                     <div className={signupStyles.input}>
                         <label>Из какого вы города?</label>
                         <div className={signupStyles.icon}>
-                            <img src="/icons/auth/city.svg" alt="City"/>
+                            <img src="/icons/auth/city.svg" alt="City" />
                             <select
                                 className={signupStyles.select} {...register('city', {required: "Выберите город"})} >
                                 <option value="1459">Москва</option>

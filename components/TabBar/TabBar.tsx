@@ -12,9 +12,9 @@ const TabBar = () => {
     const isMatesActive = pathname.startsWith("/mates") ||
         (
             pathname.split("/").length > 1
-            && pathname !== "/"
+            && pathname !== "/" && !pathname.startsWith('/settings')
         );
-    const isProfileActive = pathname === '/';
+    const isProfileActive = pathname === '/' || pathname.startsWith('/settings');
 
     return (
         <footer className={styles.footer}>

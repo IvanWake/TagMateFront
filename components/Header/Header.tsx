@@ -16,11 +16,13 @@ const Header = ({ displaySettings }: { displaySettings: boolean }) => {
                 {
                     displaySettings &&
                     <div className={headerStyles["app-menu"]}>
-                    <div
-                        className={`${headerStyles["menu-item"]} ${headerStyles["notification-icon"]}`}
-                    >
-                        <img src="/icons/settings.svg" alt="settings"/>
-                    </div>
+                        <Link href={"/settings"}>
+                            <div
+                                className={`${headerStyles["menu-item"]} ${headerStyles["notification-icon"]}`}
+                            >
+                                <img src="/icons/settings.svg" alt="settings"/>
+                            </div>
+                        </Link>
                 </div>
                 }
             </header>

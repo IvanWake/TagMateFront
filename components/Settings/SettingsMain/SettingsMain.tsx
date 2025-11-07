@@ -10,6 +10,7 @@ import {
 } from "../SettingIcons";
 import SettingsMainModal from "./SettingsMainModal";
 import Link from "next/link";
+import { deleteAuthToken } from "@/utils/authToken";
 
 const SettingsMain: React.FC = () => {
   const [isPrivateProfile, setIsPrivateProfile] = useState(false);
@@ -28,10 +29,9 @@ const SettingsMain: React.FC = () => {
   };
 
   const handleConfirmLogout = () => {
-    // Логика выхода из аккаунта
-    console.log("Пользователь вышел из аккаунта");
+    deleteAuthToken("authToken");
     setShowLogoutModal(false);
-    // Здесь можно добавить redirect или очистку токенов
+    window.location.replace("/auth/welcome");
   };
 
   return (

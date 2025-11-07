@@ -46,7 +46,7 @@ const PersonalData: React.FC = () => {
               <div className={styles.field}>
                 <div className={styles.input}>
                   <input
-                    name="surname"
+                    name="lastName"
                     autoComplete="on"
                     type="search"
                     placeholder="Фамилия"
@@ -88,9 +88,12 @@ const PersonalData: React.FC = () => {
                 <input
                   name="date"
                   autoComplete="on"
-                  type="search"
+                  type="date"
                   placeholder="01.01.2000"
                   className={styles.inputField}
+                  max={new Date(new Date().getFullYear() - 14, new Date().getMonth(), new Date().getDate())
+                      .toISOString()
+                      .split("T")[0]}
                 />
               </div>
             </div>

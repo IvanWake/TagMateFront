@@ -16,7 +16,7 @@ export type ProfileData = {
     purpose: string,
     images: Image[],
     socials: Social[],
-    isShowSocials?: boolean,
+    publicProfile?: boolean,
     isUserMate: string,
     inBlackList: boolean,
     isBlocked: boolean
