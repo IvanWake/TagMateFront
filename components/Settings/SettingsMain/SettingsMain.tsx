@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getUserSettings, updatePrivacySettings } from "@/services/settings";
+import { deleteAuthToken } from "@/utils/authToken";
 import styles from "./SettingsMain.module.css";
 import {
   ArrowRightIcon,
@@ -10,14 +12,26 @@ import {
 } from "../SettingIcons";
 import SettingsMainModal from "./SettingsMainModal";
 import Link from "next/link";
-import { deleteAuthToken } from "@/utils/authToken";
+import Loading from "@/components/Layout/Loading";
 
 const SettingsMain: React.FC = () => {
   const [isPrivateProfile, setIsPrivateProfile] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchUserSettingsHandler = async () => {
+      const res = await getUserSettings();
+      setIsPrivateProfile(!res.data.publicProfile);
+      setIsLoading(false);
+    }
+
+    fetchUserSettingsHandler();
+  }, [])
 
   const handleTogglePrivateProfile = () => {
-    setIsPrivateProfile(!isPrivateProfile);
+    setIsPrivateProfile(prevState => !prevState);
+    updatePrivacySettings(!isPrivateProfile);
   };
 
   const handleLogoutClick = () => {
@@ -40,28 +54,32 @@ const SettingsMain: React.FC = () => {
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Настройки</h1>
         </div>
-        {/* Секция приватности */}
         <section className={styles.section}>
-          <div className={styles.setting}>
-            <div className={styles.settingInfo}>
-              <div className={styles.textContent}>
-                <div className={styles.settingTitle}>Приватный профиль</div>
-                <div className={styles.settingDescription}>
-                  Закрой доступ к соц.сетям, <br /> если не хочешь, чтобы тебе
-                  писали
+
+             <div className={styles.setting}>
+              <div className={styles.settingInfo}>
+                <div className={styles.textContent}>
+                  <div className={styles.settingTitle}>Приватный профиль</div>
+                  <div className={styles.settingDescription}>
+                    Закрой доступ к соц.сетям, <br /> если не хочешь, чтобы тебе
+                    писали
+                  </div>
                 </div>
               </div>
+               {
+                 isLoading ? <Loading w={"2"} h={"2"} isComp={true}/> :
+                     <label className={styles.toggle}>
+                       <input
+                           type="checkbox"
+                           checked={isPrivateProfile}
+                           onChange={handleTogglePrivateProfile}
+                           className={styles.toggleInput}
+                       />
+                       <span className={styles.toggleSlider} />
+                     </label>
+               }
+
             </div>
-            <label className={styles.toggle}>
-              <input
-                type="checkbox"
-                checked={isPrivateProfile}
-                onChange={handleTogglePrivateProfile}
-                className={styles.toggleInput}
-              />
-              <span className={styles.toggleSlider} />
-            </label>
-          </div>
         </section>
 
         <section className={styles.section}>

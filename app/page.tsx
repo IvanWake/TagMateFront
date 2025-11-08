@@ -29,16 +29,11 @@ const Page = ({ params }) => {
         fetchUserProfileDataHandler();
     }, []);
 
-    if (!userProfileData) return <Loading />
+    if (!userProfileData) return <Loading w={"5"} h={"5"} isComp={false} />
 
     return (
         <>
-            <Header displaySettings={true}/>
-            <HeaderSummary
-                name={userProfileData.name}
-                lastName={userProfileData.lastName}
-                avatar={userProfileData.avatar.path}
-            />
+            <Header displaySettings={true} />
             <ProfileHero
                 name={userProfileData.name}
                 lastName={userProfileData.lastName}

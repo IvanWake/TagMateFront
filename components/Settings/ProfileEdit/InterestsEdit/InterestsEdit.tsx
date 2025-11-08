@@ -1,14 +1,34 @@
 "use client";
 
-import Link from "next/link";
-import styles from "./InterestsEdit.module.css";
+import { useEffect, useState } from "react";
+import { getUserSettings } from "@/services/settings";
+import { fetchInterests } from "@/utils/fetchUserData/fetchInterests";
 import { ArrowLeftIcon } from "../../SettingIcons";
 import CategoryItem from "./CategoryItem";
+import signupStyles from "@/components/SignUp/SecondStep/SecondStep.module.css";
+import styles from "./InterestsEdit.module.css";
+import Link from "next/link";
+import Loading from "@/components/Layout/Loading";
 
 const ProfileEdit: React.FC = () => {
+  const [categories, setCategories] = useState([]);
+  const [comparesId, setComparesId] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchUserInterests = async () => {
+      setIsLoading(true);
+      const res = await fetchInterests();
+      const compare = await getUserSettings();
+      setCategories(res);
+      setComparesId(compare.data.interests);
+      setIsLoading(false);
+    }
+    fetchUserInterests();
+  }, [])
+
   return (
     <>
-      {/* Хедер */}
       <header className={styles.header}>
         <Link href="/settings/edit-profile" className={styles.back}>
           <ArrowLeftIcon />
@@ -24,7 +44,16 @@ const ProfileEdit: React.FC = () => {
           Назад
         </Link>
       </header>
-      {/* <CategoryItem /> */}
+      <div className={signupStyles["interests-container"]}>
+        <div className={signupStyles.categories}>
+          {
+            isLoading ? <Loading w={"5"} h={"5"} isComp={false} /> :
+            categories?.map((category) => (
+                <CategoryItem category={category} comparesId={comparesId}/>
+            ))
+          }
+        </div>
+      </div>
     </>
   );
 };

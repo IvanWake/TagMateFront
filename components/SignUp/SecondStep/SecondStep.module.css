@@ -87,6 +87,14 @@
     margin-bottom: 10px;
 }
 
+.category .category-name-settings {
+    color: #000;
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
 .interests {
     display: flex;
     flex-wrap: wrap;

@@ -5,9 +5,9 @@ import { Interest } from "@/types/signup/steps";
 import InterestItem from "@/components/SignUp/SecondStep/InterestItem";
 import signupStyles from "@/components/SignUp/SecondStep/SecondStep.module.css";
 
-type Interests = { interests: Interest[] }
+type Interests = { interests: Interest[], comparesId: Interest[] }
 
-const Interests = ({ interests }: Interests) => {
+const Interests = ({ interests, comparesId }: Interests) => {
     return (
         <div className={signupStyles.interests}>
             {
@@ -16,6 +16,7 @@ const Interests = ({ interests }: Interests) => {
                         id={interest.id}
                         name={interest.name}
                         category_id={interest.category_id}
+                        checked={comparesId.some((item) => item.id === interest.id)}
                     />
                 ))
             }

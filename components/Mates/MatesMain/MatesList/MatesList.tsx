@@ -24,7 +24,7 @@ const Mates = () => {
         <>
             <section className={mainStyles.mates}>
                 {
-                    isMatesLoading ? <Loading /> :
+                    isMatesLoading ? <Loading w={"5"} h={"5"} isComp={false} /> :
                         userMates.length > 0 ?
                         <UserList userItems={userMates}/> :
                         <NoMates/>

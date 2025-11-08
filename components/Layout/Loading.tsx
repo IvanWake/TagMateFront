@@ -1,10 +1,24 @@
 import styles from "./Loading.module.css";
 
-const Loading = () => {
+type Props = { w: string, h: string, isComp?: boolean }
+
+const Loading = ({ w, h, isComp }: Props) => {
     return (
-        <div className={styles.page}>
-            <div className={styles.spin}></div>
-        </div>
+        <>
+            {
+                isComp ?
+                    <div className={styles.spin} style={{
+                        width: `${w}rem`,
+                        height: `${h}rem`
+                    }}></div> :
+                    <div className={styles.page}>
+                        <div className={styles.spin} style={{
+                            width: `${w}rem`,
+                            height: `${h}rem`
+                        }}></div>
+                    </div>
+            }
+        </>
     );
 }
 

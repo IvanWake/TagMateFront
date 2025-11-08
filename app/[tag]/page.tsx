@@ -55,12 +55,7 @@ const Page = ({ params }) => {
     return (
         <>
 
-            <Header displaySettings={false}/>
-            <HeaderSummary
-                avatar={userProfileData.userData.avatar.path}
-                name={userProfileData.userData.name}
-                lastName={userProfileData.userData.lastName}
-            />
+            <Header displaySettings={false} />
             <ProfileHero
                 isUserByTag={true}
                 name={userProfileData.userData.name}
