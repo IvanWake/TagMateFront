@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getUserSettings } from "@/services/settings";
+import {getUserSettings, updateInterests} from "@/services/settings";
 import { fetchInterests } from "@/utils/fetchUserData/fetchInterests";
 import { ArrowLeftIcon } from "../../SettingIcons";
 import CategoryItem from "./CategoryItem";
@@ -14,6 +14,15 @@ const ProfileEdit: React.FC = () => {
   const [categories, setCategories] = useState([]);
   const [comparesId, setComparesId] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [updatedInterests, setUpdatedInterests] = useState([]);
+
+  const handleDataFromChild = (data) => {
+    setUpdatedInterests(data);
+  }
+
+  const updateInterestsHandler = async () => {
+      await updateInterests(updatedInterests);
+  }
 
   useEffect(() => {
     const fetchUserInterests = async () => {
@@ -30,15 +39,18 @@ const ProfileEdit: React.FC = () => {
   return (
     <>
       <header className={styles.header}>
+          <div onClick={updateInterestsHandler}>
         <Link href="/settings/edit-profile" className={styles.back}>
           <ArrowLeftIcon />
           Назад
         </Link>
+          </div>
         <div className={styles.title}>Интересы</div>
         <Link
-          href="/settings"
-          className={styles.back}
-          style={{ visibility: "hidden" }}
+            href="/settings"
+            className={styles.back}
+            style={{ visibility: "hidden" }}
+            onClick={() => updateInterestsHandler}
         >
           <ArrowLeftIcon />
           Назад
@@ -49,7 +61,7 @@ const ProfileEdit: React.FC = () => {
           {
             isLoading ? <Loading w={"5"} h={"5"} isComp={false} /> :
             categories?.map((category) => (
-                <CategoryItem category={category} comparesId={comparesId}/>
+                <CategoryItem category={category} comparesId={comparesId} handleDataFromChild={handleDataFromChild}/>
             ))
           }
         </div>

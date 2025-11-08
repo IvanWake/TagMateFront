@@ -8,7 +8,8 @@ export type Category = {
     id: number,
     interests: Interest[],
     name: string,
-    comparesId: Interest[]
+    comparesId: Interest[],
+    handleDataFromChild?: () => void
 }
 
 export type Interest = {
