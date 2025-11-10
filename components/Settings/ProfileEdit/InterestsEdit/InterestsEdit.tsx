@@ -21,6 +21,7 @@ const ProfileEdit: React.FC = () => {
   }
 
   const updateInterestsHandler = async () => {
+    console.log(updatedInterests);
       await updateInterests(updatedInterests);
   }
 

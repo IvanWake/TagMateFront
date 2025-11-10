@@ -48,7 +48,7 @@ export const updatePrivacySettings = async (publicProfile: boolean) => {
 
 export const updateInterests = async (interests: string[]) => {
     const authToken = getAuthToken("authToken");
-
+    console.log(interests);
     try {
         const res = await fetch(`/api/settings/interests`, {
             method: "PATCH",
@@ -56,7 +56,7 @@ export const updateInterests = async (interests: string[]) => {
                 "Authorization": `Bearer ${authToken}`,
                 "Content-Type": "application/json"
             },
-            body: { interests }
+            body: JSON.stringify({ interests: interests })
         });
 
         if (!res.ok) {

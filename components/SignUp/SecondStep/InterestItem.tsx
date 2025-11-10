@@ -1,30 +1,16 @@
 'use client';
 
-import { useState } from "react";
+
+import { useFormContext } from "react-hook-form";
 import { Interest } from "@/types/signup/steps";
 import signupStyles from "@/components/SignUp/SecondStep/SecondStep.module.css";
 
-type Props = {
-    _id?: string,
-    category_id: string,
-    id: number,
-    name: string,
-    comparesId?: Interest[],
-    checked?: boolean,
-    handler?: () => void
-}
-
-const InterestItem = ({ id, name, checked, handler }: Props) => {
-    const [isChecked, setIsChecked] = useState(checked);
-
-    const onChangeInterestsHandler = () => {
-        setIsChecked(prevState => !prevState);
-        handler(id);
-    }
+const InterestItem = ({ id, name, category_id }: Interest) => {
+    const { register } = useFormContext();
 
     return (
         <label className={signupStyles.interest} key={'intId: ' + id}>
-            <input type="checkbox" value={id} checked={isChecked} onClick={onChangeInterestsHandler} />
+            <input { ...register('interests')} type="checkbox" value={id} />
             <div className={signupStyles["interest-name"]}>{name}</div>
         </label>
     );

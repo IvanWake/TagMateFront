@@ -15,7 +15,7 @@ import Link from "next/link";
 import Loading from "@/components/Layout/Loading";
 
 const SettingsMain: React.FC = () => {
-  const [isPrivateProfile, setIsPrivateProfile] = useState(false);
+  const [isPrivateProfile, setIsPrivateProfile] = useState(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
 
@@ -31,7 +31,7 @@ const SettingsMain: React.FC = () => {
 
   const handleTogglePrivateProfile = () => {
     setIsPrivateProfile(prevState => !prevState);
-    updatePrivacySettings(!isPrivateProfile);
+    updatePrivacySettings(isPrivateProfile);
   };
 
   const handleLogoutClick = () => {

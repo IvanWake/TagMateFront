@@ -6,6 +6,7 @@ export async function PATCH(req: NextRequest) {
 
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/settings/privacy`, {
         method: "PATCH",
+         cache: "no-store",
         headers: {
             "Content-Type" : "application/json",
             "Authorization": `Bearer ${authToken}`,
