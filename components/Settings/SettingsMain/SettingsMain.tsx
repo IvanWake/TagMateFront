@@ -29,9 +29,11 @@ const SettingsMain: React.FC = () => {
     fetchUserSettingsHandler();
   }, [])
 
-  const handleTogglePrivateProfile = () => {
+  const handleTogglePrivateProfile = async () => {
     setIsPrivateProfile(prevState => !prevState);
-    updatePrivacySettings(isPrivateProfile);
+    setIsLoading(true);
+    await updatePrivacySettings(isPrivateProfile);
+    setIsLoading(false);
   };
 
   const handleLogoutClick = () => {

@@ -33,8 +33,6 @@ const FirstStep = ({nextStep, stepId}: Step) => {
         nextStep();
     }
 
-
-
     return (
         <>
             <main className={signupStyles.main}>
