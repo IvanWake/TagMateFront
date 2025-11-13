@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./ProfileEdit.module.css";
 import { ArrowLeftIcon, EditIcon, PlusIcon } from "../SettingIcons";
+import SocialList from "@/components/Settings/Socials/SocialList";
+import {getUserSettings} from "@/services/settings";
+import social from "@/components/Settings/Socials/Social";
 
-// import InterestList from "@/components/Interests/InterestList";
-// import { Interest } from "@/types/signup/steps";
 
 const ProfileEdit: React.FC = () => {
   const [galleryPhotos, setGalleryPhotos] = useState<string[]>([]);
-  const [vkConnected, setVkConnected] = useState(false);
-  const [telegramConnected, setTelegramConnected] = useState(false);
-  const [instagramConnected, setInstagramConnected] = useState(false);
-  const [discordConnected, setDiscordConnected] = useState(false);
+  const [socials, setSocials] = useState();
 
   const handleAvatarEdit = () => {
     console.log("Edit avatar");
@@ -22,6 +20,15 @@ const ProfileEdit: React.FC = () => {
   const handleAddPhoto = () => {
     console.log("Add photo to gallery");
   };
+
+  useEffect(() => {
+    const getUserSettingsHandler = async () => {
+     const res = await getUserSettings();
+      setSocials(res.data.socials);
+    }
+    getUserSettingsHandler();
+
+  }, []);
 
   return (
     <>
@@ -91,100 +98,7 @@ const ProfileEdit: React.FC = () => {
           </section>
 
           {/* Социальные сети */}
-          <section className={styles.section}>
-            <div className={styles.sectionTitle}>Социальные сети</div>
-            <div className={styles.sectionDescription}>
-              Для знакомства нужен один шаг - подключил соцсети
-            </div>
-
-            <div className={styles.socialList}>
-              {/* VK */}
-              <div className={styles.socialItem}>
-                <div className={styles.socialInfo}>
-                  <div className={styles.socialIcon}>
-                    <img src="/icons/socials/icon_vk.png" alt="VK" />
-                  </div>
-                  <div className={styles.socialName}>VK</div>
-                </div>
-                <div
-                  className={`${styles.socialAction} ${
-                    vkConnected
-                      ? styles.socialActionEdit
-                      : styles.socialActionAdd
-                  }`}
-                  onClick={() => setVkConnected(!vkConnected)}
-                >
-                  {vkConnected ? <EditIcon /> : <PlusIcon />}
-                </div>
-              </div>
-
-              {/* Telegram */}
-              <div className={styles.socialItem}>
-                <div className={styles.socialInfo}>
-                  <div className={styles.socialIcon}>
-                    <img
-                      src="/icons/socials/icon_telegram.png"
-                      alt="Telegram"
-                    />
-                  </div>
-                  <div className={styles.socialName}>Telegram</div>
-                </div>
-                <div
-                  className={`${styles.socialAction} ${
-                    telegramConnected
-                      ? styles.socialActionEdit
-                      : styles.socialActionAdd
-                  }`}
-                  onClick={() => setTelegramConnected(!telegramConnected)}
-                >
-                  {telegramConnected ? <EditIcon /> : <PlusIcon />}
-                </div>
-              </div>
-
-              {/* Instagram */}
-              <div className={styles.socialItem}>
-                <div className={styles.socialInfo}>
-                  <div className={styles.socialIcon}>
-                    <img
-                      src="/icons/socials/icon_instagram.png"
-                      alt="Instagram"
-                    />
-                  </div>
-                  <div className={styles.socialName}>Instagram</div>
-                </div>
-                <div
-                  className={`${styles.socialAction} ${
-                    instagramConnected
-                      ? styles.socialActionEdit
-                      : styles.socialActionAdd
-                  }`}
-                  onClick={() => setInstagramConnected(!instagramConnected)}
-                >
-                  {instagramConnected ? <EditIcon /> : <PlusIcon />}
-                </div>
-              </div>
-
-              {/* Discord */}
-              <div className={styles.socialItem}>
-                <div className={styles.socialInfo}>
-                  <div className={styles.socialIcon}>
-                    <img src="/icons/socials/icon_discord.png" alt="Discord" />
-                  </div>
-                  <div className={styles.socialName}>Discord</div>
-                </div>
-                <div
-                  className={`${styles.socialAction} ${
-                    discordConnected
-                      ? styles.socialActionEdit
-                      : styles.socialActionAdd
-                  }`}
-                  onClick={() => setDiscordConnected(!discordConnected)}
-                >
-                  {discordConnected ? <EditIcon /> : <PlusIcon />}
-                </div>
-              </div>
-            </div>
-          </section>
+          <SocialList socials={socials} />
         </div>
       </div>
     </>
