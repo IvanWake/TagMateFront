@@ -24,7 +24,7 @@ const SocialList = ({ socials }: Props) => {
             </div>
 
             <div className={styles.socialList}>
-                <Social icon={"vk"} link={"link"} onUpdateSocial={onUpdateSocial}/>
+                <Social icon={"vk"} link={socials.vk} onUpdateSocial={onUpdateSocial}/>
                 <Social icon={"telegram"} link={socials.telegram} onUpdateSocial={onUpdateSocial}/>
                 <Social icon={"inst"} link={socials.inst} onUpdateSocial={onUpdateSocial}/>
                 <Social icon={"discord"} link={socials.discord} onUpdateSocial={onUpdateSocial}/>

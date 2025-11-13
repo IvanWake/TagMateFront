@@ -21,6 +21,9 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
     }
     useEffect(() => {
         setSocialValue(icon !== "discord" ? link?.split("/").pop() || "" : link);
+        if (link === "link") {
+            setSocialValue(icon);
+        }
     }, [link, icon]);
 
     return (

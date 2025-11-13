@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      {children}
-    </>
+    <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
+      <body className={indexStyles.body}>{children}</body>
+    </html>
   );
 }
