@@ -24,7 +24,7 @@ const unbounded = Unbounded({
 
 export const metadata: Metadata = {
   title: "TagMate | Настройки",
-  description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+  description: "TagMate - ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
 };
 
 export default function RootLayout({
@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
-      <body className={indexStyles.body}>{children}</body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

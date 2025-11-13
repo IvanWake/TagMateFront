@@ -21,8 +21,9 @@ const ProfileEdit: React.FC = () => {
   }
 
   const updateInterestsHandler = async () => {
-    console.log(updatedInterests);
+    if(updatedInterests.length > 0) {
       await updateInterests(updatedInterests);
+    }
   }
 
   useEffect(() => {

@@ -6,12 +6,11 @@ import styles from "./ProfileEdit.module.css";
 import { ArrowLeftIcon, EditIcon, PlusIcon } from "../SettingIcons";
 import SocialList from "@/components/Settings/Socials/SocialList";
 import {getUserSettings} from "@/services/settings";
-import social from "@/components/Settings/Socials/Social";
 
 
-const ProfileEdit: React.FC = () => {
+const ProfileEdit = () => {
   const [galleryPhotos, setGalleryPhotos] = useState<string[]>([]);
-  const [socials, setSocials] = useState();
+  const [userSocials, setUserSocials] = useState<{ vk: string, telegram: string, inst: string, discord: string }>({ vk: "", telegram: "", inst: "", discord: "" });
 
   const handleAvatarEdit = () => {
     console.log("Edit avatar");
@@ -24,10 +23,9 @@ const ProfileEdit: React.FC = () => {
   useEffect(() => {
     const getUserSettingsHandler = async () => {
      const res = await getUserSettings();
-      setSocials(res.data.socials);
+      setUserSocials(res.data.socials);
     }
     getUserSettingsHandler();
-
   }, []);
 
   return (
@@ -98,7 +96,7 @@ const ProfileEdit: React.FC = () => {
           </section>
 
           {/* Социальные сети */}
-          <SocialList socials={socials} />
+          <SocialList socials={userSocials} />
         </div>
       </div>
     </>

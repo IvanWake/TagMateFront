@@ -46,6 +46,7 @@ const PersonalData: React.FC = () => {
     setIsLoading(true);
     await updatePersonalSettings(name, lastName, birthDay, city)
     setIsLoading(false);
+    setIsButtonDisabled(true);
   }
 
   useEffect(() => {
