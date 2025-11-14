@@ -27,7 +27,7 @@ const AuthRoute = (props: Props) => {
 
     }, [cookies]);
 
-    if (isUserLoading) return <Loading />;
+    if (isUserLoading) return <Loading w={"5"} h={"5"} isComp={false} />;
 
     return props.children;
 }

@@ -10,7 +10,7 @@ const Gallery = ({ images }: Image[]) => {
                     {
                         images.map((image) => (
                             <div key={image.id} id={image.id} className={galleryStyles["gallery-item"]}>
-                                <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${image.path}`} alt={image.id} />
+                                <img src={image.path} alt={image.id} />
                             </div>
                         ))
                     }

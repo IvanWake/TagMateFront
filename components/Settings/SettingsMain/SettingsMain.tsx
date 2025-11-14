@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getUserSettings, updatePrivacySettings } from "@/services/settings";
+import { deleteAuthToken } from "@/utils/authToken";
 import styles from "./SettingsMain.module.css";
 import {
   ArrowRightIcon,
@@ -10,13 +12,28 @@ import {
 } from "../SettingIcons";
 import SettingsMainModal from "./SettingsMainModal";
 import Link from "next/link";
+import Loading from "@/components/Layout/Loading";
 
 const SettingsMain: React.FC = () => {
-  const [isPrivateProfile, setIsPrivateProfile] = useState(false);
+  const [isPrivateProfile, setIsPrivateProfile] = useState(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
-  const handleTogglePrivateProfile = () => {
-    setIsPrivateProfile(!isPrivateProfile);
+  useEffect(() => {
+    const fetchUserSettingsHandler = async () => {
+      const res = await getUserSettings();
+      setIsPrivateProfile(!res.data.publicProfile);
+      setIsLoading(false);
+    }
+
+    fetchUserSettingsHandler();
+  }, [])
+
+  const handleTogglePrivateProfile = async () => {
+    setIsPrivateProfile(prevState => !prevState);
+    setIsLoading(true);
+    await updatePrivacySettings(isPrivateProfile);
+    setIsLoading(false);
   };
 
   const handleLogoutClick = () => {
@@ -28,10 +45,9 @@ const SettingsMain: React.FC = () => {
   };
 
   const handleConfirmLogout = () => {
-    // Логика выхода из аккаунта
-    console.log("Пользователь вышел из аккаунта");
+    deleteAuthToken("authToken");
     setShowLogoutModal(false);
-    // Здесь можно добавить redirect или очистку токенов
+    window.location.replace("/auth/welcome");
   };
 
   return (
@@ -40,28 +56,32 @@ const SettingsMain: React.FC = () => {
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Настройки</h1>
         </div>
-        {/* Секция приватности */}
         <section className={styles.section}>
-          <div className={styles.setting}>
-            <div className={styles.settingInfo}>
-              <div className={styles.textContent}>
-                <div className={styles.settingTitle}>Приватный профиль</div>
-                <div className={styles.settingDescription}>
-                  Закрой доступ к соц.сетям, <br /> если не хочешь, чтобы тебе
-                  писали
+
+             <div className={styles.setting}>
+              <div className={styles.settingInfo}>
+                <div className={styles.textContent}>
+                  <div className={styles.settingTitle}>Приватный профиль</div>
+                  <div className={styles.settingDescription}>
+                    Закрой доступ к соц.сетям, <br /> если не хочешь, чтобы тебе
+                    писали
+                  </div>
                 </div>
               </div>
+               {
+                 isLoading ? <Loading w={"2"} h={"2"} isComp={true}/> :
+                     <label className={styles.toggle}>
+                       <input
+                           type="checkbox"
+                           checked={isPrivateProfile}
+                           onChange={handleTogglePrivateProfile}
+                           className={styles.toggleInput}
+                       />
+                       <span className={styles.toggleSlider} />
+                     </label>
+               }
+
             </div>
-            <label className={styles.toggle}>
-              <input
-                type="checkbox"
-                checked={isPrivateProfile}
-                onChange={handleTogglePrivateProfile}
-                className={styles.toggleInput}
-              />
-              <span className={styles.toggleSlider} />
-            </label>
-          </div>
         </section>
 
         <section className={styles.section}>

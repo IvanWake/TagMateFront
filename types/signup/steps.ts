@@ -7,12 +7,16 @@ export type Step = {
 export type Category = {
     id: number,
     interests: Interest[],
-    name: string
+    name: string,
+    comparesId: Interest[],
+    handleDataFromChild?: () => void
 }
 
 export type Interest = {
-    _id: string,
+    _id?: string,
     category_id: string,
     id: number,
-    name: string
+    name: string,
+    comparesId?: Interest[],
+    checked?: boolean
 }

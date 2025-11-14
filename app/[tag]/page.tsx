@@ -55,12 +55,7 @@ const Page = ({ params }) => {
     return (
         <>
 
-            <Header displaySettings={false}/>
-            <HeaderSummary
-                avatar={userProfileData.userData.avatar.path}
-                name={userProfileData.userData.name}
-                lastName={userProfileData.userData.lastName}
-            />
+            <Header displaySettings={false} />
             <ProfileHero
                 isUserByTag={true}
                 name={userProfileData.userData.name}
@@ -74,7 +69,7 @@ const Page = ({ params }) => {
                 inBlackList={userProfileData.inBlackList}
             />
             <ProfileContentByTag
-                isShowSocials={userPrivacyData.publicProfile || userOptionsData.isUserMate}
+                publicProfile={userPrivacyData.publicProfile}
                 tag={userProfileData.userData.serviceId}
                 purpose={userProfileData.userData.purpose}
                 interests={userProfileData.userData.interests}

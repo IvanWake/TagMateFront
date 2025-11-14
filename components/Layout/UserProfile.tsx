@@ -29,8 +29,8 @@ const UserProfile = () => {
         fetchUserProfileDataHandler();
     }, []);
 
-    if (!userProfileData) return <Loading />
-
+    if (!userProfileData) return <Loading w={"5"} h={"5"} isComp={false} />
+    
     return (
         <div className={indexStyles.pageWrapper}>
             <NonAuthRoute>

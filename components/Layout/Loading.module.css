@@ -1,17 +1,15 @@
+.spin {
+    border: 2px solid #627AFF;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin .65s linear infinite;
+}
+
 .page {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-.page .spin {
-    width: 5rem;
-    height: 5rem;
-    border: 2px solid #627AFF;
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: spin .65s linear infinite;
 }
 
 
