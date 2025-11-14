@@ -11,14 +11,9 @@ import Loading from "@/components/Layout/Loading";
 
 const ProfileEdit = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [avatar, setAvatar] = useState("/Serega.jpg");
-    const [galleryPhotos, setGalleryPhotos] = useState([{
-        link: '/Serega.jpg',
-    },
-        {
-            link: '/Serega.jpg',
-        }
-    ]);
+    const [avatar, setAvatar] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [galleryPhotos, setGalleryPhotos] = useState([]);
     const [userSocials, setUserSocials] = useState<{
         vk: string,
         telegram: string,
@@ -39,7 +34,7 @@ const ProfileEdit = () => {
     const handleAddPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setAvatar(URL.createObjectURL(file))
+            setPhoto(URL.createObjectURL(file))
             const formData = new FormData();
             formData.append("image", file)
             await addPhoto(formData);
@@ -50,6 +45,8 @@ const ProfileEdit = () => {
         const getUserSettingsHandler = async () => {
             const res = await getUserSettings();
             setUserSocials(res.data.socials);
+            setGalleryPhotos(res.data.images);
+            setAvatar(res.data.avatar.path);
             setIsLoading(false);
         }
         getUserSettingsHandler();
@@ -103,9 +100,9 @@ const ProfileEdit = () => {
                                 </div>
                                 <div className={styles.gallery}>
                                     {
-                                        galleryPhotos.map((photo, index) => (
+                                        galleryPhotos?.map((photo, index) => (
                                             <div key={index} className={styles.galleryItem}>
-                                                <img src={photo.link} className={styles.galleryPhoto}/>
+                                                <img src={photo.path} className={styles.galleryPhoto}/>
                                             </div>
                                         ))
                                     }
