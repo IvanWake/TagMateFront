@@ -93,11 +93,6 @@
   transition: all 0.2s ease;
 }
 
-.avatarEdit:hover {
-  background: #f8f7ff;
-  transform: scale(1.05);
-}
-
 /* Секции */
 .section {
   margin-bottom: 30px;
@@ -159,8 +154,8 @@
 }
 
 .galleryItem {
-  width: 104px;
-  height: 104px;
+  width: 100px;
+  height: 100px;
 }
 
 .galleryPhoto {

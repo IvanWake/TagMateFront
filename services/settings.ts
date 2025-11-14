@@ -72,7 +72,6 @@ export const updatePersonalSettings = async (name: string, lastName: string, bir
 
 export const updateInterests = async (interests: string[]) => {
     const authToken = getAuthToken("authToken");
-    console.log(interests);
     try {
         const res = await fetch(`/api/settings/interests`, {
             method: "PATCH",
@@ -91,5 +90,78 @@ export const updateInterests = async (interests: string[]) => {
         return { data }
     } catch (e) {
         return { error: e };
+    }
+}
+
+export const updateSocials = async (socials: { vk: string, telegram: string, inst: string, discord: string }) => {
+    const authToken = getAuthToken("authToken");
+    try {
+        const res = await fetch(`/api/settings/socials`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${authToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ socials: socials })
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            return { status: err.status };
+        }
+        const data = await res.json();
+        return { data }
+    } catch (e) {
+        return { error: e };
+    }
+}
+
+export const updateAvatar = async (formData: FormData) => {
+    const authToken = getAuthToken("authToken");
+
+    try {
+        const res = await fetch("/api/profile/avatar", {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${authToken}`,
+            },
+            body: formData
+        })
+
+        if (!res.ok) {
+            const error = await res.json();
+            console.log(error.error || error.message);
+            return { message: error.error || erorr.message, status: error.status };
+        }
+
+
+        const data = await res.json();
+    } catch (error) {
+        return { error }
+    }
+}
+
+export const addPhoto = async (formData: FormData) => {
+    const authToken = getAuthToken("authToken");
+
+    try {
+        const res = await fetch("/api/profile/images", {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${authToken}`,
+            },
+            body: formData
+        })
+
+        if (!res.ok) {
+            const error = await res.json();
+            console.log(error.error || error.message);
+            return { message: error.error || erorr.message, status: error.status };
+        }
+
+
+        const data = await res.json();
+    } catch (error) {
+        return { error }
     }
 }

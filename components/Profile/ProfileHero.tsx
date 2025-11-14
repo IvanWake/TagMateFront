@@ -13,10 +13,10 @@ const ProfileHero = ({name, lastName, avatar, city, birthDay, isUserByTag, tag, 
                     className={profileHero["user-name"]}>{`${name} ${lastName}`}, {formatBirthDay(birthDay).yearsOld}</div>
                 { isUserByTag &&
                     <>
-                        <div className="user-status">
-                            {/*<div className="status-indicator"></div>*/}
-                            <span>Был недавно</span>
-                        </div>
+                        {/*<div className="user-status">*/}
+                        {/*    /!*<div className="status-indicator"></div>*!/*/}
+                        {/*    /!*<span style={{ color: "#FFF" }}>Был недавно</span>*!/*/}
+                        {/*</div>*/}
                         <AddMate tag={tag} isUserMate={isUserMate} isBlocked={isBlocked} inBlackList={inBlackList} />
                     </>
                 }

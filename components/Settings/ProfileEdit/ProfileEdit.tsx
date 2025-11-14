@@ -1,106 +1,150 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import styles from "./ProfileEdit.module.css";
+import React, { useState, useEffect } from "react";
+import { addPhoto, getUserSettings, updateAvatar } from "@/services/settings";
 import { ArrowLeftIcon, EditIcon, PlusIcon } from "../SettingIcons";
 import SocialList from "@/components/Settings/Socials/SocialList";
-import {getUserSettings} from "@/services/settings";
+import Link from "next/link";
+import styles from "./ProfileEdit.module.css";
+import Loading from "@/components/Layout/Loading";
 
 
 const ProfileEdit = () => {
-  const [galleryPhotos, setGalleryPhotos] = useState<string[]>([]);
-  const [userSocials, setUserSocials] = useState<{ vk: string, telegram: string, inst: string, discord: string }>({ vk: "", telegram: "", inst: "", discord: "" });
+    const [isLoading, setIsLoading] = useState(true);
+    const [avatar, setAvatar] = useState("/Serega.jpg");
+    const [galleryPhotos, setGalleryPhotos] = useState([{
+        link: '/Serega.jpg',
+    },
+        {
+            link: '/Serega.jpg',
+        }
+    ]);
+    const [userSocials, setUserSocials] = useState<{
+        vk: string,
+        telegram: string,
+        inst: string,
+        discord: string
+    }>({vk: "", telegram: "", inst: "", discord: ""});
 
-  const handleAvatarEdit = () => {
-    console.log("Edit avatar");
-  };
-
-  const handleAddPhoto = () => {
-    console.log("Add photo to gallery");
-  };
-
-  useEffect(() => {
-    const getUserSettingsHandler = async () => {
-     const res = await getUserSettings();
-      setUserSocials(res.data.socials);
+    const updateAvatarHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setAvatar(URL.createObjectURL(file))
+            const formData = new FormData();
+            formData.append("avatar", file)
+            await updateAvatar(formData);
+        }
     }
-    getUserSettingsHandler();
-  }, []);
 
-  return (
-    <>
-      {/* Хедер */}
-      <header className={styles.header}>
-        <Link href="/settings" className={styles.back}>
-          <ArrowLeftIcon />
-          Назад
-        </Link>
-        <div className={styles.title}>Редактирование профиля</div>
-        <Link
-          href="/settings"
-          className={styles.back}
-          style={{ visibility: "hidden" }}
-        >
-          <ArrowLeftIcon />
-          Назад
-        </Link>
-      </header>
+    const handleAddPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setAvatar(URL.createObjectURL(file))
+            const formData = new FormData();
+            formData.append("image", file)
+            await addPhoto(formData);
+        }
+    };
 
-      <div className={styles.container}>
-        <div className={styles.content}>
-          {/* Аватар */}
-          <section className={styles.avatarSection}>
-            <div className={styles.avatarContainer}>
-              <div className={styles.avatar}>
-                <div className={styles.avatarPlaceholder}></div>
-              </div>
-              <div className={styles.avatarEdit} onClick={handleAvatarEdit}>
-                <EditIcon />
-              </div>
-            </div>
-          </section>
+    useEffect(() => {
+        const getUserSettingsHandler = async () => {
+            const res = await getUserSettings();
+            setUserSocials(res.data.socials);
+            setIsLoading(false);
+        }
+        getUserSettingsHandler();
+    }, []);
 
-          {/* Галерея */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <div className={styles.sectionTitle}>Галерея</div>
-            </div>
-            <div className={styles.gallery}>
-              {galleryPhotos.map((photo, index) => (
-                <div key={index} className={styles.galleryItem}>
-                  <div className={styles.galleryPhoto}></div>
-                </div>
-              ))}
-              <div className={styles.addPhotoButton} onClick={handleAddPhoto}>
-                <PlusIcon />
-              </div>
-            </div>
-          </section>
+    return (
+        <>
+            {/* Хедер */}
+            <header className={styles.header}>
+                <Link href="/settings" className={styles.back}>
+                    <ArrowLeftIcon/>
+                    Назад
+                </Link>
+                <div className={styles.title}>Редактирование профиля</div>
+                <Link
+                    href="/settings"
+                    className={styles.back}
+                    style={{visibility: "hidden"}}
+                >
+                    <ArrowLeftIcon/>
+                    Назад
+                </Link>
+            </header>
+            {
+                isLoading ? <Loading w={"5"} h={"5"} isComp={false}/> :
+                    <div className={styles.container}>
+                        <div className={styles.content}>
+                            <section className={styles.avatarSection}>
+                                <input
+                                    type="file"
+                                    style={{display: "none"}} id="avatar"
+                                    accept=".jpg,.png,.heif"
+                                    onChange={updateAvatarHandler}
+                                />
+                                <label htmlFor="avatar">
+                                    <div className={styles.avatarContainer}>
+                                        <div className={styles.avatar}>
+                                            <img src={avatar} className={styles.avatarPlaceholder}/>
+                                        </div>
+                                        <div className={styles.avatarEdit}>
+                                            <EditIcon/>
+                                        </div>
+                                    </div>
+                                </label>
+                            </section>
 
-          {/* Интересы */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <div className={styles.sectionTitle}>Интересы</div>
-            </div>
-            {/* <InterestList  /> */}
-            <Link
-              href="/settings/edit-profile/interests"
-              className={styles.editLink}
-            >
-              <div className={styles.editLinkIcon}>
-                <EditIcon width={20} height={20} />
-              </div>
-              <div className={styles.editLinkText}>Редактировать</div>
-            </Link>
-          </section>
+                            {/* Галерея */}
+                            <section className={styles.section}>
+                                <div className={styles.sectionHeader}>
+                                    <div className={styles.sectionTitle}>Галерея</div>
+                                </div>
+                                <div className={styles.gallery}>
+                                    {
+                                        galleryPhotos.map((photo, index) => (
+                                            <div key={index} className={styles.galleryItem}>
+                                                <img src={photo.link} className={styles.galleryPhoto}/>
+                                            </div>
+                                        ))
+                                    }
+                                    <input
+                                        type="file"
+                                        style={{display: "none"}} id="photo"
+                                        accept=".jpg,.png,.heif"
+                                        onChange={handleAddPhoto}
+                                    />
+                                    <label htmlFor="photo">
+                                        <div className={styles.addPhotoButton}>
+                                            <PlusIcon/>
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
 
-          {/* Социальные сети */}
-          <SocialList socials={userSocials} />
-        </div>
-      </div>
-    </>
-  );
+                            <section className={styles.section}>
+                                <div className={styles.sectionHeader}>
+                                    <div className={styles.sectionTitle}>Интересы</div>
+                                </div>
+                                {/* <InterestList  /> */}
+                                <Link
+                                    href="/settings/edit-profile/interests"
+                                    className={styles.editLink}
+                                >
+                                    <div className={styles.editLinkIcon}>
+                                        <EditIcon width={20} height={20}/>
+                                    </div>
+                                    <div className={styles.editLinkText}>Редактировать</div>
+                                </Link>
+                            </section>
+                            <SocialList socials={userSocials}/>
+                        </div>
+                    </div>
+            }
+
+        </>
+    );
 };
 
 export default ProfileEdit;

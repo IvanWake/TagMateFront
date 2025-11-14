@@ -1,20 +1,20 @@
 'use client';
 
-import React, { useState } from "react";
+import { updateSocials } from "@/services/settings";
 import styles from "@/components/Settings/ProfileEdit/ProfileEdit.module.css";
 import Social from "@/components/Settings/Socials/Social";
 
 type Props = {
-    socials: { vk: string, telegram: string, inst: string, discord: string },
+    socials: { vk: string, telegram: string, inst: string, discord: string }
 }
 
 const SocialList = ({ socials }: Props) => {
-    const onUpdateSocial = (item: string, link: string) => {
+    const onUpdateSocial = async (item: string, link: string) => {
         const updatedSocials = socials;
         updatedSocials[item] = link;
+        await updateSocials(updatedSocials);
     }
 
-    console.log(socials)
 
     return (
         <section className={styles.section}>
