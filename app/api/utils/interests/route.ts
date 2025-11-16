@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/interests`, {
+        cache: "no-store",
         method: "GET",
     });
 
