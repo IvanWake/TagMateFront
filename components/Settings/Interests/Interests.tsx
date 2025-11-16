@@ -26,14 +26,14 @@ const Interests = ({ interests, comparesId, handleDataFromChild }: Interests) =>
     return (
         <div className={signupStyles.interests}>
             {
-                interests?.map((interest) => (
-                    <InterestItem
+                interests?.map((interest, index) => (
+                    <div key={`interestId${index}`}><InterestItem
                         id={interest.id}
                         name={interest.name}
                         category_id={interest.category_id}
                         checked={comparesId.some((item) => item.id === interest.id)}
                         handler={handleInterestToggle}
-                    />
+                    /></div>
                 ))
             }
         </div>

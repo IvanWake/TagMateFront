@@ -82,8 +82,8 @@ const MatesSearch = () => {
                             : (
                                 results?.map((user) => (
 
-                                    <Link href={`/${user.serviceId}`}>
-                                        <div key={user._id} className={mainStyles.userItem}>
+                                    <Link href={`/${user.serviceId}`} key={user._id}>
+                                        <div className={mainStyles.userItem}>
                                             <img src={user.avatar.path} alt="userImage"
                                                  className={mainStyles.userPicture}/>
                                             <div className={mainStyles.userInfo}>

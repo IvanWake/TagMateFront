@@ -2,7 +2,7 @@
 
 import { useEffect, ReactNode, useState } from "react";
 import { getAuthToken } from "@/utils/authToken";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import Loading from "@/components/Layout/Loading";
 
 type Props = {
@@ -19,7 +19,7 @@ const NonAuthRoute = (props: Props) => {
         setIsUserLoading(true);
         const fetchUserProfileDataHandler = () => {
             const isAuthToken = getAuthToken("authToken");
-            const confirmProcess = localStorage.getItem("confirmProcess");
+            const confirmProcess = typeof window !== 'undefined' ? localStorage.getItem("confirmProcess") : null;
 
             if (isAuthToken) {
                 window.location.replace("/");

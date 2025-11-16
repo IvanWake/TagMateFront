@@ -11,9 +11,14 @@ type Props = {
 
 const HeaderSummary = ({ avatar, name, lastName }: Props) => {
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+        
         const checkScroll = () => {
             const avatar = document.getElementById("profile");
             const miniHeader = document.getElementById("heading");
+            
+            if (!avatar || !miniHeader) return;
+            
             const avatarRect = avatar.getBoundingClientRect();
 
             if (avatarRect.bottom < 108) {
@@ -23,13 +28,17 @@ const HeaderSummary = ({ avatar, name, lastName }: Props) => {
             }
         }
 
-            window.addEventListener("scroll", checkScroll);
-    },[])
+        window.addEventListener("scroll", checkScroll);
+        
+        return () => {
+            window.removeEventListener("scroll", checkScroll);
+        };
+    }, [])
 
 
     return (
         <section className="heading-profile-summary" id="heading">
-            <img src={avatar} alt="profile image" className="profile-thumbnail"/>
+            <img src={avatar || "/placeholder.svg"} alt="profile image" className="profile-thumbnail"/>
                 <div className="profile-summary">
                     <div className="user-location">Москва</div>
                     <div className="user-name">{`${name} ${lastName}`}</div>

@@ -1,18 +1,10 @@
 'use client';
+import PersonalEdit from "@/components/Settings/SettingsMainPages/PersonalEdit";
 
-import { useForm } from "react-hook-form";
-import AuthRoute from "@/components/Auth/AuthRoute";
-import PersonalData from "@/components/Settings/PersonalData/PersonalData";
-import TabBar from "@/components/TabBar/TabBar";
-import "../index.css";
-
-const SettingsPage = () => {
+const Page = () => {
     return (
-        <AuthRoute>
-            <PersonalData/>
-            <TabBar/>
-        </AuthRoute>
+        <PersonalEdit />
     );
-};
+}
 
-export default SettingsPage;
+export default Page;

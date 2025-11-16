@@ -1,16 +1,10 @@
-import AuthRoute from "@/components/Auth/AuthRoute";
-import TabBar from "@/components/TabBar/TabBar";
-import MatesRequests from "@/components/Mates/MatesRequests/MatesRequests";
+'use client';
+import MatesRequest from "@/components/Mates/MatesMainPages/MatesRequest";
 
-
-const MatesRequestPage = () => {
-
+const Page = () => {
     return (
-        <AuthRoute>
-            <MatesRequests />
-            <TabBar />
-        </AuthRoute>
+        <MatesRequest />
     );
 }
 
-export default MatesRequestPage;
+export default Page;

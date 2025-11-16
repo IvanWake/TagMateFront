@@ -63,8 +63,8 @@ const SecondStep = ({ nextStep, stepId, categories, prevStep }: Props) => {
                         <div className={signupStyles.title}>Выбери свои интересы</div>
                         <div className={signupStyles.categories}>
                             {
-                                categories?.map((category) => (
-                                    <CategoryItem category={category} />
+                                categories?.map((category, index) => (
+                                    <div key={`categoryId${index}`}><CategoryItem category={category}/></div>
                                 ))
                             }
                         </div>

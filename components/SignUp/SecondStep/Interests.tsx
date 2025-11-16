@@ -11,12 +11,12 @@ const Interests = ({ interests }: Interests) => {
     return (
         <div className={signupStyles.interests}>
             {
-                interests?.map((interest) => (
-                    <InterestItem
+                interests?.map((interest, index) => (
+                    <div key={`intItemId${index}`}><InterestItem
                         id={interest.id}
                         name={interest.name}
                         category_id={interest.category_id}
-                    />
+                    /></div>
                 ))
             }
         </div>

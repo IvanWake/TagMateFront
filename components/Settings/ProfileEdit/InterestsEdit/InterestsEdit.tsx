@@ -62,8 +62,14 @@ const ProfileEdit: React.FC = () => {
         <div className={signupStyles.categories}>
           {
             isLoading ? <Loading w={"5"} h={"5"} isComp={false} /> :
-            categories?.map((category) => (
-                <CategoryItem category={category} comparesId={comparesId} handleDataFromChild={handleDataFromChild}/>
+            categories?.map((category, index) => (
+                <div key={`categoryId${index}`}>
+                  <CategoryItem
+                      category={category}
+                      comparesId={comparesId}
+                      handleDataFromChild={handleDataFromChild}
+                  />
+                </div>
             ))
           }
         </div>

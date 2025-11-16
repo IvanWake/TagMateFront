@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+'use client'
+
 import { Inter, Unbounded } from 'next/font/google';
 import welcomeStyles from "./welcome.module.css";
-
+import { useEffect } from 'react';
 
 const inter = Inter({
   subsets: ['cyrillic'],
@@ -15,42 +16,23 @@ const unbounded = Unbounded({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "TagMate | Добро пожаловать",
-  description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
-};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+export default function WelcomeLayout({
+                                        children,
+                                      }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
-      <body className={`${welcomeStyles.body}`}>{children}</body>
-    </html>
-  );
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const body = document.body;
+      const originalClassName = body.className;
+      body.className = welcomeStyles.body;
+
+      return () => {
+        body.className = originalClassName;
+      };
+    }
+  }, []);
+
+  return <>{children}</>;
 }
-
-// /* button */
-//
-// /* Auto layout */
-// display: flex;
-// flex-direction: row;
-// justify-content: center;
-// align-items: center;
-// padding: 10px;
-// gap: 10px;
-//
-// width: 333px;
-// height: 55px;
-//
-// background: #0066DE;
-// border-radius: 15px;
-//
-// /* Inside auto layout */
-// flex: none;
-// order: 0;
-// align-self: stretch;
-// flex-grow: 0;
-

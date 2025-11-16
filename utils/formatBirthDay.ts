@@ -1,14 +1,13 @@
-import moment from "moment-with-locales-es6";
-
-moment.locale('ru');
+import { format, differenceInYears, parseISO } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 export function formatBirthDay(birthDay: string): { formattedBirthDay: string; yearsOld: number };
 export function formatBirthDay(birthDay: Date): { formattedBirthDay: string; yearsOld: number };
 
-export function formatBirthDay(birthDay: string | Date): { formattedBirthDay: string; yearsOld: number }{
-    const birthDate = moment.utc(birthDay);
-    const currentDate = moment.utc();
-    const yearsOld = currentDate.diff(birthDate, 'years');
+export function formatBirthDay(birthDay: string | Date): { formattedBirthDay: string; yearsOld: number } {
+    const birthDate = typeof birthDay === 'string' ? parseISO(birthDay) : birthDay;
+    const currentDate = new Date();
+    const yearsOld = differenceInYears(currentDate, birthDate);
 
     const yearsOldString =
         yearsOld % 100 >= 11 && yearsOld % 100 <= 19
@@ -19,7 +18,7 @@ export function formatBirthDay(birthDay: string | Date): { formattedBirthDay: st
                     ? 'года'
                     : 'лет';
 
-    const formattedBirthDay = `${birthDate.format('D MMM YYYY')} (${yearsOld} ${yearsOldString})`;
+    const formattedBirthDay = `${format(birthDate, 'd MMM yyyy', { locale: ru })} (${yearsOld} ${yearsOldString})`;
 
     return { formattedBirthDay, yearsOld };
-};
+}

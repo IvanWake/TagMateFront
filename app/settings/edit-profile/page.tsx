@@ -1,16 +1,10 @@
-import AuthRoute from "@/components/Auth/AuthRoute";
-import ProfileEdit from "@/components/Settings/ProfileEdit/ProfileEdit";
-import TabBar from "@/components/TabBar/TabBar";
-import "../index.css";
+'use client';
+import EditProfile from "@/components/Settings/SettingsMainPages/EditProfile";
 
+const Page = () => {
+    return (
+        <EditProfile />
+    );
+}
 
-const SettingsPage = () => {
-  return (
-    <AuthRoute>
-      <ProfileEdit />
-        <TabBar />
-    </AuthRoute>
-  );
-};
-
-export default SettingsPage;
+export default Page;

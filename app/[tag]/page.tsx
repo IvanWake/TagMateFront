@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import {useRouter} from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {fetchUserProfileData} from "@/utils/fetchUserData/fetchUserProfileData";
 import {fetchUserProfileDataByTag} from "@/utils/fetchUserData/fetchUserProfileDataByTag";
 import {getAuthToken} from "@/utils/authToken";
@@ -13,7 +13,13 @@ import ProfileContent from "@/components/Profile/ProfileContent";
 import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 import TabBar from '@/components/TabBar/TabBar';
 
-const Page = ({ params }) => {
+type Props = {
+    params: {
+        tag: string
+    }
+}
+
+const Page = ({ params }: Props) => {
     const [userProfileData, setUserProfileData] = useState(null);
     const [userPrivacyData, setUserPrivacyData] = useState(null);
     const [userOptionsData, setUserOptionsData] = useState(null);
@@ -23,7 +29,7 @@ const Page = ({ params }) => {
     useEffect(() => {
         const fetchUserProfileDataHandler = async (tag: string) => {
             const isAuthToken = getAuthToken("authToken");
-            const confirmProcess = localStorage.getItem("confirmProcess");
+            const confirmProcess = typeof window !== 'undefined' ? localStorage.getItem("confirmProcess") : null;
 
             const result = await fetchUserProfileData();
             const resultByTag = await fetchUserProfileDataByTag(tag);
@@ -50,7 +56,7 @@ const Page = ({ params }) => {
         fetchUserProfileDataHandler(tag);
     }, [tag]);
 
-    if (!userProfileData) return <Loading/>
+    if (!userProfileData) return <Loading w={"5"} h={"5"} />
 
     return (
         <>

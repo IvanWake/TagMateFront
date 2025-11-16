@@ -1,16 +1,10 @@
-import AuthRoute from "@/components/Auth/AuthRoute";
-import TabBar from "@/components/TabBar/TabBar";
-import MatesSearch from "@/components/Mates/MatesSearch/MatesSearch";
+'use client';
+import MatesSearchMain from "@/components/Mates/MatesMainPages/MatesSearch";
 
-
-const SearchPage = () => {
-
+const Page = () => {
     return (
-        <AuthRoute>
-            <MatesSearch />
-            <TabBar />
-        </AuthRoute>
+        <MatesSearchMain />
     );
 }
 
-export default SearchPage;
+export default Page;

@@ -1,13 +1,10 @@
-import AuthRoute from "@/components/Auth/AuthRoute";
-import InterestsEdit from "@/components/Settings/ProfileEdit/InterestsEdit/InterestsEdit";
-import "../../index.css";
+'use client';
+import Interests from "@/components/Settings/SettingsMainPages/Interests";
 
-const SettingsPage = () => {
-  return (
-    <AuthRoute>
-      <InterestsEdit />
-    </AuthRoute>
-  );
-};
+const Page = () => {
+    return (
+        <Interests />
+    );
+}
 
-export default SettingsPage;
+export default Page;

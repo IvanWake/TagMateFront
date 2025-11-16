@@ -1,15 +1,10 @@
-import AuthRoute from "@/components/Auth/AuthRoute";
-import SettingsMain from "@/components/Settings/SettingsMain/SettingsMain";
-import TabBar from "@/components/TabBar/TabBar";
-import "./index.css";
+'use client';
+import Settings from "@/components/Settings/SettingsMainPages/Settings";
 
-const SettingsPage = () => {
-  return (
-    <AuthRoute>
-      <SettingsMain />
-        <TabBar />
-    </AuthRoute>
-  );
-};
+const Page = () => {
+    return (
+        <Settings />
+    );
+}
 
-export default SettingsPage;
+export default Page;

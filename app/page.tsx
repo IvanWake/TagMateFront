@@ -6,12 +6,11 @@ import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData
 import { deleteAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";
-import HeaderSummary from "@/components/Header/HeaderSummary";
 import ProfileHero from "@/components/Profile/ProfileHero";
 import ProfileContent from "@/components/Profile/ProfileContent";
 import TabBar from '@/components/TabBar/TabBar';
 
-const Page = ({ params }) => {
+const Page = () => {
     const [userProfileData, setUserProfileData] = useState(null);
     const router = useRouter();
 
