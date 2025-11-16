@@ -41,14 +41,14 @@
 }
 
 .input ::placeholder {
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--font-unbounded);
     color: #4E4E4E;
 }
 
 .input label,
 .title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: #797979;
     font-family: var(--font-unbounded);
@@ -57,7 +57,7 @@
 .input input,
 .input select {
     font-family: var(--font-unbounded);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     border-radius: 15px;
     background: #F1F1F1;
@@ -156,7 +156,7 @@
     width: 100%;
     max-width: 512px;
     border-radius: 15px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--font-unbounded);
     border: none;
     margin: 0 auto;

@@ -54,7 +54,7 @@
 }
 
 .input ::placeholder {
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--font-unbounded);
     color: #4E4E4E;
 }
@@ -71,9 +71,8 @@
 
 .input input,
 .tag {
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--font-unbounded);
-    font-size: 14px;
     font-weight: 500;
     border-radius: 15px;
     background: #F1F1F1;
