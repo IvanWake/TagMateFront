@@ -20,7 +20,7 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-    title: "TagMate | Главная",
+    title: "Tagmate | Подтверждение",
     description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
 };
 

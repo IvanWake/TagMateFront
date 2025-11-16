@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Unbounded, Onest } from "next/font/google";
+import { Inter, Unbounded, Onest } from 'next/font/google';
 import indexStyles from "./index.module.css";
-import "./index.css";
 
 const onest = Onest({
   subsets: ['cyrillic'],
@@ -23,8 +22,23 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "TagMate | Главная",
-  description: "TagMate - ваш проводник в мирезнакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+  title: "Tagmate | Главная",
+  description: "Tagmate - ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+  icons: {
+    icon: [
+      { url: '/icon-192x192.jpg', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.jpg', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Tagmate',
+  },
 };
 
 export default function RootLayout({

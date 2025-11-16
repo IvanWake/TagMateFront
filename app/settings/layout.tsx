@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TagMate | Настройки",
-  description: "TagMate - ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+  title: "Tagmate | Настройки",
+  description: "Tagmate - ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
 };
 
 export default function RootLayout({
