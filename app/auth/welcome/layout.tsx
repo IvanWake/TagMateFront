@@ -26,7 +26,8 @@ export default function WelcomeLayout({
     if (typeof window !== 'undefined') {
       const body = document.body;
       const originalClassName = body.className;
-      body.className = welcomeStyles.body;
+      body.className = `${inter.variable} ${unbounded.variable} ${welcomeStyles.body}`;
+
 
       return () => {
         body.className = originalClassName;
