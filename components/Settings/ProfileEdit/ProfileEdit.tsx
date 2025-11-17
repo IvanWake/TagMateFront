@@ -46,7 +46,7 @@ const ProfileEdit = () => {
         if (file) {
             setPhoto(URL.createObjectURL(file))
             const formData = new FormData();
-            formData.append("image", file)
+            formData.append("image", e.target.files?.[0])
             await addPhoto(formData);
             window.location.reload();
         }
