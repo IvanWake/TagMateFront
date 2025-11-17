@@ -1,8 +1,9 @@
 'use client';
 
 import React, {useState, useEffect} from "react";
-import {addPhoto, deletePhoto, getUserSettings, updateAvatar} from "@/services/settings";
-import {ArrowLeftIcon, EditIcon, PlusIcon, Trash} from "../SettingIcons";
+import { addPhoto, deletePhoto, getUserSettings, updateAvatar } from "@/services/settings";
+import { compressImage } from "@/utils/compressImage";
+import { ArrowLeftIcon, EditIcon, PlusIcon, Trash } from "../SettingIcons";
 import SocialList from "@/components/Settings/Socials/SocialList";
 import Link from "next/link";
 import styles from "./ProfileEdit.module.css";
@@ -26,9 +27,12 @@ const ProfileEdit = () => {
         const file = e.target.files?.[0];
         if (file) {
             setIsLoading(true);
-            setAvatar(URL.createObjectURL(file))
+            const compressedFile = await compressImage(file);
+            setAvatar(URL.createObjectURL(compressedFile));
+
             const formData = new FormData();
-            formData.append("avatar", file)
+            formData.append("avatar", compressedFile)
+
             await updateAvatar(formData);
             setIsLoading(false);
         }
@@ -44,9 +48,10 @@ const ProfileEdit = () => {
     const handleAddPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setPhoto(URL.createObjectURL(file))
+            const compressedFile = await compressImage(file);
+            setPhoto(URL.createObjectURL(compressedFile));
             const formData = new FormData();
-            formData.append("image", file)
+            formData.append("image", compressedFile)
             await addPhoto(formData);
             window.location.reload();
         }

@@ -165,3 +165,27 @@ export const addPhoto = async (formData: FormData) => {
         return { error }
     }
 }
+
+export const updatePrivacySettings = async (publicProfile: boolean) => {
+    const authToken = getAuthToken("authToken");
+
+    try {
+        const res = await fetch(`/api/settings/privacy`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${authToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ publicProfile })
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            return { status: err.status };
+        }
+        const data = await res.json();
+        return { data }
+    } catch (e) {
+        return { error: e };
+    }
+}
