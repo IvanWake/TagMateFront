@@ -8,7 +8,7 @@ const SocialLinksList = ({ socials }: Social[]) => {
             <div className={socialStyles["section-title"]}>Социальные сети</div>
             <div className={socialStyles["social-media-list"]}>
                 {
-                    socials?.map((social, index) => (
+                    socials?.filter(social => social.link !== "link").map((social, index) => (
                         <div key={`socProfId${index}`}><SocialLink social={social.social} link={social.link}/></div>
                     ))
                 }
