@@ -34,7 +34,12 @@ const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
 
                 <div className={previewImage ? `${signupStyles["upload-wrapper"]} ${signupStyles["uploaded"]}` : signupStyles["upload-wrapper"]}>
                     <label className={signupStyles["upload-container"]}>
-                        <input {...register("avatar", { required: "Изображение обязательно" })} className={signupStyles.file} id="file-input" type="file" accept=".jpg,.png,.heif,.heic" />
+                        <input {...register("avatar", { required: "Изображение обязательно" })}
+                               className={signupStyles.file}
+                               id="file-input"
+                               type="file"
+                               accept="image/jpeg,image/png,image/heic,image/heif,image/jpg"
+                        />
                             <img className={signupStyles["upload-icon"]} src="/icons/auth/plus.svg" alt="avatar" />
                             <img src={previewImage} className={signupStyles["uploaded-image"]} alt="Uploaded image" />
                     </label>

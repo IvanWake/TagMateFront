@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { userRegister } from "@/services/auth";
 import { fetchInterests } from "@/utils/fetchUserData/fetchInterests";
 import { getCurrentStep } from "@/utils/cacheUserFormDataBySteps";
+import { compressImage } from "@/utils/compressImage";
 import FirstStep from "@/components/SignUp/FirstStep/FirstStep";
 import SecondStep from "@/components/SignUp/SecondStep/SecondStep";
 import ThirdStep from "@/components/SignUp/ThirdStep/ThirdStep";
@@ -46,6 +47,8 @@ const SignUp = () => {
 
 
     const submitHandler = async (signupData) => {
+        const avatar = signupData.avatar[0]
+        const compressedAvatar = await compressImage(avatar);
         const formData = new FormData();
         formData.append("email", signupData.email);
         formData.append("name", signupData.name);
@@ -55,7 +58,7 @@ const SignUp = () => {
         formData.append("city", signupData.city);
         formData.append("purpose", signupData.purpose);
         formData.append("interests", JSON.stringify(signupData.interests));
-        formData.append("avatar", signupData.avatar[0]);
+        formData.append("avatar", compressedAvatar);
         formData.append("password",signupData.password);
         formData.append("repeatPassword",signupData.repeatPassword);
         const res = await userRegister(formData);
