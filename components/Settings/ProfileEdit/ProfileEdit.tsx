@@ -10,7 +10,7 @@ import Loading from "@/components/Layout/Loading";
 
 
 const ProfileEdit = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [avatar, setAvatar] = useState("");
     const [photo, setPhoto] = useState("");
     const [galleryPhotos, setGalleryPhotos] = useState([]);
@@ -24,11 +24,17 @@ const ProfileEdit = () => {
     const updateAvatarHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            setIsLoading(true);
             setAvatar(URL.createObjectURL(file))
             const formData = new FormData();
             formData.append("avatar", file)
             await updateAvatar(formData);
+            setIsLoading(false);
         }
+    }
+
+    const handleDeletePhoto = async () => {
+
     }
 
     const handleAddPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,28 +76,32 @@ const ProfileEdit = () => {
                     Назад
                 </Link>
             </header>
-            {
-                isLoading ? <Loading w={"5"} h={"5"} isComp={false}/> :
                     <div className={styles.container}>
                         <div className={styles.content}>
-                            <section className={styles.avatarSection}>
-                                <input
-                                    type="file"
-                                    style={{display: "none"}} id="avatar"
-                                    accept=".jpg,.png,.heif"
-                                    onChange={updateAvatarHandler}
-                                />
-                                <label htmlFor="avatar">
-                                    <div className={styles.avatarContainer}>
-                                        <div className={styles.avatar}>
-                                            <img src={avatar} className={styles.avatarPlaceholder}/>
-                                        </div>
-                                        <div className={styles.avatarEdit}>
-                                            <EditIcon/>
-                                        </div>
-                                    </div>
-                                </label>
-                            </section>
+                                    <section className={styles.avatarSection}>
+                            {
+                                isLoading ? <Loading w={"6.25"} h={"6.25"} isComp={true}/> :
+                                    <>
+                                        <input
+                                        type="file"
+                                        style={{display: "none"}} id="avatar"
+                                        accept=".jpg,.png,.heif"
+                                        onChange={updateAvatarHandler}
+                                    />
+                                        <label htmlFor="avatar">
+                                            <div className={styles.avatarContainer}>
+                                                <div className={styles.avatar}>
+                                                    <img src={avatar} className={styles.avatarPlaceholder}/>
+                                                </div>
+                                                <div className={styles.avatarEdit}>
+                                                    <EditIcon/>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </>
+                            }
+                                    </section>
+
 
                             {/* Галерея */}
                             <section className={styles.section}>
@@ -138,8 +148,6 @@ const ProfileEdit = () => {
                             <SocialList socials={userSocials}/>
                         </div>
                     </div>
-            }
-
         </>
     );
 };

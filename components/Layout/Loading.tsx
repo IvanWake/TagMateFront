@@ -9,7 +9,7 @@ const Loading = ({ w, h, isComp }: Props) => {
                 isComp ?
                     <div className={styles.spin} style={{
                         width: `${w}rem`,
-                        height: `${h}rem`
+                        height: `${h}rem`,
                     }}></div> :
                     <div className={styles.page}>
                         <div className={styles.spin} style={{
