@@ -5,6 +5,7 @@
   padding-top: 7px;
   position: fixed;
   bottom: 0;
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   justify-content: center;
   background-color: #fff;
