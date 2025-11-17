@@ -22,6 +22,7 @@ const LoginForm = ({formError}: {formError: string}) => {
                         </div>
                         <input
                             className={formError && `${mainStyles.inputError}`}
+                            style={{ maxWidth: "calc(100% - 60px" }}
                             {...register("userTag", {
                                 required: "Заполните поле",
                                 minLength: {

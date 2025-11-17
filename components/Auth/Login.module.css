@@ -93,7 +93,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 55px;
+    min-width: 55px;
     height: 55px;
     color: #000000;
 }
