@@ -90,7 +90,7 @@ const ProfileEdit = () => {
                                     <input
                                         type="file"
                                         style={{display: "none"}} id="avatar"
-                                        accept=".jpg,.png,.heif,.heic"
+                                        accept="image/jpeg,image/png,image/heic,image/heif,image/jpg"
                                         onChange={updateAvatarHandler}
                                     />
                                     <label htmlFor="avatar">
@@ -119,7 +119,7 @@ const ProfileEdit = () => {
                                     <input
                                         type="file"
                                         style={{display: "none"}} id="photo"
-                                        accept=".jpg,.png,.heif,.heic"
+                                        accept="image/jpeg,image/png,image/heic,image/heif,image/jpg"
                                         onChange={handleAddPhoto}
                                     />
                                     <label htmlFor="photo">
