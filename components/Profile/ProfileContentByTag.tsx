@@ -32,8 +32,8 @@ const ProfileContentByTag = ({
                             <UserTag tag={tag}/>
                             {purpose !== "none" && <UserPurpose purpose={purpose}/>}
                             <InterestList interests={interests} />
-                            { publicProfile || isUserMate === "access" && socials.length > 0 && <SocialLinksList socials={socials}/> }
-                            { publicProfile || isUserMate === "access" && images.length > 0 && <Gallery images={images}/> }
+                            {(publicProfile || isUserMate === "access") && socials.length > 0 && <SocialLinksList socials={socials} />}
+                            {(publicProfile || isUserMate === "access") && images.length > 0 && <Gallery images={images} />}
                             <DangerZone isUserMate={isUserMate} inBlackList={inBlackList} tag={tag}/>
                         </>
                 }

@@ -8,6 +8,7 @@ export async function GET(req: NextRequest, { params }){
 
     const res = await fetch(`${process.env.NEXT_BACKEND_URL}/api/profile/${tag}`, {
         method: "GET",
+        cache: "no-store",
         headers: {
             "Authorization": `Bearer ${authToken}`
         },
