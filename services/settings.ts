@@ -22,17 +22,17 @@ export const getUserSettings = async () => {
     }
 }
 
-export const updatePrivacySettings = async (publicProfile: boolean) => {
+export const deletePhoto = async (id: string) => {
     const authToken = getAuthToken("authToken");
 
     try {
-        const res = await fetch(`/api/settings/privacy`, {
-            method: "PATCH",
+        const res = await fetch(`/api/profile/images`, {
+            method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${authToken}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ publicProfile })
+            body: JSON.stringify({ id })
         });
 
         if (!res.ok) {
