@@ -6,7 +6,6 @@
 }
 
 .hero {
-    position: sticky;
     top: 0px;
     display: flex;
     flex-direction: column;
