@@ -8,19 +8,19 @@ import Loading from "@/components/Layout/Loading";
 
 type Props = {
   params: {
-    recoverytoken: string;
+    recoveryToken: string;
   };
 };
 
 const RecoveryChangePage = ({ params }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
-  const { recoverytoken } = params;
+  const { recoveryToken } = params;
   const router = useRouter();
 
   useEffect(() => {
     const initRecovery = async () => {
       // Сохраняем токен в куки
-      setRecoveryToken(recoverytoken);
+      setRecoveryToken(recoveryToken);
 
       // Проверяем валидность токена
       const currentToken = getRecoveryToken();
@@ -33,11 +33,11 @@ const RecoveryChangePage = ({ params }: Props) => {
     };
 
     initRecovery();
-  }, [recoverytoken, router]);
+  }, [recoveryToken, router]);
 
   if (isLoading) return <Loading w={"5"} h={"5"} />;
 
-  return <RecoveryChange recoveryToken={recoverytoken} />;
+  return <RecoveryChange recoveryToken={recoveryToken} />;
 };
 
 export default RecoveryChangePage;

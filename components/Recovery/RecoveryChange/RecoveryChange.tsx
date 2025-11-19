@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { confirmRecovery } from "@/services/recovery";
 import { getRecoveryToken, deleteRecoveryToken } from "@/utils/recoveryToken";
-import styles from "./Recovery.module.css";
+import styles from "../Recovery.module.css";
 
 interface RecoveryChangeProps {
   recoveryToken: string;
