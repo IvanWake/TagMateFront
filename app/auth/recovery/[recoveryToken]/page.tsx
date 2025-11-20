@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { setRecoveryToken, getRecoveryToken } from "@/utils/recoveryToken";
 import RecoveryChange from "@/components/Recovery/RecoveryChange/RecoveryChange";
 import Loading from "@/components/Layout/Loading";
+import NonAuthRoute from "@/components/Auth/NonAuthRoute";
 
 type Props = {
   params: {
@@ -37,7 +38,11 @@ const RecoveryChangePage = ({ params }: Props) => {
 
   if (isLoading) return <Loading w={"5"} h={"5"} />;
 
-  return <RecoveryChange recoveryToken={recoveryToken} />;
+  return (
+      <NonAuthRoute>
+        <RecoveryChange recoveryToken={recoveryToken} />
+      </NonAuthRoute>
+  )
 };
 
 export default RecoveryChangePage;
