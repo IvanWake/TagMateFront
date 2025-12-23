@@ -18,6 +18,7 @@ import styleForm from "@/app/auth/signup/signup.module.css";
 const SignUp = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [categories, setCategories] = useState();
+    const [isFormSent, setIsFormSent] = useState(false);
     const [serverError, setServerError] = useState();
     const defaultFormData = getCurrentStep().formData?.reduce((acc, obj) => {
         return { ...acc, ...obj };
@@ -42,11 +43,12 @@ const SignUp = () => {
         1: <FirstStep nextStep={nextStepHandler} stepId={currentStep} />,
         2: <SecondStep nextStep={nextStepHandler} categories={categories} stepId={currentStep} prevStep={prevStep} />,
         3: <ThirdStep stepId={currentStep} nextStep={nextStepHandler} prevStep={prevStep} />,
-        4: <FourthStep prevStep={prevStep} serverError={serverError}/>,
+        4: <FourthStep prevStep={prevStep} serverError={serverError} isFormSent={isFormSent}/>,
     }
 
 
     const submitHandler = async (signupData) => {
+        setIsFormSent(true);
         const avatar = signupData.avatar[0]
         const compressedAvatar = await compressImage(avatar);
         const formData = new FormData();
@@ -65,6 +67,7 @@ const SignUp = () => {
 
         if (res.message) {
             setServerError(res.message);
+            setIsFormSent(false);
             return;
         }
         if (typeof window !== 'undefined') {
@@ -72,6 +75,7 @@ const SignUp = () => {
             localStorage.setItem("userMail", signupData.email);
         }
         router.push("/auth/confirm");
+        setIsFormSent(false);
     }
 
 

@@ -1,14 +1,14 @@
 'use client';
-import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import signupStyles from "./FourthStep.module.css";
 
 type Props = {
     prevStep: () => {},
-    serverError?: string
+    serverError?: string,
+    isFormSent: boolean
 }
 
-const FourthStep = ({ prevStep, serverError }: Props) => {
+const FourthStep = ({ prevStep, serverError, isFormSent }: Props) => {
     const { register, getValues, formState: { errors, isValid }, watch } = useFormContext();
 
     return (
@@ -77,7 +77,7 @@ const FourthStep = ({ prevStep, serverError }: Props) => {
                 <button
                     type="submit"
                     className={`${signupStyles.button} ${signupStyles.next}`}
-                    disabled={!isValid}
+                    disabled={!isValid || isFormSent}
                 >Завершить
                 </button>
             </footer>
