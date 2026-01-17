@@ -60,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
-      <body className={indexStyles.body}>{children}</body>
+      <body className={indexStyles.body} style={{ backgroundColor: '#fff' }}>{children}</body>
     </html>
   );
 }
