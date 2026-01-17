@@ -24,6 +24,10 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   title: "Tagmate | Главная",
   description: "Tagmate - ваш проводник в мире знакомств на улице, где каждый тег становится ключом к новым друзьям и возможным свиданиям",
+  other: {
+    'telegram-theme-color-scheme': 'light',
+    'theme-color': '#ffffff',
+  },
   icons: {
     icon: [
       { url: '/icon-192x192.jpg', sizes: '192x192', type: 'image/png' },
