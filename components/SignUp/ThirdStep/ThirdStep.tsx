@@ -1,28 +1,38 @@
 'use client';
-import {useState, ChangeEvent, useEffect} from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { cacheUserFormDataBySteps } from "@/utils/cacheUserFormDataBySteps";
-import { Step } from "@/types/signup/steps";
+import { compressImage } from "@/utils/compressImage"; // ← убедись, что путь правильный
 import signupStyles from "./ThirdStep.module.css";
-
+import {updateAvatar} from "@/services/settings";
 
 const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-    const [previewImage, setPreviewImage] = useState();
-    const { register, formState: { errors}, getValues, watch } = useFormContext();
-    const watchAllFields = watch();
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
+    const { register, formState: { errors }, getValues, watch, setValue } = useFormContext();
 
     useEffect(() => {
         const values = getValues();
-
-        if (values.avatar[0]) {
-            const imageUrl = URL.createObjectURL(values.avatar[0])
-            setPreviewImage(imageUrl)
+        if (values.avatar?.[0]) {
+            const imageUrl = URL.createObjectURL(values.avatar[0]);
+            setPreviewImage(imageUrl);
             setIsButtonDisabled(false);
         } else {
+            setPreviewImage(null);
             setIsButtonDisabled(true);
         }
-    }, [watchAllFields])
+    }, [watch("avatar")]);
+
+    const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const compressedFile = await compressImage(file);
+            setValue("avatar", [compressedFile], { shouldValidate: true, shouldDirty: true });
+
+            setPreviewImage(URL.createObjectURL(compressedFile));
+            setIsButtonDisabled(false);
+            console.log("Сжал фотку")
+        }
+    };
 
     return (
         <>
@@ -34,14 +44,18 @@ const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
 
                 <div className={previewImage ? `${signupStyles["upload-wrapper"]} ${signupStyles["uploaded"]}` : signupStyles["upload-wrapper"]}>
                     <label className={signupStyles["upload-container"]}>
-                        <input {...register("avatar", { required: "Изображение обязательно" })}
-                               className={signupStyles.file}
-                               id="file-input"
-                               type="file"
-                               accept="image/jpeg,image/png,image/heic,image/heif,image/jpg"
+                        {/* ОСТАВЛЯЕМ register, но переопределяем onChange */}
+                        <input
+                            className={signupStyles.file}
+                            id="file-input"
+                            type="file"
+                            accept="image/jpeg,image/png,image/heic,image/heif,image/jpg"
+                            onChange={handleFileChange}
                         />
-                            <img className={signupStyles["upload-icon"]} src="/icons/auth/plus.svg" alt="avatar" />
+                        <img className={signupStyles["upload-icon"]} src="/icons/auth/plus.svg" alt="avatar" />
+                        {previewImage && (
                             <img src={previewImage} className={signupStyles["uploaded-image"]} alt="Uploaded image" />
+                        )}
                     </label>
                     <label htmlFor="file-input" className={signupStyles.button}>Изменить фотографию</label>
                 </div>
@@ -51,11 +65,13 @@ const ThirdStep = ({ stepId, nextStep, prevStep }: Step) => {
                     type="button"
                     className={`${signupStyles.button} ${signupStyles.next}`}
                     onClick={() => nextStep()}
-                    disabled={isButtonDisabled}>Далее</button>
+                    disabled={isButtonDisabled}
+                >
+                    Далее
+                </button>
             </div>
         </>
     );
 };
 
 export default ThirdStep;
-
