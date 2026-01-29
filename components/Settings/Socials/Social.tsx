@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { CheckIcon, EditIcon, PlusIcon } from "@/components/Settings/SettingIcons";
 import styles from "@/components/Settings/ProfileEdit/ProfileEdit.module.css";
 import Loading from "@/components/Layout/Loading";
@@ -15,7 +15,7 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSocialConnected, setIsSocialConnected] = useState(link !== "link");
     const [isSocialEditing, setIsSocialEditing] = useState(false);
-    const [socialValue, setSocialValue] = useState(icon !== "discord" ? link?.split("/").pop() : link);
+    const [socialValue, setSocialValue] = useState(icon !== "discord" ? link?.split("/").pop()?.replace("@", "") : link);
 
     const onUpdateSocialHandler = () => {
         setIsLoading(true);
@@ -25,7 +25,7 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
         setIsLoading(false);
     }
     useEffect(() => {
-        setSocialValue(icon !== "discord" ? link?.split("/").pop() || "" : link);
+        setSocialValue(icon !== "discord" ? link?.split("/").pop()?.replace("@", "") || "" : link);
         if (link === "link") {
             setSocialValue(icon);
             setIsSocialConnected(false);
@@ -43,8 +43,9 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
                     isSocialEditing ?
                         <input
                             type="text"
+                            autoFocus={true}
                             style={{border: "none", outline: "none", background: "#fcfcfc"}}
-                            placeholder={"Сюда никнейм"}
+                            placeholder={"Сюда никнейм без @"}
                             value={socialValue}
                             onChange={(e) => setSocialValue(e.target.value)}
                         /> :
@@ -58,7 +59,9 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
                     isLoading ? <Loading w={"2"} h={"2"} isComp={true} /> :
                     isSocialEditing ? <div onClick={() => socialValue.length > 0 && onUpdateSocialHandler()}><CheckIcon/></div> :
                         isSocialConnected ?
-                            <div onClick={() => setIsSocialEditing(true)}>
+                            <div onClick={() => {
+                                setIsSocialEditing(true);
+                            }}>
                                 <EditIcon/>
                             </div> :
                             <div onClick={() => setIsSocialEditing(true)}>
