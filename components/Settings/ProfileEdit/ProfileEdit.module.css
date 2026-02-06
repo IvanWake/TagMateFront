@@ -74,6 +74,8 @@
   height: 100%;
   background: #ddd;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
 .avatarEdit {

@@ -35,3 +35,11 @@ export type PersonalData = {
     isBlocked: boolean,
     inBlackList: boolean
 }
+
+export type BannerData = {
+    link: string,
+    image: string,
+    title: string,
+    description: string,
+    buttonText: string
+}
