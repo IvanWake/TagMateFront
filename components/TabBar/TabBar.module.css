@@ -31,3 +31,19 @@
 .iconActive path {
   stroke: #7462ff !important;
 }
+
+.iconDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.iconText {
+  font-size: 10px;
+}
+
+.iconTextActive {
+  font-size: 10px;
+  color: #7462ff;
+}

@@ -60,11 +60,11 @@ const Social = ({ icon, link, onUpdateSocial }: Props) => {
                     isSocialEditing ? <div onClick={() => socialValue.length > 0 && onUpdateSocialHandler()}><CheckIcon/></div> :
                         isSocialConnected ?
                             <div onClick={() => {
-                                setIsSocialEditing(true);
+                                setIsSocialEditing(true)
                             }}>
                                 <EditIcon/>
                             </div> :
-                            <div onClick={() => setIsSocialEditing(true)}>
+                            <div onClick={() => {setIsSocialEditing(true); setSocialValue("")}}>
                                 <PlusIcon/>
                             </div>
                 }

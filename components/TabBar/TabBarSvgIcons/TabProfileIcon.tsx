@@ -21,9 +21,9 @@ const TabProfileIcon = ({
     <path
       d="M6.12903 15.2734C3.29032 16.7765 3.29032 19.2259 6.12903 20.7196C9.35484 22.4268 14.6452 22.4268 17.871 20.7196C20.7097 19.2166 20.7097 16.7672 17.871 15.2734C14.6569 13.5755 9.36657 13.5755 6.12903 15.2734Z"
       stroke={color}
-      strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="1.8"
     />
   </svg>
 );
