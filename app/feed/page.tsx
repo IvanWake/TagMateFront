@@ -1,9 +1,9 @@
 'use client';
-import MatesSearchMain from "@/components/Mates/MatesMainPages/MatesSearch";
+import Feed from "@/components/Feed/FeedMainPages/Feed";
 
 const Page = () => {
     return (
-        <div>Feed</div>
+        <Feed />
     );
 }
 

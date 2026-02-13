@@ -13,7 +13,7 @@ const TabBar = () => {
 
     const isMatesActive =  (
             pathname.split("/").length > 1
-                && pathname !== "/" && !pathname.startsWith('/settings') && pathname !== "/mates/search"
+                && pathname !== "/" && !pathname.startsWith('/settings') && pathname !== "/mates/search" && pathname !== "/feed"
         );
     const isProfileActive = pathname === '/' || pathname.startsWith('/settings');
     const isSearchActive = pathname.startsWith("/mates/search");
