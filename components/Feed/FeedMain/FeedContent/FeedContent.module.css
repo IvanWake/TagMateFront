@@ -8,6 +8,16 @@
   padding: 0 30px;
 }
 
+.feedMatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: calc(100vh - 108px - 80px - 59px);
+  margin-top: 108px;
+  padding: 0 30px;
+}
+
 .logoWrapper {
   width: 100%;
   padding: 14px 30px;
@@ -25,13 +35,46 @@
   gap: 10px;
 }
 
+.photoContainer {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+}
+
+.photoContainer::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #9188ff, #ffa8db);
+  filter: blur(20px);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .feedTitle {
+  position: relative;
   margin-top: 10px;
   color: #000;
   font-family: var(--font-onest);
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+}
+
+.feedMatch .feedTitle::after {
+  content: "💞";
+  position: absolute;
+  right: -30px;
+  bottom: 2px;
 }
 
 .feedText {
@@ -43,17 +86,33 @@
   text-align: center;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
 .button {
   width: 100%;
   max-width: 264px;
   border: none;
-  border-radius: 100px;
   padding-block: 15px;
-  color: #fff;
   font-family: var(--font-onest);
   font-weight: 600;
   font-size: 12px;
   text-align: center;
-  background: #7462ff;
   cursor: pointer;
+}
+
+.buttonPrimary {
+  border-radius: 100px;
+  color: #fff;
+  background: #7462ff;
+}
+
+.buttonSecondary {
+  color: #4b4b4b;
+  background: #fff;
 }
