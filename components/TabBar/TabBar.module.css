@@ -13,9 +13,11 @@
 
 .footerWrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   max-width: 512px;
+  padding-right: 24px;
+  padding-left: 30px;
   width: 100%;
 }
 
@@ -40,10 +42,12 @@
 }
 
 .iconText {
-  font-size: 10px;
+  color: #a1a1a1;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 12px;
 }
 
 .iconTextActive {
-  font-size: 10px;
   color: #7462ff;
 }
