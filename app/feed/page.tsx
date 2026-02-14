@@ -1,4 +1,3 @@
-'use client';
 import Feed from "@/components/Feed/FeedMainPages/Feed";
 
 const Page = () => {

@@ -10,7 +10,7 @@ const FeedContent = () => {
     return (
         <>
             <div className={contentStyles.logoWrapper}>
-                <Image src={logo} alt="Логотип" className={contentStyles.logo}/>
+                <img src="/icons/tagmate-min.svg" alt="Логотип" className={contentStyles.logo}/>
             </div>
             <NoSocialWorks />
         </>
