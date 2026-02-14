@@ -4,7 +4,6 @@
   text-decoration: none;
   position: relative;
   box-sizing: border-box;
-  font-family: var(--font-unbounded);
 }
 
 *:focus {
