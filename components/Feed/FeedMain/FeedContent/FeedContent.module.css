@@ -125,7 +125,7 @@
   background: #fff;
 }
 
-.gradient_wrapper {
+.gradientWrapper {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -182,7 +182,7 @@
   letter-spacing: 0%;
 }
 
-.name_age {
+.nameAge {
   color: #FFFFFF;
   font-family: var(--font-unbounded);
   font-weight: 700;
@@ -234,4 +234,62 @@
 
 .likeButton {
   background: #7462FF;
+}
+
+.photoLoader {
+  height: 543px;
+  width: 100%;
+  border-radius: 20px;
+  background: #A3A3A3;
+}
+
+.matchLoader {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background: #C3C3C3;
+  border-radius: 100px;
+  width: 99px;
+  height: 34px;
+  box-shadow: 0px 4px 20px 0px #00000040;
+}
+
+.informationLoader {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 20px;
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+}
+
+.informationLoader .about div {
+  background: #C3C3C3;
+  border-radius: 100px;
+  height: 34px;
+}
+
+div.cityLoader {
+  width: 73px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.nameAgeLoader {
+  width: 286px;
+}
+
+.informationLoader .hobbys div {
+  background: #C3C3C3;
+  border-radius: 100px;
+  height: 34px;
+}
+
+.shortHobby {
+  width: 100px;
+}
+
+.longHobby {
+  width: 134px;
 }

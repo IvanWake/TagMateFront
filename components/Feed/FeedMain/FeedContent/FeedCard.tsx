@@ -13,7 +13,7 @@ const hobbys = [
 const FeedCard = () => {
   return (
     <div className={feedStyles.feedCard}>
-      <div className={feedStyles.gradient_wrapper}>
+      <div className={feedStyles.gradientWrapper}>
         <Image
           src={mockPhoto}
           alt="Фото пользователя"
@@ -23,13 +23,13 @@ const FeedCard = () => {
         <div className={feedStyles.information}>
           <div className={feedStyles.about}>
             <div className={feedStyles.city}>Москва</div>
-            <div className={feedStyles.name_age}>Наталья Пигарова, 26</div>
+            <div className={feedStyles.nameAge}>Наталья Пигарова, 26</div>
           </div>
           <div className={feedStyles.hobbys}>
             {hobbys.map((hobby, i) => (
               <div key={i} className={feedStyles.hobby}>
-                <div className={feedStyles.hobby_icon}>{hobby.icon}</div>
-                <div className={feedStyles.hobb_name}>{hobby.name}</div>
+                <div className={feedStyles.hobbyIcon}>{hobby.icon}</div>
+                <div className={feedStyles.hobbyName}>{hobby.name}</div>
               </div>
             ))}
           </div>

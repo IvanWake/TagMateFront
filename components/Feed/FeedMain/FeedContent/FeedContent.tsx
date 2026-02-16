@@ -6,6 +6,7 @@ import Image from "next/image";
 import logo from "@/public/mailLogo.png";
 import FeedMatch from "./FeedMatch";
 import FeedCard from "./FeedCard";
+import Loader from "./Loader";
 import CardButtons from "./CardButtons";
 
 const FeedContent = () => {
@@ -16,6 +17,7 @@ const FeedContent = () => {
             </div>
             {/* <NoSocialWorks /> */}
             <FeedCard />
+            {/* <Loader /> */}
             <CardButtons />
         </>
     );
