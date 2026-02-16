@@ -1,29 +1,23 @@
 import feedStyles from "./FeedContent.module.css";
-import mockPhoto from "@/public/Natalia.jpg";
 import Image from "next/image";
+import { cardData } from "@/types/feed/cardContent";
 
-const hobbys = [
-  { icon: "📃", name: "Оригами" },
-  { icon: "🖌", name: "Веб-дизайн" },
-  { icon: "💨", name: "Кальян" },
-  { icon: "🎀", name: "Аниме" },
-  { icon: "📺", name: "Сериалы" },
-];
-
-const FeedCard = () => {
+const FeedCard = ({photo,match,city,name,lastName, age, hobbys}: cardData) => {
   return (
     <div className={feedStyles.feedCard}>
       <div className={feedStyles.gradientWrapper}>
         <Image
-          src={mockPhoto}
+          src={photo}
           alt="Фото пользователя"
           className={feedStyles.photo}
         />
-        <div className={feedStyles.match}>Мэтч 89%</div>
+        <div className={feedStyles.match}>Мэтч {match}%</div>
         <div className={feedStyles.information}>
           <div className={feedStyles.about}>
-            <div className={feedStyles.city}>Москва</div>
-            <div className={feedStyles.nameAge}>Наталья Пигарова, 26</div>
+            <div className={feedStyles.city}>{city}</div>
+            <div className={feedStyles.nameAge}>
+              {name} {lastName}, {age}
+            </div>
           </div>
           <div className={feedStyles.hobbys}>
             {hobbys.map((hobby, i) => (
