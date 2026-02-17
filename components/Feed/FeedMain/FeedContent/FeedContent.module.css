@@ -18,6 +18,14 @@
   padding: 0 30px;
 }
 
+.feedCard {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+  padding: 0 10px;
+}
+
 .logoWrapper {
   width: 100%;
   padding: 14px 30px;
@@ -25,6 +33,11 @@
 
 .logo {
   width: 32px;
+}
+
+.fullCardWrapper {
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .contentWrapper {
@@ -114,4 +127,184 @@
 .buttonSecondary {
   color: #4b4b4b;
   background: #fff;
+}
+
+.gradientWrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.feedCard .photo {
+  border-radius: 0px;
+  max-height: calc(100vh - 248px);
+}
+
+.match {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #FFC2DF;
+  border-radius: 100px;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.42px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 6px 16px 6px 12px;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 20px;
+  position: absolute;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 24.04%, #000000 87.98%);
+  bottom: 0px;
+  padding: 20px;
+  width: 100%;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.city {
+  background-color: #FFFFFFCC;
+  color: #000000;
+  border-radius: 20px;
+  padding: 4px 12px;
+  width: fit-content;
+  font-family: var(--font-unbounded);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.nameAge {
+  color: #FFFFFF;
+  font-family: var(--font-unbounded);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.hobbys {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hobby {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFFFFF4D;
+  color: #FFFFFF;
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-family: var(--font-onest);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.42px;
+  text-align: center;
+}
+
+.cardButtons {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.voteButton {
+  flex: 1;
+  height: 60px;
+  border-radius: 100px;
+  padding: 10px;
+  border: 0;
+}
+
+.voteButton:active {
+  transform: scale(0.9);
+}
+
+.voteButton:disabled {
+  transform: none;
+}
+
+.rejectButton {
+  background: #F7F6F9;
+}
+
+.likeButton {
+  background: #7462FF;
+}
+
+.photoLoader {
+  height: 543px;
+  width: 100%;
+  border-radius: 20px;
+  background: #A3A3A3;
+}
+
+.matchLoader {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background: #C3C3C3;
+  border-radius: 100px;
+  width: 99px;
+  height: 34px;
+  box-shadow: 0px 4px 20px 0px #00000040;
+}
+
+.informationLoader {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 20px;
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+}
+
+.informationLoader .about div {
+  background: #C3C3C3;
+  border-radius: 100px;
+  height: 34px;
+}
+
+div.cityLoader {
+  width: 73px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.nameAgeLoader {
+  width: 286px;
+}
+
+.informationLoader .hobbys div {
+  background: #C3C3C3;
+  border-radius: 100px;
+  height: 34px;
+}
+
+.shortHobby {
+  width: 100px;
+}
+
+.longHobby {
+  width: 134px;
 }
