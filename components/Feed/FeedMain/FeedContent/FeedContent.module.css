@@ -35,6 +35,11 @@
   width: 32px;
 }
 
+.fullCardWrapper {
+  margin: 0 auto;
+  width: fit-content;
+}
+
 .contentWrapper {
   display: flex;
   flex-direction: column;
@@ -132,6 +137,7 @@
 
 .feedCard .photo {
   border-radius: 0px;
+  max-height: calc(100vh - 248px);
 }
 
 .match {
@@ -218,11 +224,11 @@
   gap: 5px;
   margin-top: 20px;
   padding: 0 10px;
+  width: 100%;
 }
 
 .voteButton {
-  width: 50%;
-  max-width: 373px;
+  flex: 1;
   height: 60px;
   border-radius: 100px;
   padding: 10px;

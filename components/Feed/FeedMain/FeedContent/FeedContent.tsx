@@ -39,18 +39,22 @@ const FeedContent = () => {
           />
         </div>
         {/* <NoSocialWorks /> */}
-        {userInfo ? (<FeedCard
-          photo={userInfo.photo}
-          match={userInfo.match}
-          city={userInfo.city}
-          name={userInfo.name}
-          lastName={userInfo.lastName}
-          age={userInfo.age}
-          hobbys={userInfo.hobbys}
-        />)
-        :
-        (<Loader />) }
-        <CardButtons disabled={!userInfo}/>
+        <div className={contentStyles.fullCardWrapper}>
+          {userInfo ? (
+            <FeedCard
+              photo={userInfo.photo}
+              match={userInfo.match}
+              city={userInfo.city}
+              name={userInfo.name}
+              lastName={userInfo.lastName}
+              age={userInfo.age}
+              hobbys={userInfo.hobbys}
+            />
+          ) : (
+            <Loader />
+          )}
+          <CardButtons disabled={!userInfo} />
+        </div>
       </>
     );
 };
