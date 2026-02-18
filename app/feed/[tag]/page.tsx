@@ -2,16 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { fetchUserProfileData } from "@/utils/fetchUserData/fetchUserProfileData";
 import { fetchUserProfileDataByTag } from "@/utils/fetchUserData/fetchUserProfileDataByTag";
 import { getAuthToken } from "@/utils/authToken";
 import Loading from "@/components/Layout/Loading";
 import Header from "@/components/Header/Header";
-import HeaderSummary from "@/components/Header/HeaderSummary";
 import ProfileHero from "@/components/Profile/ProfileHero";
-import ProfileContent from "@/components/Profile/ProfileContent";
 import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 import TabBar from "@/components/TabBar/TabBar";
+import CardButtons from "@/components/Feed/FeedMain/FeedContent/CardButtons";
 import { UserProfileResponse } from "@/types/userProfile/profileContent";
 
 type Props = {
@@ -40,18 +38,13 @@ const Page = ({ params }: Props) => {
           ? localStorage.getItem("confirmProcess")
           : null;
 
-      const result = await fetchUserProfileData();
       const resultByTag = await fetchUserProfileDataByTag(tag);
 
       if (isAuthToken) {
-        if (result.status == 200 && resultByTag.status == 200) {
-          if (result.data.serviceId === resultByTag.data.userData.serviceId) {
-            window.location.replace("/");
-          } else {
-            setUserProfileData(resultByTag.data);
-            setUserPrivacyData(resultByTag.data.privacyPolicy);
-            setUserOptionsData(resultByTag.data.options);
-          }
+        if (resultByTag.status == 200) {
+          setUserProfileData(resultByTag.data);
+          setUserPrivacyData(resultByTag.data.privacyPolicy);
+          setUserOptionsData(resultByTag.data.options);
         } else {
           router.push("/404");
         }
@@ -93,6 +86,7 @@ const Page = ({ params }: Props) => {
         inBlackList={userProfileData.inBlackList}
         isBlocked={userProfileData.isBlocked}
       />
+      <CardButtons disabled={false} />
 
       <TabBar />
     </>
