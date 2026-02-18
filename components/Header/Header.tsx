@@ -3,15 +3,29 @@
 import Link from "next/link";
 import headerStyles from "./Header.module.css";
 
-const Header = ({ displaySettings }: { displaySettings: boolean }) => {
+type Props = {
+    displaySettings: boolean,
+    isFeed?: boolean
+}
+
+const Header = ({displaySettings, isFeed}: Props) => {
 
     return (
         <>
             <header className={headerStyles["app-header"]}>
                 <div className={headerStyles["app-branding"]}>
-                        <div className={headerStyles["app-logo"]}>
-                            <img src="/icons/tagmate-min.svg" alt="logo"/>
-                        </div>
+                    {
+                        isFeed ?
+                            <div onClick={() => window.location.replace("/feed")}>
+                                <div className={headerStyles["app-back"]}>
+                                    <img src="/icons/ep_arrow-up-bold.svg" alt="logo"/>
+                                </div>
+                            </div>
+                            :
+                            <div className={headerStyles["app-logo"]}>
+                                <img src="/icons/tagmate-min.svg" alt="logo"/>
+                            </div>
+                    }
                 </div>
                 {
                     displaySettings &&
@@ -23,10 +37,10 @@ const Header = ({ displaySettings }: { displaySettings: boolean }) => {
                                 <img src="/icons/settings.svg" alt="settings"/>
                             </div>
                         </Link>
-                </div>
+                    </div>
                 }
             </header>
-            <svg style={{ display: "none" }}>
+            <svg style={{display: "none"}}>
                 <symbol id="icon-notification" viewBox="0 0 24 24" fill="none">
                     <path
                         d="M15 18H9C9 18.7956 9.31607 19.5587 9.87868 20.1213C10.4413 20.6839 11.2044 21 12 21C12.7956 21 13.5587 20.6839 14.1213 20.1213C14.6839 19.5587 15 18.7956 15 18Z"
