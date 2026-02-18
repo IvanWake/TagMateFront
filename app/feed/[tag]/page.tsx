@@ -62,7 +62,7 @@ const Page = ({ params }: Props) => {
 
   return (
     <>
-      <Header displaySettings={false} />
+      <Header displaySettings={false} isFeed={true} />
       <ProfileHero
         isUserByTag={true}
         name={userProfileData.userData.name}

@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 16px;
     height: 60px;
 }
 
@@ -28,6 +28,16 @@
 
 .app-branding .app-logo img {
     width: 32px;
+}
+
+.app-back {
+    width: 40px;
+    height: 40px;
+    background: #F7F6F9;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .app-header .app-menu {
