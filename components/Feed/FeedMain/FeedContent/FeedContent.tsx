@@ -71,7 +71,10 @@ const FeedContent = () => {
 
   return (
     <>
-      <div className={contentStyles.fullCardWrapper}>
+      <div 
+        className={contentStyles.fullCardWrapper} 
+        style={isLoadingCard || !userInfo ? { maxWidth: 512, width: "100%" } : undefined}
+      >
         {isLoadingCard ? (
           <Loader />
         ) : userInfo ? (

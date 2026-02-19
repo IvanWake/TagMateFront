@@ -13,6 +13,7 @@ export type Image = {
 export type ProfileData = {
   tag: string;
   interests: Interest[];
+  commonInterests?: number[];
   purpose: string;
   images: Image[];
   socials: Social[];
@@ -57,6 +58,7 @@ export interface UserProfileResponse {
     serviceId: string;
     purpose: string;
     interests: Interest[];
+    commonInterests?: number[];
     socials: Social[];
     images: Image[];
   };
