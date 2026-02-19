@@ -79,6 +79,7 @@ const FeedContent = () => {
           <Loader />
         ) : userInfo ? (
           <FeedCard
+            tag={userInfo.serviceId}
             photo={userInfo.avatar.path}
             match={Math.round(userInfo.similarityScore)}
             city={userInfo.city.city}

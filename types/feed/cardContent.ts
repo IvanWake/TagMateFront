@@ -1,4 +1,5 @@
 export type cardData = {
+  tag: string;
   photo: string;
   match: number;
   city: string;
