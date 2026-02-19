@@ -1,12 +1,11 @@
 import feedStyles from "./FeedContent.module.css";
-import Image from "next/image";
 import { cardData } from "@/types/feed/cardContent";
 
 const FeedCard = ({photo,match,city,name,lastName, age, hobbys}: cardData) => {
   return (
     <div className={feedStyles.feedCard}>
       <div className={feedStyles.gradientWrapper}>
-        <Image
+        <img
           src={photo}
           alt="Фото пользователя"
           className={feedStyles.photo}
@@ -22,7 +21,6 @@ const FeedCard = ({photo,match,city,name,lastName, age, hobbys}: cardData) => {
           <div className={feedStyles.hobbys}>
             {hobbys.map((hobby, i) => (
               <div key={i} className={feedStyles.hobby}>
-                <div className={feedStyles.hobbyIcon}>{hobby.icon}</div>
                 <div className={feedStyles.hobbyName}>{hobby.name}</div>
               </div>
             ))}

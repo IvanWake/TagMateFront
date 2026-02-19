@@ -1,14 +1,11 @@
-import { StaticImageData } from "next/image";
-
 export type cardData = {
-  photo: StaticImageData;
+  photo: string;
   match: number;
   city: string;
   name: string;
   lastName: string;
   age: number;
   hobbys: {
-    icon: string;
     name: string;
   }[];
 };
