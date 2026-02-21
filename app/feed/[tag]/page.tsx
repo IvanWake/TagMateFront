@@ -114,7 +114,7 @@ const Page = ({ params }: Props) => {
         <>
           <Header displaySettings={false} isFeed={true} />
           <ProfileHero
-            isUserByTag={true}
+            isUserByTag={false}
             name={userProfileData.userData.name}
             lastName={userProfileData.userData.lastName}
             city={userProfileData.userData.city.city}
