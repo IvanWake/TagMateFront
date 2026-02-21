@@ -87,6 +87,7 @@ const Page = ({ params }: Props) => {
         tag={userProfileData.userData.serviceId}
         purpose={userProfileData.userData.purpose}
         interests={userProfileData.userData.interests}
+        commonInterests={userProfileData.userData.commonInterests}
         socials={userProfileData.userData.socials}
         images={userProfileData.userData.images}
         isUserMate={userOptionsData.isUserFriend}

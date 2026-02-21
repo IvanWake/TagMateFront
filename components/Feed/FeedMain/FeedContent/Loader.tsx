@@ -11,10 +11,10 @@ const Loader = () => {
           <div className={feedStyles.nameAgeLoader}></div>
         </div>
         <div className={feedStyles.hobbys}>
-          {Array.from({ length: 3 }, (i) => (
+          {Array.from({ length: 3 }, (_, i) => (
             <div key={`short-${i}`} className={feedStyles.shortHobby} />
           ))}
-          {Array.from({ length: 2 }, (i) => (
+          {Array.from({ length: 2 }, (_, i) => (
             <div key={`long-${i}`} className={feedStyles.longHobby} />
           ))}
         </div>

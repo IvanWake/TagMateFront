@@ -11,6 +11,8 @@ import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 import TabBar from "@/components/TabBar/TabBar";
 import CardButtons from "@/components/Feed/FeedMain/FeedContent/CardButtons";
 import { UserProfileResponse } from "@/types/userProfile/profileContent";
+import { whiteListActions } from "@/services/whitelist";
+import FeedMatch from "@/components/Feed/FeedMain/FeedContent/FeedMatch";
 
 type Props = {
   params: {
@@ -27,6 +29,9 @@ const Page = ({ params }: Props) => {
   const [userOptionsData, setUserOptionsData] = useState<{
     isUserFriend: string;
   } | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isLoadingMatch, setIsLoadingMatch] = useState(false);
+  const [showMatch, setShowMatch] = useState(false);
   const { tag } = params;
   const router = useRouter();
 
@@ -55,39 +60,90 @@ const Page = ({ params }: Props) => {
       }
     };
     fetchUserProfileDataHandler(tag);
-  }, [tag]);
+  }, [tag, router]);
 
-  if (!userProfileData || !userPrivacyData || !userOptionsData)
+  const handleReject = () => {
+    router.push("/feed");
+  };
+
+  const handleLike = async () => {
+    if (!userProfileData || !userOptionsData) return;
+
+    if (userOptionsData.isUserFriend === "null") {
+      setIsProcessing(true);
+      const result = await whiteListActions(tag, "send");
+      if (!result.error) {
+        router.push("/feed");
+      }
+      setIsProcessing(false);
+    } else if (userOptionsData.isUserFriend === "subscribe") {
+      setIsLoadingMatch(true);
+      const result = await whiteListActions(tag, "accept");
+      if (!result.error) {
+        setIsLoadingMatch(false);
+        setShowMatch(true);
+      } else {
+        setIsLoadingMatch(false);
+      }
+    }
+  };
+
+  if (
+    !userProfileData ||
+    !userPrivacyData ||
+    !userOptionsData ||
+    isLoadingMatch
+  ) {
     return <Loading w={"5"} h={"5"} />;
+  }
 
   return (
     <>
-      <Header displaySettings={false} isFeed={true} />
-      <ProfileHero
-        isUserByTag={true}
-        name={userProfileData.userData.name}
-        lastName={userProfileData.userData.lastName}
-        city={userProfileData.userData.city.city}
-        avatar={userProfileData.userData.avatar.path}
-        birthDay={userProfileData.userData.birthDay}
-        tag={tag}
-        isUserMate={userOptionsData.isUserFriend}
-        isBlocked={userProfileData.isBlocked}
-        inBlackList={userProfileData.inBlackList}
-      />
-      <ProfileContentByTag
-        publicProfile={userPrivacyData.publicProfile}
-        tag={userProfileData.userData.serviceId}
-        purpose={userProfileData.userData.purpose}
-        interests={userProfileData.userData.interests}
-        socials={userProfileData.userData.socials}
-        images={userProfileData.userData.images}
-        isUserMate={userOptionsData.isUserFriend}
-        inBlackList={userProfileData.inBlackList}
-        isBlocked={userProfileData.isBlocked}
-      />
-      <CardButtons disabled={false} />
-
+      {showMatch ? (
+        <>
+          <div style={{ width: "100%", padding: "14px 30px" }}>
+            <img
+              src="/icons/tagmate-min.svg"
+              alt="Логотип"
+              style={{ width: 32 }}
+            />
+          </div>
+          <FeedMatch photo={userProfileData.userData.avatar.path} />
+        </>
+      ) : (
+        <>
+          <Header displaySettings={false} isFeed={true} />
+          <ProfileHero
+            isUserByTag={false}
+            name={userProfileData.userData.name}
+            lastName={userProfileData.userData.lastName}
+            city={userProfileData.userData.city.city}
+            avatar={userProfileData.userData.avatar.path}
+            birthDay={userProfileData.userData.birthDay}
+            tag={tag}
+            isUserMate={userOptionsData.isUserFriend}
+            isBlocked={userProfileData.isBlocked}
+            inBlackList={userProfileData.inBlackList}
+          />
+          <ProfileContentByTag
+            publicProfile={userPrivacyData.publicProfile}
+            tag={userProfileData.userData.serviceId}
+            purpose={userProfileData.userData.purpose}
+            interests={userProfileData.userData.interests}
+            commonInterests={userProfileData.userData.commonInterests}
+            socials={userProfileData.userData.socials}
+            images={userProfileData.userData.images}
+            isUserMate={userOptionsData.isUserFriend}
+            inBlackList={userProfileData.inBlackList}
+            isBlocked={userProfileData.isBlocked}
+          />
+          <CardButtons
+            disabled={isProcessing}
+            onReject={handleReject}
+            onLike={handleLike}
+          />
+        </>
+      )}
       <TabBar />
     </>
   );
