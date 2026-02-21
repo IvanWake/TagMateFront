@@ -13,4 +13,6 @@ export type cardData = {
 
 export type buttonState = {
   disabled: boolean;
+  onReject: () => void;
+  onLike: () => void;
 };

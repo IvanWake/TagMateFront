@@ -1,13 +1,11 @@
 import feedStyles from "./FeedContent.module.css";
-import mockPhoto from "@/public/Serega.jpg";
-import Image from "next/image";
 
-const FeedMatch = () => {
+const FeedMatch = ({photo}: {photo: string}) => {
     return (
         <div className={feedStyles.feedMatch}>
             <div className={feedStyles.contentWrapper}>
                 <div className={feedStyles.photoContainer}>
-                  <Image src={mockPhoto} alt="Фото мейта" className={feedStyles.photo}/>
+                  <img src={photo} alt="Фото мейта" className={feedStyles.photo}/>
                 </div>
                 <div className={feedStyles.feedTitle}>Это мэтч!</div>
                 <div className={feedStyles.feedText}>{"Мэтч — это только первый шаг. Не упусти шанс узнать друг друга ближе)"}</div>

@@ -239,6 +239,7 @@
   border-radius: 100px;
   padding: 10px;
   border: 0;
+  cursor: pointer;
 }
 
 .voteButton:active {

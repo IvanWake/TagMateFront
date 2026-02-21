@@ -4,13 +4,21 @@ import rejection from "@/public/icons/rejection.svg";
 import Image from "next/image";
 import { buttonState } from "@/types/feed/cardContent";
 
-const CardButtons = ({disabled}:buttonState) => {
+const CardButtons = ({ disabled, onReject, onLike }: buttonState) => {
   return (
     <div className={feedStyles.cardButtons}>
-      <button disabled={disabled} className={`${feedStyles.voteButton} ${feedStyles.rejectButton}`}>
+      <button
+        disabled={disabled}
+        onClick={onReject}
+        className={`${feedStyles.voteButton} ${feedStyles.rejectButton}`}
+      >
         <Image src={rejection} alt="rejection" />
       </button>
-      <button disabled={disabled} className={`${feedStyles.voteButton} ${feedStyles.likeButton}`}>
+      <button
+        disabled={disabled}
+        onClick={onLike}
+        className={`${feedStyles.voteButton} ${feedStyles.likeButton}`}
+      >
         <Image src={like} alt="like" />
       </button>
     </div>

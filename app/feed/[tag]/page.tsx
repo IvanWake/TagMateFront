@@ -11,6 +11,8 @@ import ProfileContentByTag from "@/components/Profile/ProfileContentByTag";
 import TabBar from "@/components/TabBar/TabBar";
 import CardButtons from "@/components/Feed/FeedMain/FeedContent/CardButtons";
 import { UserProfileResponse } from "@/types/userProfile/profileContent";
+import { whiteListActions } from "@/services/whitelist";
+import FeedMatch from "@/components/Feed/FeedMain/FeedContent/FeedMatch";
 
 type Props = {
   params: {
@@ -27,6 +29,9 @@ const Page = ({ params }: Props) => {
   const [userOptionsData, setUserOptionsData] = useState<{
     isUserFriend: string;
   } | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isLoadingMatch, setIsLoadingMatch] = useState(false);
+  const [showMatch, setShowMatch] = useState(false);
   const { tag } = params;
   const router = useRouter();
 
@@ -55,10 +60,46 @@ const Page = ({ params }: Props) => {
       }
     };
     fetchUserProfileDataHandler(tag);
-  }, [tag]);
+  }, [tag, router]);
 
-  if (!userProfileData || !userPrivacyData || !userOptionsData)
+  const handleReject = () => {
+    router.push("/feed");
+  };
+
+  const handleLike = async () => {
+    if (!userProfileData || !userOptionsData) return;
+
+    if (userOptionsData.isUserFriend === "null") {
+      setIsProcessing(true);
+      const result = await whiteListActions(tag, "send");
+      if (!result.error) {
+        router.push("/feed");
+      }
+      setIsProcessing(false);
+    } else if (userOptionsData.isUserFriend === "pending") {
+      setIsLoadingMatch(true);
+      const result = await whiteListActions(tag, "accept");
+      if (!result.error) {
+        setIsLoadingMatch(false);
+        setShowMatch(true);
+      } else {
+        setIsLoadingMatch(false);
+      }
+    }
+  };
+
+  if (
+    !userProfileData ||
+    !userPrivacyData ||
+    !userOptionsData ||
+    isLoadingMatch
+  ) {
     return <Loading w={"5"} h={"5"} />;
+  }
+
+  if (showMatch) {
+    return <FeedMatch photo={userProfileData.userData.avatar.path} />;
+  }
 
   return (
     <>
@@ -87,7 +128,11 @@ const Page = ({ params }: Props) => {
         inBlackList={userProfileData.inBlackList}
         isBlocked={userProfileData.isBlocked}
       />
-      <CardButtons disabled={false} />
+      <CardButtons
+        disabled={isProcessing}
+        onReject={handleReject}
+        onLike={handleLike}
+      />
 
       <TabBar />
     </>
