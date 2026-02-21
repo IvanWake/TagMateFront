@@ -137,7 +137,7 @@
 
 .feedCard .photo {
   border-radius: 0px;
-  max-height: calc(100vh - 248px);
+  min-height: calc(100vh - 248px);
 }
 
 .match {
