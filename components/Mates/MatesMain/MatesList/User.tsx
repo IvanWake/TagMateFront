@@ -1,3 +1,5 @@
+'use client';
+
 import {UserItemSearch} from "@/types/mates/userItem";
 import Link from "next/link";
 import {formatBirthDay} from "@/utils/formatBirthDay";
@@ -5,7 +7,7 @@ import mainStyles from "./MatesList.module.css";
 
 const User = ({name, lastName, city, avatar, birthDay, serviceId}: UserItemSearch<string>) => {
     return (
-        <Link href={`/${serviceId}`}>
+        <div onClick={() => window.location.replace(`/${serviceId}`)}>
             <div className={mainStyles.userItem}>
                 <img src={avatar} alt="user avatar"
                      className={mainStyles.userPicture}/>
@@ -14,7 +16,7 @@ const User = ({name, lastName, city, avatar, birthDay, serviceId}: UserItemSearc
                     <div className={mainStyles.userDescription}>{`${formatBirthDay(birthDay).yearsOld}, ${city}`}</div>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
 
