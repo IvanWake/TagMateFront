@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const NoSocialWorks = () => {
     return (
-        <div className={feedStyles.noSocialNetworks}>
+        <div className={feedStyles.feedEmpty}>
             <div className={feedStyles.contentWrapper}>
                 <Image src={feedMainImg} alt="Тут пока пусто" />
                 <div className={feedStyles.feedTitle}>Лента</div>

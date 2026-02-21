@@ -12,6 +12,7 @@ import { getUserSettings } from "@/services/settings";
 import { formatBirthDay } from "@/utils/formatBirthDay";
 import Loading from "@/components/Layout/Loading";
 import { whiteListActions } from "@/services/whitelist";
+import FeedEnd from "./FeedEnd";
 
 const FeedContent = () => {
   const [hasNotSocials, setHasNotSocials] = useState<boolean | null>(null);
@@ -100,26 +101,35 @@ const FeedContent = () => {
         }
       >
         {isLoadingCard ? (
-          <Loader />
+          <>
+            <Loader />
+            <CardButtons
+              disabled={isLoadingCard || !userInfo}
+              onReject={handleReject}
+              onLike={handleLike}
+            />
+          </>
         ) : userInfo ? (
-          <FeedCard
-            tag={userInfo.serviceId}
-            photo={userInfo.avatar.path}
-            match={Math.round(userInfo.similarityScore)}
-            city={userInfo.city.city}
-            name={userInfo.name}
-            lastName={userInfo.lastName}
-            age={formatBirthDay(userInfo.birthDay).yearsOld}
-            hobbys={userInfo.interests}
-          />
+          <>
+            <FeedCard
+              tag={userInfo.serviceId}
+              photo={userInfo.avatar.path}
+              match={Math.round(userInfo.similarityScore)}
+              city={userInfo.city.city}
+              name={userInfo.name}
+              lastName={userInfo.lastName}
+              age={formatBirthDay(userInfo.birthDay).yearsOld}
+              hobbys={userInfo.interests}
+            />
+            <CardButtons
+              disabled={isLoadingCard || !userInfo}
+              onReject={handleReject}
+              onLike={handleLike}
+            />
+          </>
         ) : (
-          <Loader />
+          <FeedEnd />
         )}
-        <CardButtons
-          disabled={isLoadingCard || !userInfo}
-          onReject={handleReject}
-          onLike={handleLike}
-        />
       </div>
     </>
   );

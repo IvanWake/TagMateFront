@@ -30,7 +30,7 @@ const FeedCard = ({
               </div>
             </div>
             <div className={feedStyles.hobbys}>
-              {hobbys.map((hobby, i) => (
+              {hobbys.slice(0, 5).map((hobby, i) => (
                 <div key={i} className={feedStyles.hobby}>
                   <div className={feedStyles.hobbyName}>{hobby.name}</div>
                 </div>
