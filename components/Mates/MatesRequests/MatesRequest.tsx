@@ -24,9 +24,9 @@ const MatesRequest = ({tab, serviceId, name, lastName, avatar, birthDay, city}: 
 
     return (
         <div key={serviceId} className={styles.userItem}>
-            <Link href={`/${serviceId}`}>
+            <div onClick={() => window.location.replace(`/${serviceId}`)}>
                 <img src={avatar} alt="" className={styles.userPicture}/>
-            </Link>
+            </div>
             <div className={styles.userInfo}>
                 <div className={styles.userName}>{name} {lastName}</div>
                 <div className={styles.userDescription}>{`${formatBirthDay(birthDay).yearsOld}, ${city}`}</div>

@@ -82,7 +82,7 @@ const MatesSearch = () => {
                             : (
                                 results?.map((user) => (
 
-                                    <Link href={`/${user.serviceId}`} key={user._id}>
+                                    <div onClick={() => window.location.replace(`/${user.serviceId}`)} key={user._id}>
                                         <div className={mainStyles.userItem}>
                                             <img src={user.avatar.path} alt="userImage"
                                                  className={mainStyles.userPicture}/>
@@ -92,7 +92,7 @@ const MatesSearch = () => {
                                                     className={mainStyles.userDescription}>{`${formatBirthDay(user.birthDay).yearsOld}, ${user.city.city}`}</div>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))
                             )}
             </section>

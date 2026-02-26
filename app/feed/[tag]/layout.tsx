@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${onest.variable}`}>
-      <body>{children}</body>
+      <body style={{ backgroundColor: "#FFF" }}>{children}</body>
     </html>
   );
 }

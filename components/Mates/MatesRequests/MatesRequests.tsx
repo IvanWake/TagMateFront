@@ -81,7 +81,7 @@ export default function MatesRequests() {
                                     title="Заявок пока нет"
                                     description={tab === "in" ? incomingDescription : outgoingDescription}
                                 /> :
-                                < MatesIncomingRequests
+                                <MatesIncomingRequests
                                     requests={requests.outgoing}
                                     tab={tab}
                                 />
